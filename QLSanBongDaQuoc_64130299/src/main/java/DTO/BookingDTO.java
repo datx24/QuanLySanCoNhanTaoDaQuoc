@@ -7,6 +7,7 @@ public class BookingDTO {
 	private String bookingID;  
 	private String userID; 
 	private int fieldID;
+	private LocalDate bookingDate;// Ngày khách hàng đặt sân
 	private LocalTime startTime;// Giờ bắt đầu thuê sân
 	private LocalTime endTime;// Giờ kết thúc thuê sân
 	private String status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
@@ -16,17 +17,26 @@ public class BookingDTO {
 	public BookingDTO() {
 	}
 	
-	public BookingDTO(String bookingID, String userID, int fieldID, LocalTime startTime, LocalTime endTime,
+	public BookingDTO(String bookingID, String userID, int fieldID, LocalDate bookingDate, LocalTime startTime, LocalTime endTime,
 			String status, String approvedBy, String paymentStatus) {
 		super();
 		this.bookingID = bookingID;
 		this.userID = userID;
 		this.fieldID = fieldID;
+		this.bookingDate = bookingDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.status = status;
 		this.approvedBy = approvedBy;
 		this.paymentStatus = paymentStatus;
+	}
+
+	public LocalDate getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(LocalDate bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 	public String getBookingID() {
