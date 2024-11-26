@@ -1,5 +1,6 @@
 package DTO;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -15,12 +16,13 @@ public class BookingDTO {
 	private BookingStatus  status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
 	private String approvedBy;// ID của người quản lý xác nhận
 	private String paymentStatus;// Trạng thái thanh toán (Paid, Unpaid)
+	private Timestamp createdAt;
 	
 	public BookingDTO() {
 	}
 	
 	public BookingDTO(String bookingID, String userID, int fieldID, LocalDate bookingDate, LocalTime startTime, LocalTime endTime,
-			BookingStatus  status, String approvedBy, String paymentStatus) {
+			BookingStatus  status, String approvedBy, String paymentStatus,Timestamp createdAt) {
 		super();
 		this.bookingID = bookingID;
 		this.userID = userID;
@@ -31,6 +33,15 @@ public class BookingDTO {
 		this.status = status;
 		this.approvedBy = approvedBy;
 		this.paymentStatus = paymentStatus;
+		this.createdAt = createdAt;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public LocalDate getBookingDate() {
