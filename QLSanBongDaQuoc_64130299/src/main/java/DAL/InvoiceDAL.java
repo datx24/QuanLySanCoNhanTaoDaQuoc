@@ -7,6 +7,8 @@ import DTO.InvoiceDTO;
 import Enum.PaymentMethod;
 
 public class InvoiceDAL {
+	private InvoiceDTO invoiceDTO = new InvoiceDTO();
+	private List<InvoiceDTO> invoiceDTOs = new ArrayList<>();
 	//Thêm hóa đơn thanh toán
 	public boolean addInvoice(InvoiceDTO invoice) {
 		return true;
@@ -24,20 +26,17 @@ public class InvoiceDAL {
 	
 	//Lấy danh sách tất cả hóa đơn từ cơ sở dữ liệu 
 	public List<InvoiceDTO> getAllInvoices() {
-		List<InvoiceDTO> invoices = new ArrayList<InvoiceDTO>();
-		return invoices;
+		return invoiceDTOs;
 	}
 	
 	//Lấy hóa đơn theo ID
 	public InvoiceDTO getInvoiceByID(String invoiceID) {
-		InvoiceDTO invoice = new InvoiceDTO();
-		return invoice;
+		return invoiceDTO;
 	}
 	
 	//Lấy hóa đơn dựa trên BookingID
 	public InvoiceDTO getInvoiceByBookingID(String bookingID) {
-		InvoiceDTO invoice = new InvoiceDTO();
-		return invoice;
+		return invoiceDTO;
 	}
 	
 	//Phương thức kiểm tra trạng thái thanh toán của hóa đơn 
