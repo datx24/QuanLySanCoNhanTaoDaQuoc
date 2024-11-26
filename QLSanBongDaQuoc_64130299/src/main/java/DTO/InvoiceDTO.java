@@ -1,7 +1,7 @@
 package DTO;
 
 import java.math.BigDecimal;
-
+import java.sql.Timestamp;
 import Enum.PaymentMethod;
 
 public class InvoiceDTO {
@@ -9,16 +9,27 @@ public class InvoiceDTO {
     private String bookingID;
     private BigDecimal amount;// Tổng số tiền thanh toán
     private PaymentMethod paymentMethod;// Phương thức thanh toán (Cash, Online)
+    private Timestamp createdAt;
     
 	public InvoiceDTO() {
 	}
 
-	public InvoiceDTO(String invoiceID, String bookingID, BigDecimal amount, PaymentMethod paymentMethod) {
+	public InvoiceDTO(String invoiceID, String bookingID, BigDecimal amount, 
+			PaymentMethod paymentMethod, Timestamp createdAt) {
 		super();
 		this.invoiceID = invoiceID;
 		this.bookingID = bookingID;
 		this.amount = amount;
 		this.paymentMethod = paymentMethod;
+		this.createdAt = createdAt;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public String getInvoiceID() {
