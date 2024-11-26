@@ -17,20 +17,20 @@ public class UserDAL {
 	public boolean deleteUser(UserDTO user) {
 		return true;
 	}
-	
-	//Lấy tất cả người dùng từ cơ sở dữ liệu
-		public boolean getAllUsers() {
-			return true;
-		}
+
+	// Lấy tất cả người dùng từ cơ sở dữ liệu
+	public boolean getAllUsers() {
+		return true;
+	}
 
 	// đăng nhập
-	public boolean login(String email,String passwordHash) {
+	public boolean login(String email, String passwordHash) {
 		return true;
 	}
 
 	// đăng kí
-	public boolean register(String fullName,String email,String username,
-			String password,String phoneNumber,String passwordHash) {
+	public boolean register(String fullName, String email, String username, String password, String phoneNumber,
+			String passwordHash) {
 		return true;
 	}
 }
