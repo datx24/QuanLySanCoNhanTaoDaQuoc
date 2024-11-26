@@ -1,5 +1,7 @@
 package DAL;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,4 +45,10 @@ public class InvoiceDAL {
 	public PaymentMethod checkPaymentStatus(String invoiceID) {
 		return null;
 	}
+	
+	//Phương thức tính tổng số tiền của 1 hóa đơn trong 1 khoảng thời gian
+    public BigDecimal calculateTotalAmountByDateRange(Timestamp startDate, Timestamp endDate) {
+    	BigDecimal totalAmount = BigDecimal.ZERO;
+    	return totalAmount;
+    }
 } 
