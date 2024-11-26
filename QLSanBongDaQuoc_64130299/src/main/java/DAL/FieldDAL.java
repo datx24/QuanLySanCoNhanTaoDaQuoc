@@ -7,6 +7,8 @@ import DTO.FieldDTO;
 import Enum.FieldStatus;
 
 public class FieldDAL {
+	private FieldDTO field = new FieldDTO();
+	private List<FieldDTO> fields = new ArrayList<>();
 	//Thêm sân
 	public boolean addField(FieldDTO field) {
 		return true;
@@ -23,12 +25,17 @@ public class FieldDAL {
 	
 	//Lấy tất cả sân bóng từ cơ sở dữ liệu
 	public List<FieldDTO> getAllFields() {
-		List<FieldDTO> fields = new ArrayList<>();
 		return fields;
 	}
 	
+	//Lấy sân bóng theo id
+	public FieldDTO getFieldByID(String fieldID) {
+		return field;
+	}
+	
+	
 	// Tìm kiếm sân theo status
-	public boolean getFieldsByStatus(FieldStatus status) {
-		return true;
+	public FieldDTO getFieldsByStatus(FieldStatus status) {
+		return field;
 	}
 }
