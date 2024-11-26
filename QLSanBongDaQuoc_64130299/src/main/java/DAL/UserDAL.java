@@ -6,8 +6,8 @@ import java.util.List;
 import DTO.UserDTO;
 
 public class UserDAL {
-	private UserDTO user = new UserDTO();
-	private List<UserDTO> users = new ArrayList();
+	private UserDTO userDTO = new UserDTO();
+	private List<UserDTO> userDTOs = new ArrayList();
 	// thêm người dùng
 	public boolean insertUser(UserDTO user) {
 		return true;
@@ -25,17 +25,17 @@ public class UserDAL {
 
 	// Lấy tất cả người dùng từ cơ sở dữ liệu
 	public List<UserDTO> getAllUsers() {
-		return users;
+		return userDTOs;
 	}
 	
 	// Lấy thông tin người dùng dựa vào ID
 	public UserDTO getUserByID(String UserID) {
-		return user;
+		return userDTO;
 	}
 	
 	// Lấy thông tin người dùng dựa vào email
 	public UserDTO getUserByEmail(String email) {
-		return user;
+		return userDTO;
 	}
 
 	// đăng nhập
