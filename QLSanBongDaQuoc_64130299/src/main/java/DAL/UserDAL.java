@@ -12,11 +12,6 @@ public class UserDAL {
 	public boolean updateUser(UserDTO user) {
 		return true;
 	}
-	
-	// sửa thông tin người dùng
-	public boolean editUser(UserDTO user) {
-		return true;
-	}
 
 	// cập nhật người dùng
 	public boolean deleteUser(UserDTO user) {
