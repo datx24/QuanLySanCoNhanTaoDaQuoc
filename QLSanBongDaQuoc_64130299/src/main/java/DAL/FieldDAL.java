@@ -7,16 +7,16 @@ import Enum.FieldStatus;
 
 public class FieldDAL {
 	//Thêm sân
-	public boolean addField() {
+	public boolean addField(FieldDTO field) {
 		return true;
 	}
 	//Cập nhật thông tin sân
-	public boolean updateField() {
+	public boolean updateField(FieldDTO field) {
 		return true;
 	}
 	
 	//Xóa sân
-	public boolean editField() {
+	public boolean editField(String fieldId) {
 		return true;
 	}
 	
