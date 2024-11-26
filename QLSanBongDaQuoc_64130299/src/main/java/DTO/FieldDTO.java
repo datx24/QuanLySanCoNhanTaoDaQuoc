@@ -1,6 +1,6 @@
 package DTO;
 
-import DAL.FieldDAL.FieldStatus;
+import Enum.FieldStatus;
 
 public class FieldDTO {
 	private int fieldID;// ID duy nhất cho mỗi sân bóng
