@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.InvoiceDTO;
+import Enum.PaymentMethod;
 
 public class InvoiceDAL {
 	//Thêm hóa đơn thanh toán
@@ -40,7 +41,7 @@ public class InvoiceDAL {
 	}
 	
 	//Phương thức kiểm tra trạng thái thanh toán của hóa đơn 
-	public PaymentStatus checkPaymentStatus(String invoiceID) {
+	public PaymentMethod checkPaymentStatus(String invoiceID) {
 		return null;
 	}
 } 
