@@ -1,12 +1,12 @@
 package Enum;
 
-public enum PaymentStatus {
-    PAID("Paid"),// Đã thanh toán
-    UNPAID("Unpaid");// Chưa thanh toán
+public enum PaymentMethod {
+    CASH("Cash"),// tiền mặt
+    ONLINE("Online");// chuyển khoản
 
     private final String status;
 
-    PaymentStatus(String status) {
+    PaymentMethod(String status) {
         this.status = status;
     }
 
@@ -19,8 +19,8 @@ public enum PaymentStatus {
         return this.status;
     }
 
-    public static PaymentStatus fromString(String status) {
-        for (PaymentStatus paymentStatus : PaymentStatus.values()) {
+    public static PaymentMethod fromString(String status) {
+        for (PaymentMethod paymentStatus : PaymentMethod.values()) {
             if (paymentStatus.status.equalsIgnoreCase(status)) {
                 return paymentStatus;
             }
