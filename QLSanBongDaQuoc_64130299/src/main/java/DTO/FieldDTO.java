@@ -1,16 +1,19 @@
 package DTO;
 
+import DAL.FieldDAL.FieldStatus;
+
 public class FieldDTO {
-	private int fieldID;            // ID duy nhất cho mỗi sân bóng
-    private String fieldName;       // Tên sân bóng
-    private String status;          // Trạng thái của sân bóng (có sẵn, bảo trì, đă đặt)
-    private double pricePerHour;    // Giá thuê sân mỗi giờ
-    private String description;     // Mô tả sân bóng
+	private int fieldID;// ID duy nhất cho mỗi sân bóng
+    private String fieldName;// Tên sân bóng
+    private FieldStatus status;// Trạng thái của sân bóng (có sẵn, bảo trì, đă đặt)
+    private double pricePerHour;// Giá thuê sân mỗi giờ
+    private String description;// Mô tả sân bóng
     
 	public FieldDTO() {
 	}
 
-	public FieldDTO(int fieldID, String fieldName, String status, double pricePerHour, String description) {
+	public FieldDTO(int fieldID, String fieldName, FieldStatus status, double pricePerHour, 
+			String description) {
 		super();
 		this.fieldID = fieldID;
 		this.fieldName = fieldName;
@@ -35,11 +38,11 @@ public class FieldDTO {
 		this.fieldName = fieldName;
 	}
 
-	public String getStatus() {
+	public FieldStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(FieldStatus status) {
 		this.status = status;
 	}
 
