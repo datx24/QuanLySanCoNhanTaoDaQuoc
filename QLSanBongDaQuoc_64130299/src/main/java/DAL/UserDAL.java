@@ -26,6 +26,12 @@ public class UserDAL {
 		List<UserDTO> users = new ArrayList<>();
 		return users;
 	}
+	
+	// Lấy thông tin người dùng dựa vào ID
+	public UserDTO getUserByID(String UserID) {
+		UserDTO user = new UserDTO();
+		return user;
+	}
 
 	// đăng nhập
 	public boolean login(String email, String passwordHash) {
