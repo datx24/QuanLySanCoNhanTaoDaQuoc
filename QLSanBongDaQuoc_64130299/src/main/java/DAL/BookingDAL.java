@@ -7,6 +7,8 @@ import DTO.BookingDTO;
 import Enum.BookingStatus;
 
 public class BookingDAL {
+	private BookingDTO bookingDTO = new BookingDTO();
+	private List<BookingDTO> bookingDTOs = new ArrayList<>();
 	// Thêm đơn đặt sân
 	public boolean addBooking(BookingDTO booking) {
 		return true;
@@ -24,19 +26,16 @@ public class BookingDAL {
 
 	// Lấy tất cả đơn đặt sân từ cơ sở dữ liệu
 	public List<BookingDTO> getAllBookings() {
-		List<BookingDTO> bookings = new ArrayList<>();
-		return bookings;
+		return bookingDTOs;
 	}
 
 	// Lấy danh sách đặt sân theo trạng thái
 	public List<BookingDTO> getBookingByStatus(BookingStatus booking) {
-		List<BookingDTO> bookings = new ArrayList<BookingDTO>();
-		return bookings;
+		return bookingDTOs;
 	}
 
 	// Lấy thông tin của 1 đơn đặt sân theo id
 	public BookingDTO getBookingById(String bookingId) {
-		BookingDTO booking = new BookingDTO();
-		return booking;
+		return bookingDTO;
 	}
 }
