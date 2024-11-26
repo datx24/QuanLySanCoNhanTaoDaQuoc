@@ -3,6 +3,8 @@ package DTO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import Enum.BookingStatus;
+
 public class BookingDTO {
 	private String bookingID;  
 	private String userID; 
@@ -10,7 +12,7 @@ public class BookingDTO {
 	private LocalDate bookingDate;// Ngày khách hàng đặt sân
 	private LocalTime startTime;// Giờ bắt đầu thuê sân
 	private LocalTime endTime;// Giờ kết thúc thuê sân
-	private String status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
+	private BookingStatus  status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
 	private String approvedBy;// ID của người quản lý xác nhận
 	private String paymentStatus;// Trạng thái thanh toán (Paid, Unpaid)
 	
@@ -18,7 +20,7 @@ public class BookingDTO {
 	}
 	
 	public BookingDTO(String bookingID, String userID, int fieldID, LocalDate bookingDate, LocalTime startTime, LocalTime endTime,
-			String status, String approvedBy, String paymentStatus) {
+			BookingStatus  status, String approvedBy, String paymentStatus) {
 		super();
 		this.bookingID = bookingID;
 		this.userID = userID;
@@ -79,11 +81,11 @@ public class BookingDTO {
 		this.endTime = endTime;
 	}
 
-	public String getStatus() {
+	public BookingStatus  getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(BookingStatus  status) {
 		this.status = status;
 	}
 
