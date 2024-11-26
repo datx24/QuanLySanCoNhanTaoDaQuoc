@@ -1,5 +1,6 @@
 package DAL;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class BookingDAL {
 
 	// Lấy danh sách đặt sân theo trạng thái
 	public List<BookingDTO> getBookingByStatus(BookingStatus booking) {
+		return bookingDTOs;
+	}
+	
+	// Lấy danh sách đặt sân theo ngày
+	public List<BookingDTO> getBookingByData(LocalDate bookingDate) {
 		return bookingDTOs;
 	}
 
