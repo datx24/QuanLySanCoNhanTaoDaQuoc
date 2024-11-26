@@ -1,5 +1,8 @@
 package DAL;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import DTO.UserDTO;
 
 public class UserDAL {
@@ -19,8 +22,9 @@ public class UserDAL {
 	}
 
 	// Lấy tất cả người dùng từ cơ sở dữ liệu
-	public boolean getAllUsers() {
-		return true;
+	public List<UserDTO> getAllUsers() {
+		List<UserDTO> users = new ArrayList<>();
+		return users;
 	}
 
 	// đăng nhập

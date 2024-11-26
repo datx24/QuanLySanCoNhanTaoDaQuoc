@@ -1,5 +1,6 @@
 package DAL;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import DTO.FieldDTO;
@@ -21,8 +22,9 @@ public class FieldDAL {
 	}
 	
 	//Lấy tất cả sân bóng từ cơ sở dữ liệu
-	public boolean getAllFields() {
-		return true;
+	public List<FieldDTO> getAllFields() {
+		List<FieldDTO> fields = new ArrayList<>();
+		return fields;
 	}
 	
 	// Tìm kiếm sân theo status

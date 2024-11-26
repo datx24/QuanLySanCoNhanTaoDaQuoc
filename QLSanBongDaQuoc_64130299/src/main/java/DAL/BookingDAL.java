@@ -23,8 +23,9 @@ public class BookingDAL {
 	}
 
 	// Lấy tất cả đơn đặt sân từ cơ sở dữ liệu
-	public boolean getAllBookings() {
-		return true;
+	public List<BookingDTO> getAllBookings() {
+		List<BookingDTO> bookings = new ArrayList<>();
+		return bookings;
 	}
 
 	// Lấy danh sách đặt sân theo trạng thái
@@ -35,7 +36,7 @@ public class BookingDAL {
 
 	// Lấy thông tin của 1 đơn đặt sân theo id
 	public BookingDTO getBookingById(String bookingId) {
-		BookingDTO booking = null;
+		BookingDTO booking = new BookingDTO();
 		return booking;
 	}
 }

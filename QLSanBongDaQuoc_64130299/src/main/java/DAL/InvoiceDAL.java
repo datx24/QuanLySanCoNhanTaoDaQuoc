@@ -23,7 +23,7 @@ public class InvoiceDAL {
 	}
 	
 	//Lấy danh sách tất cả hóa đơn từ cơ sở dữ liệu 
-	public List<InvoiceDTO> getAllInvoices(InvoiceDTO invoice) {
+	public List<InvoiceDTO> getAllInvoices() {
 		List<InvoiceDTO> invoices = new ArrayList<InvoiceDTO>();
 		return invoices;
 	}
