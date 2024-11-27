@@ -16,8 +16,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/LoginRegisterView.fxml")); 
         primaryStage.setTitle("Quản Lý Sân Bóng");
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(800);
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(600);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
