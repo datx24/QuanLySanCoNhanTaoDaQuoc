@@ -24,7 +24,8 @@ public class BookingBLL {
 	
 	//Kiểm tra thông tin đơn trước khi xóa
 	public boolean deleteBooking(String bookingId) {
-		return true;
+		BookingDTO bookingDTO = bookingDAL.getBookingById(bookingId);
+		return bookingDAL.deleteBooking(bookingDTO);
 	}
 	
 	//Lấy tất cả đơn đặt sân
