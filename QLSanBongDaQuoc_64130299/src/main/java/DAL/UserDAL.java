@@ -49,4 +49,5 @@ public class UserDAL {
             Timestamp createdAt, Timestamp updatedAt) {
 		return true;
 	}
+	
 }
