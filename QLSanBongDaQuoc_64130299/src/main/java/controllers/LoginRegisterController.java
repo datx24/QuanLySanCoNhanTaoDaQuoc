@@ -34,10 +34,10 @@ public class LoginRegisterController {
 	// Xử lý đăng nhập
 	@FXML
     public void handleLogin() {
-    	String username = usernameField.getText();
+    	String email = emailField.getText();
     	String password = passwordField.getText();
     	
-    	boolean loginSuccess = userBLL.checkLogin(username, password);
+    	boolean loginSuccess = userBLL.checkLogin(email, password);
     	
     	if(loginSuccess) {
     		//Hiển thị thông báo,sau này cài đặt để chuyển màn hình khác
