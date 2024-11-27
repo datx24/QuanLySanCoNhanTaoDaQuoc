@@ -1,5 +1,6 @@
 package DAL;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +45,8 @@ public class UserDAL {
 	}
 
 	// đăng kí
-	public boolean register(String fullName, String email, String username, String password, String phoneNumber,
-			String passwordHash) {
+	public boolean register(String fullName, String email, String phoneNumber, String passwordHash, 
+            Timestamp createdAt, Timestamp updatedAt) {
 		return true;
 	}
 }
