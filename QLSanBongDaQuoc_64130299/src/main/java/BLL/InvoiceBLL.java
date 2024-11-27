@@ -1,7 +1,7 @@
 package BLL;
 
 import DTO.InvoiceDTO;
-import Enum.PaymentMethod;
+import myEnum.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

@@ -1,4 +1,4 @@
-package Enum;
+package myEnum;
 
 public enum PaymentMethod {
     CASH("Cash"),// tiền mặt

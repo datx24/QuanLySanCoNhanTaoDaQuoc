@@ -1,7 +1,7 @@
 package BLL;
 
 import DTO.BookingDTO;
-import Enum.BookingStatus;
+import myEnum.BookingStatus;
 
 import java.time.LocalDate;
 import java.util.List;

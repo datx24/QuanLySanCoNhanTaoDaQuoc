@@ -1,6 +1,6 @@
 package DTO;
 
-import Enum.FieldStatus;
+import myEnum.FieldStatus;
 
 public class FieldDTO {
 	private int fieldID;// ID duy nhất cho mỗi sân bóng

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import Enum.BookingStatus;
+import myEnum.BookingStatus;
 
 public class BookingDTO {
 	private String bookingID;  

@@ -2,7 +2,8 @@ package DTO;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import Enum.PaymentMethod;
+
+import myEnum.PaymentMethod;
 
 public class InvoiceDTO {
 	private String invoiceID;

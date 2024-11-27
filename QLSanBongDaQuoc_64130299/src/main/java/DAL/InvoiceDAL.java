@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.InvoiceDTO;
-import Enum.PaymentMethod;
+import myEnum.PaymentMethod;
 
 public class InvoiceDAL {
 	private InvoiceDTO invoiceDTO = new InvoiceDTO();

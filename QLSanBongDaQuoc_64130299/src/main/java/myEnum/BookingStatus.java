@@ -1,4 +1,4 @@
-package Enum;
+package myEnum;
 
 public enum BookingStatus {
     PENDING("Pending"), // chờ duyệt

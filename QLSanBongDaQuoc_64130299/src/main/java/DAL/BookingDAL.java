@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.BookingDTO;
-import Enum.BookingStatus;
+import myEnum.BookingStatus;
 
 public class BookingDAL {
 	private BookingDTO bookingDTO = new BookingDTO();

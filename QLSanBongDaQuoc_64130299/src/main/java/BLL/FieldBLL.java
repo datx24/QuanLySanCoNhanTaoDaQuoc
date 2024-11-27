@@ -1,11 +1,11 @@
 package BLL;
 
 import DTO.FieldDTO;
+import myEnum.FieldStatus;
 
 import java.util.List;
 
 import DAL.FieldDAL;
-import Enum.FieldStatus;
 
 public class FieldBLL {
 	private FieldDAL fieldDAL = new FieldDAL();

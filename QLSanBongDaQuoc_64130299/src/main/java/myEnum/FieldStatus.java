@@ -1,4 +1,4 @@
-package Enum;
+package myEnum;
 
 public enum FieldStatus {
     AVAILABLE("Available"),//có sẵn

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.FieldDTO;
-import Enum.FieldStatus;
+import myEnum.FieldStatus;
 
 public class FieldDAL {
 	private FieldDTO fieldDTO = new FieldDTO();
