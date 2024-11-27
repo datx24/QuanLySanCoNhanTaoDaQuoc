@@ -40,19 +40,19 @@ public class CommonUtils {
 	}
 
 	// Hàm kiểm tra email chuẩn RFC 5322
-	private boolean isValidEmail(String email) {
+	public static boolean isValidEmail(String email) {
 		String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 		return Pattern.matches(emailRegex, email);
 	}
 
 	// Hàm kiểm tra số điện thoại
-	private boolean isValidPhoneNumber(String phoneNumber) {
+	public static boolean isValidPhoneNumber(String phoneNumber) {
 		String phoneRegex = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
 		return Pattern.matches(phoneRegex, phoneNumber);
 	}
 	
 	//Hàm kiểm tra mật khẩu
-    private boolean isValidPassword(String password) {
+	public static boolean isValidPassword(String password) {
         return password.length() >= 6;
     }
 }
