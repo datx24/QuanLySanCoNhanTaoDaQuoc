@@ -50,4 +50,9 @@ public class CommonUtils {
 		String phoneRegex = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
 		return Pattern.matches(phoneRegex, phoneNumber);
 	}
+	
+	//Hàm kiểm tra mật khẩu
+    private boolean isValidPassword(String password) {
+        return password.length() >= 6;
+    }
 }
