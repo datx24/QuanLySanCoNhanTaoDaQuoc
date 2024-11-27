@@ -18,8 +18,13 @@ public class FieldDAL {
 		return true;
 	}
 	
-	//Xóa sân
+	//Chỉnh sửa sân
 	public boolean editField(String fieldId) {
+		return true;
+	}
+	
+	//Xóa sân
+	public boolean deleteField(FieldDTO fieldDTO) {
 		return true;
 	}
 	
