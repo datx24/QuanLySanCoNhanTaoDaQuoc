@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DTO.UserDTO;
+import Utils.CommonUtils;
 import Utils.DatabaseConnection;
 
 public class UserDAL {
@@ -46,7 +47,9 @@ public class UserDAL {
 	}
 
 	// đăng nhập
-	public boolean login(String email, String passwordHash) {
+	public boolean login(String email, String plainPassword) {
+		//Mã hóa kiểu SHA 256 khi người dùng nhập vào
+		String passwordHash = CommonUtils.encodePassword(plainPassword);
 		String sql = "SELECT COUNT(*) FROM users_64130299 WHERE email = ? AND password = ?";
 		try (Connection conn = DatabaseConnection.getConnection(); // Kết nối từ DatabaseConnection
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
