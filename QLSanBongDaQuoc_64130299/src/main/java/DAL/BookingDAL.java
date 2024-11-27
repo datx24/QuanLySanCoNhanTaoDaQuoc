@@ -21,7 +21,7 @@ public class BookingDAL {
 	}
 
 	// Xóa đơn đặt sân
-	public boolean deleteBooking(String bookingID) {
+	public boolean deleteBooking(BookingDTO booking) {
 		return true;
 	}
 
