@@ -36,7 +36,7 @@ public class BookingDAL {
 	}
 	
 	// Lấy danh sách đặt sân theo ngày
-	public List<BookingDTO> getBookingByData(LocalDate bookingDate) {
+	public List<BookingDTO> getBookingByDate(LocalDate bookingDate) {
 		return bookingDTOs;
 	}
 
