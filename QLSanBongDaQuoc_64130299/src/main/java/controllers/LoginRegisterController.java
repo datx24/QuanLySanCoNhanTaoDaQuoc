@@ -41,9 +41,9 @@ public class LoginRegisterController {
     	
     	if(loginSuccess) {
     		//Hiển thị thông báo,sau này cài đặt để chuyển màn hình khác
-    		showAlert("Thông báo", "Đăng ký thành công!", AlertType.INFORMATION);
+    		showAlert("Thông báo", "Đăng nhập thành công!", AlertType.INFORMATION);
     	} else {
-    		showAlert("Lỗi", "Đăng ký thất bại!", AlertType.ERROR);
+    		showAlert("Lỗi", "Đăng nhập thất bại!", AlertType.ERROR);
     	}
     }
 
