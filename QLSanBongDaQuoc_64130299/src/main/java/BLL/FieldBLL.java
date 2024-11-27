@@ -11,17 +11,18 @@ public class FieldBLL {
 	private FieldDAL fieldDAL = new FieldDAL();
 	//Kiểm tra tính hợp lệ của thông tin sân bóng trước khi gọi phương thức thêm
 	public boolean addField(FieldDTO fieldDTO) {
-		return true;
+		return fieldDAL.addField(fieldDTO);
 	}
 	
 	//Kiểm tra xem sân bóng có tồn tại không (dựa vào id) trước khi cập nhật
 	public boolean updateField(FieldDTO fieldDTO) {
-		return true;
+		return fieldDAL.updateField(fieldDTO);
 	}
 	
 	//Thực hiện kiểm tra xem sân bóng có tồn tại không (dựa vào id) trước khi xóa
 	public boolean deleteField(String fieldID) {
-		return true;
+	    FieldDTO fieldDTO = getFieldByID(fieldID);
+	    return true;
 	}
 	
 	//Lấy danh sách sân bóng, có thế áp dụng bộ lọc hoặc sắp xếp nếu cần
