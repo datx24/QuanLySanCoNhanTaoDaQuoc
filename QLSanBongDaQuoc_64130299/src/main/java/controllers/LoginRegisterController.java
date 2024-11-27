@@ -1,13 +1,19 @@
 package controllers;
 
+import java.io.IOException;
+
 import BLL.UserBLL;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginRegisterController {
 	@FXML
@@ -40,8 +46,21 @@ public class LoginRegisterController {
     	boolean loginSuccess = userBLL.checkLogin(email, password);
     	
     	if(loginSuccess) {
-    		//Hiển thị thông báo,sau này cài đặt để chuyển màn hình khác
+    		//Hiển thị thông báo
     		showAlert("Thông báo", "Đăng nhập thành công!", AlertType.INFORMATION);
+    		// Chuyển sang màn hình mới (HomePage.fxml)
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HomePage.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) emailField.getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Lỗi", "Không thể chuyển sang màn hình mới.", Alert.AlertType.ERROR);
+            }
     	} else {
     		showAlert("Lỗi", "Đăng nhập thất bại!", AlertType.ERROR);
     	}

@@ -25,22 +25,22 @@ public class Main extends Application {
     }
 	
 	  public static void main(String[] args) {
-//	        try (Connection connection = DatabaseConnection.getConnection()) {
-//	            if (connection != null) {
-//	                System.out.println("Kết nối cơ sở dữ liệu thành công!");
-//	            } else {
-//	                System.out.println("Kết nối cơ sở dữ liệu thất bại!");
-//	            }
-//	        } catch (SQLException e) {
-//	            System.err.println("Đã xảy ra lỗi khi kết nối cơ sở dữ liệu:");
-//	            e.printStackTrace();
-//	        }
-//		  launch(args);
-		  String email = "xuandat475@gmail.com";
-		  String password = "xuandat475";
-		  UserDAL userDAL = new UserDAL();
-		  UserBLL userBLL = new UserBLL();
-		  System.out.println(userDAL.login(email, password));
-		  System.out.println(userBLL.checkLogin(email, password));
+	        try (Connection connection = DatabaseConnection.getConnection()) {
+	            if (connection != null) {
+	                System.out.println("Kết nối cơ sở dữ liệu thành công!");
+	            } else {
+	                System.out.println("Kết nối cơ sở dữ liệu thất bại!");
+	            }
+	        } catch (SQLException e) {
+	            System.err.println("Đã xảy ra lỗi khi kết nối cơ sở dữ liệu:");
+	            e.printStackTrace();
+	        }
+		  launch(args);
+//		  String email = "xuandat475@gmail.com";
+//		  String password = "xuandat475";
+//		  UserDAL userDAL = new UserDAL();
+//		  UserBLL userBLL = new UserBLL();
+//		  System.out.println(userDAL.login(email, password));
+//		  System.out.println(userBLL.checkLogin(email, password));
 	    }
 }
