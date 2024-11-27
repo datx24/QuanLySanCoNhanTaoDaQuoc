@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="528.0" prefWidth="632.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #8BC34A);" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="528.0" prefWidth="632.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #8BC34A);" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginRegisterController">
     <VBox alignment="CENTER" maxHeight="600.0" maxWidth="716.0" prefHeight="528.0" prefWidth="716.0" spacing="20.0">
         <!-- Tiêu đề -->
         <Label style="-fx-text-fill: white;" text="HỆ THỐNG QUẢN LÝ SÂN BÓNG ĐÁ ĐA QUỐC">
