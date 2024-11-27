@@ -30,11 +30,11 @@
                             <Font name="Verdana Bold" size="25.0" />
                         </font>
                     </Label>
-                    <TextField promptText="Họ và tên" style="-fx-background-radius: 10; -fx-font-size: 16;" />
-                    <TextField promptText="Email" style="-fx-background-radius: 10; -fx-font-size: 16;" />
-                    <TextField promptText="Số điện thoại" style="-fx-background-radius: 10; -fx-font-size: 16;" />
-                    <PasswordField promptText="Mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
-                    <PasswordField promptText="Xác nhận mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <TextField fx:id="fullNameField" promptText="Họ và tên" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <TextField fx:id="emailField" promptText="Email" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <TextField fx:id="phoneField" promptText="Số điện thoại" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <PasswordField fx:id = "passwordField" promptText="Mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <PasswordField fx:id="confirmPasswordField" promptText="Xác nhận mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
                     <Button fx:id="registerButton" onAction="#handleRegister" style="-fx-background-color: #FFC107; -fx-text-fill: black; -fx-font-size: 16px; -fx-background-radius: 10;" text="Đăng ký">
                   <padding>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -52,8 +52,8 @@
                             <Font name="Verdana Bold" size="25.0" />
                         </font>
                     </Label>
-                    <TextField promptText="Tên đăng nhập" style="-fx-background-radius: 10; -fx-font-size: 16;" />
-                    <PasswordField promptText="Mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <TextField fx:id="emailField" promptText="Email" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+                    <PasswordField fx:id="passwordField"  promptText="Mật khẩu" style="-fx-background-radius: 10; -fx-font-size: 16;" />
                     <Button fx:id="loginButton" onAction="#handleLogin" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10;" text="Đăng nhập">
                   <padding>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
