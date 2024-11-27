@@ -8,8 +8,7 @@ import java.util.List;
 import DAL.UserDAL;
 
 public class UserBLL {
-	UserDAL userDAL = new UserDAL();
-	List<UserDAL> userDALs = new ArrayList<>();
+	private UserDAL userDAL = new UserDAL();
 	
 	//Xử lý dữ liệu đầu vào trước khi gọi DAL thêm người dùng
 	public boolean addUser(UserDTO userDTO) {
