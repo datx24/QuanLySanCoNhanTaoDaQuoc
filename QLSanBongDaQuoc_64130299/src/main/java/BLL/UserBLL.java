@@ -4,6 +4,7 @@ import DTO.UserDTO;
 
 import java.util.ArrayList;
 import java.util.List;
+import Utils.CommonUtils;
 
 import DAL.UserDAL;
 
@@ -41,8 +42,27 @@ public class UserBLL {
 	}
 	
 	//Kiểm tra thông tin đăng nhập
-	public boolean checkLogin(String email, String passwordHash) {
-		return userDAL.login(email, passwordHash);
+	public boolean checkLogin(String email, String password) {
+		//Kiểm tra tính hợp lệ của email
+		if (!CommonUtils.isValidEmail(email)) {
+            System.out.println("Email không hợp lệ");
+            return false;
+        }
+		
+		//Kiểm tra tính hợp lệ mật khẩu
+		if (!CommonUtils.isValidPassword(password)) {
+            System.out.println("Mật khẩu không hợp lệ");
+            return false;
+        }
+		//Goijlogin để kiểm tra đăng nhập
+		boolean isValidUser = userDAL.login(email, password);
+		// Nếu thông tin đăng nhập đúng
+        if (isValidUser) {
+            return true;
+        } else {
+            System.out.println("Tên đăng nhập hoặc mật khẩu không chính xác.");
+            return false;
+        }
 	}
 	
 	//Kiểm tra thông tin đăng kí
