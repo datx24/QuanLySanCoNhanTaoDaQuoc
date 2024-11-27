@@ -48,9 +48,11 @@ public class UserDAL {
 
 	// đăng nhập
 	public boolean login(String email, String plainPassword) {
-		//Mã hóa kiểu SHA 256 khi người dùng nhập vào
+		// Mã hóa kiểu SHA 256 khi người dùng nhập vào
 		String passwordHash = CommonUtils.encodePassword(plainPassword);
-		String sql = "SELECT COUNT(*) FROM users_64130299 WHERE email = ? AND password = ?";
+
+		// Thay đổi tên cột nếu cần thiết
+		String sql = "SELECT COUNT(*) FROM users_64130299 WHERE email = ? AND passwordHash = ?";
 		try (Connection conn = DatabaseConnection.getConnection(); // Kết nối từ DatabaseConnection
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -59,12 +61,12 @@ public class UserDAL {
 
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next() && rs.getInt(1) > 0) {
-				return true;
+				return true; // Đăng nhập thành công
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return false; // Đăng nhập thất bại
 	}
 
 	// đăng kí
