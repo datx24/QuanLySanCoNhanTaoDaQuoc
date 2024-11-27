@@ -16,14 +16,14 @@
     <!-- Thanh điều hướng -->
     <top>
         <MenuBar style="-fx-background-color: #4CAF50;">
-            <Menu style="-fx-text-fill: white;" text="Quản lý">
+            <Menu style="-fx-text-fill: white; -fx-font-size: 20px;" text="Quản lý">
                 <MenuItem text="Đặt sân" />
                 <MenuItem text="Sân bóng" />
                 <MenuItem text="Hóa đơn" />
                 <MenuItem text="Bảo trì" />
                 <MenuItem text="Người dùng" />
             </Menu>
-            <Menu style="-fx-text-fill: white;" text="Tài khoản">
+            <Menu style="-fx-text-fill: white; -fx-font-size: 20px;" text="Tài khoản">
                 <MenuItem text="Đăng xuất" />
             </Menu>
         </MenuBar>
@@ -31,73 +31,73 @@
 
     <!-- Chế độ chia tab chính -->
     <center>
-        <TabPane tabClosingPolicy="UNAVAILABLE">
+        <TabPane style="-fx-tab-min-width: 100px; -fx-tab-max-width: 150px; -fx-tab-overrun: ellipsis;" tabClosingPolicy="UNAVAILABLE">
             <!-- Tab Quản lý Đặt sân -->
-            <Tab text="Đặt sân">
-                <VBox spacing="10">
-                    <TableView fx:id="bookingsTable" style="-fx-background-color: white;">
+            <Tab style="-fx-font-size: 16px;" text="Đặt sân">
+                <VBox spacing="10.0" style="-fx-padding: 20;">
+                    <TableView fx:id="bookingsTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                         <!-- Cột thông tin đặt sân -->
                     </TableView>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button style="-fx-font-size: 14px;" text="Thêm đặt sân" />
-                        <Button style="-fx-font-size: 14px;" text="Sửa đặt sân" />
-                        <Button style="-fx-font-size: 14px;" text="Xóa đặt sân" />
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm đặt sân" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa đặt sân" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa đặt sân" />
                     </HBox>
                 </VBox>
             </Tab>
 
             <!-- Tab Quản lý Sân bóng -->
-            <Tab text="Sân bóng">
-                <VBox spacing="10">
-                    <TableView fx:id="fieldsTable" style="-fx-background-color: white;">
+            <Tab style="-fx-font-size: 16px;" text="Sân bóng">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <TableView fx:id="fieldsTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                         <!-- Cột thông tin sân bóng -->
                     </TableView>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button style="-fx-font-size: 14px;" text="Thêm sân bóng" />
-                        <Button style="-fx-font-size: 14px;" text="Sửa sân bóng" />
-                        <Button style="-fx-font-size: 14px;" text="Xóa sân bóng" />
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm sân bóng" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa sân bóng" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa sân bóng" />
                     </HBox>
                 </VBox>
             </Tab>
 
             <!-- Tab Quản lý Hóa đơn -->
-            <Tab text="Hóa đơn">
-                <VBox spacing="10">
-                    <TableView fx:id="invoicesTable" style="-fx-background-color: white;">
+            <Tab style="-fx-font-size: 16px;" text="Hóa đơn">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <TableView fx:id="invoicesTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                         <!-- Cột thông tin hóa đơn -->
                     </TableView>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button style="-fx-font-size: 14px;" text="Thêm hóa đơn" />
-                        <Button style="-fx-font-size: 14px;" text="Sửa hóa đơn" />
-                        <Button style="-fx-font-size: 14px;" text="Xóa hóa đơn" />
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm hóa đơn" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa hóa đơn" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa hóa đơn" />
                     </HBox>
                 </VBox>
             </Tab>
 
             <!-- Tab Quản lý Bảo trì -->
-            <Tab text="Bảo trì">
-                <VBox spacing="10">
-                    <TableView fx:id="maintenanceTable" style="-fx-background-color: white;">
+            <Tab style="-fx-font-size: 16px;" text="Bảo trì">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <TableView fx:id="maintenanceTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                         <!-- Cột thông tin bảo trì -->
                     </TableView>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button style="-fx-font-size: 14px;" text="Thêm yêu cầu bảo trì" />
-                        <Button style="-fx-font-size: 14px;" text="Sửa yêu cầu bảo trì" />
-                        <Button style="-fx-font-size: 14px;" text="Xóa yêu cầu bảo trì" />
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm yêu cầu bảo trì" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa yêu cầu bảo trì" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa yêu cầu bảo trì" />
                     </HBox>
                 </VBox>
             </Tab>
 
             <!-- Tab Quản lý Người dùng -->
-            <Tab text="Người dùng">
-                <VBox spacing="10">
-                    <TableView fx:id="usersTable" style="-fx-background-color: white;">
+            <Tab style="-fx-font-size: 16px;" text="Người dùng">
+                <VBox spacing="10" style="-fx-padding: 20;">
+                    <TableView fx:id="usersTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                         <!-- Cột thông tin người dùng -->
                     </TableView>
-                    <HBox alignment="CENTER" spacing="10">
-                        <Button style="-fx-font-size: 14px;" text="Thêm người dùng" />
-                        <Button style="-fx-font-size: 14px;" text="Sửa người dùng" />
-                        <Button style="-fx-font-size: 14px;" text="Xóa người dùng" />
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm người dùng" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa người dùng" />
+                        <Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa người dùng" />
                     </HBox>
                 </VBox>
             </Tab>
