@@ -273,6 +273,6 @@
 
 	<!-- Footer (Có thể để thông tin bản quyền hoặc các liên kết) -->
 	<bottom>
-		<Label style="-fx-text-fill: #999999; -fx-font-size: 12px;" text="© 2024 Your Company Name" />
+		<Label style="-fx-text-fill: #999999; -fx-font-size: 12px;" text="© 2024 Nguyễn Xuân Đạt_64130299" />
 	</bottom>
 </BorderPane>
