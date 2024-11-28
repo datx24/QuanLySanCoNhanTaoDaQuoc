@@ -4,27 +4,27 @@ public enum PaymentMethod {
     CASH("Cash"),// tiền mặt
     ONLINE("Online");// chuyển khoản
 
-    private final String status;
+    private final String method;
 
-    PaymentMethod(String status) {
-        this.status = status;
+    PaymentMethod(String method) {
+        this.method = method;
     }
 
     public String getStatus() {
-        return status;
+        return method;
     }
 
     @Override
     public String toString() {
-        return this.status;
+        return this.method;
     }
 
-    public static PaymentMethod fromString(String status) {
-        for (PaymentMethod paymentStatus : PaymentMethod.values()) {
-            if (paymentStatus.status.equalsIgnoreCase(status)) {
-                return paymentStatus;
+    public static PaymentMethod fromString(String method) {
+        for (PaymentMethod paymentMethods : PaymentMethod.values()) {
+            if (paymentMethods.method.equalsIgnoreCase(method)) {
+                return paymentMethods;
             }
         }
-        throw new IllegalArgumentException("No enum constant with status " + status);
+        throw new IllegalArgumentException("No enum constant with status " + method);
     }
 }
