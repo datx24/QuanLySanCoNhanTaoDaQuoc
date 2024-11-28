@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import myEnum.BookingStatus;
+import myEnum.PaymentStatus;
 
 public class BookingDTO {
 	private String bookingID;  
@@ -15,14 +16,14 @@ public class BookingDTO {
 	private LocalTime endTime;// Giờ kết thúc thuê sân
 	private BookingStatus  status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
 	private String approvedBy;// ID của người quản lý xác nhận
-	private String paymentStatus;// Trạng thái thanh toán (Paid, Unpaid)
+	private PaymentStatus paymentStatus;// Trạng thái thanh toán (Paid, Unpaid)
 	private Timestamp createdAt;
 	
 	public BookingDTO() {
 	}
 	
 	public BookingDTO(String bookingID, String userID, int fieldID, LocalDate bookingDate, LocalTime startTime, LocalTime endTime,
-			BookingStatus  status, String approvedBy, String paymentStatus,Timestamp createdAt) {
+			BookingStatus  status, String approvedBy, PaymentStatus paymentStatus,Timestamp createdAt) {
 		super();
 		this.bookingID = bookingID;
 		this.userID = userID;
@@ -108,11 +109,11 @@ public class BookingDTO {
 		this.approvedBy = approvedBy;
 	}
 
-	public String getPaymentStatus() {
+	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 	
