@@ -10,13 +10,19 @@ import dat.nx.sanbongdaquoc.BLL.UserBLL;
 import dat.nx.sanbongdaquoc.DTO.UserDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 public class DashBoardController {
+	@FXML
+	private StackPane myStackPane;
+	@FXML
+	private AnchorPane anchorPaneTop;
 	@FXML
     private Button btnUserPage; // Nút chuyển trang danh sách người dùng
 	@FXML
@@ -91,6 +97,11 @@ public class DashBoardController {
     
     @FXML
     private void initialize() {
+    	Scene scene = myStackPane.getScene();
+    	if(scene != null) {
+    		myStackPane.prefWidthProperty().bind(scene.widthProperty());
+    		myStackPane.prefHeightProperty().bind(scene.heightProperty());
+    	}
     	setupTableColumns();
 	}
     
