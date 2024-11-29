@@ -1,9 +1,14 @@
 package dat.nx.sanbongdaquoc.controllers;
 
 
+import java.sql.Timestamp;
+
+import dat.nx.sanbongdaquoc.DTO.UserDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 public class DashBoardController {
@@ -27,6 +32,18 @@ public class DashBoardController {
     private AnchorPane paneToShowInvoices; // Vùng AnchorPane hiển thị danh sách hóa đơn
     @FXML
     private AnchorPane paneToShowMaintenances; // Vùng AnchorPane hiển thị danh sách bảo trì sân
+    @FXML
+    private TableView<UserDTO> userTable; //Bảng danh sách người dùng
+    @FXML
+    private TableColumn<UserDTO, String> sttColumn; //Cột số thứ tự người dùng
+    @FXML
+    private TableColumn<UserDTO, String> nameColumn; //Cột tên người dùng
+    @FXML
+    private TableColumn<UserDTO, String> emailColumn; //Cột email người dùng
+    @FXML
+    private TableColumn<UserDTO, String> phoneColumn; //Cột số diện thoại người dùng
+    @FXML
+    private TableColumn<UserDTO, Timestamp> createdAtColumn; //Cột thời gian tạo
     
  // Phương thức xử lý sự kiện chuyển trang
     @FXML
