@@ -68,7 +68,7 @@
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                               </Line>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
+                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -76,29 +76,29 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
+                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
+                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
+                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
+                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
                               <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
                                  <children>
-                                    <Button alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="300.0" text="a">
+                                    <Button alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="300.0" text="Đăng xuất">
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
@@ -118,7 +118,12 @@
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane BorderPane.alignment="CENTER" />
+                  <AnchorPane BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: blue;" />
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: yellow;" />
+                        <AnchorPane layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" />
+                     </children></AnchorPane>
                </center>
             </BorderPane>
          </children>
