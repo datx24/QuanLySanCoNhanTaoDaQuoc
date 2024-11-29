@@ -37,7 +37,7 @@ public class Main extends Application {
 	        }
 		  launch(args);
 //		  String email = "xuandat475@gmail.com";
-//		  String password = "xuandat475";
+//		  String password = "XuanDat223@";
 //		  UserDAL userDAL = new UserDAL();
 //		  UserBLL userBLL = new UserBLL();
 //		  System.out.println(userDAL.login(email, password));
