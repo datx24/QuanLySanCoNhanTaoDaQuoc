@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.DashBoardController">
    <children>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
@@ -68,7 +68,7 @@
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                               </Line>
-                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
+                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -76,22 +76,22 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
+                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
+                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
+                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
+                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
