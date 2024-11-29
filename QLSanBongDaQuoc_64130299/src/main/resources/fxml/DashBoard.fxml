@@ -120,9 +120,11 @@
                <center>
                   <AnchorPane BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: blue;" />
-                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: yellow;" />
-                        <AnchorPane layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" />
+                        <AnchorPane fx:id="paneToShowUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: blue;" />
+                        <AnchorPane fx:id="paneToShowFields" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: yellow;" />
+                        <AnchorPane fx:id="paneToShowBookings" layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" />
+                        <AnchorPane fx:id="paneToShowInvoices" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: pink;" />
+                        <AnchorPane fx:id="paneToShowMaintenances" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: #F85959;" />
                      </children></AnchorPane>
                </center>
             </BorderPane>
