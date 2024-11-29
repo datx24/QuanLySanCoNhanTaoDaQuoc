@@ -22,9 +22,9 @@
          <children>
             <BorderPane maxHeight="5000.0" maxWidth="5000.0" prefHeight="600.0" prefWidth="1100.0">
                <top>
-                  <AnchorPane maxHeight="5000.0" maxWidth="5000.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+                  <AnchorPane maxHeight="5000.0" maxWidth="5000.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #62825D;" BorderPane.alignment="CENTER">
                      <children>
-                        <Text fill="WHITE" layoutX="25.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống quản lý sân bóng đá Đa Quốc">
+                        <Text fill="WHITE" layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống quản lý sân bóng đá Đa Quốc">
                            <font>
                               <Font name="Verdana Bold" size="28.0" />
                            </font>
@@ -36,7 +36,7 @@
                   </AnchorPane>
                </top>
                <left>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #C2FFC7;" BorderPane.alignment="CENTER">
                      <children>
                         <VBox alignment="TOP_CENTER" maxHeight="5000.0" maxWidth="5000.0" prefHeight="550.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -66,7 +66,7 @@
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                               </Line>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" text="Quản lí người dùng">
+                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -74,22 +74,22 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" text="Quản lý sân">
+                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" text="Quản lí đặt sân">
+                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" text="Quản lí hóa đơn">
+                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" text="Quản lí bảo trì sân">
+                              <Button alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
