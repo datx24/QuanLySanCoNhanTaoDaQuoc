@@ -1,13 +1,13 @@
-package BLL;
+package dat.nx.sanbongdaquoc.BLL;
 
-import DTO.InvoiceDTO;
-import myEnum.PaymentMethod;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-import DAL.InvoiceDAL;
+import dat.nx.sanbongdaquoc.DAL.*;
 
 
 public class InvoiceBLL {

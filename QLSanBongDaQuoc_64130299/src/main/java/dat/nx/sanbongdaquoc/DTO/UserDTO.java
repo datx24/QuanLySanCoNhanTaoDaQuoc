@@ -1,4 +1,4 @@
-package DTO;
+package dat.nx.sanbongdaquoc.DTO;
 
 import java.sql.Timestamp;
 

@@ -1,11 +1,11 @@
-package BLL;
+package dat.nx.sanbongdaquoc.BLL;
 
-import DTO.MaintenanceDTO;
+import dat.nx.sanbongdaquoc.DTO.*;
 
 import java.sql.Date;
 import java.util.List;
 
-import DAL.MaintenanceDAL;
+import dat.nx.sanbongdaquoc.DAL.*;
 
 public class MaintenanceBLL {
 	private MaintenanceDAL maintenanceDAL = new MaintenanceDAL();

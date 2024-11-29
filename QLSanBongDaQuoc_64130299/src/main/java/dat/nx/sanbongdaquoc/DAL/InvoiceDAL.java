@@ -1,12 +1,12 @@
-package DAL;
+package dat.nx.sanbongdaquoc.DAL;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.InvoiceDTO;
-import myEnum.PaymentMethod;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class InvoiceDAL {
 	private InvoiceDTO invoiceDTO = new InvoiceDTO();

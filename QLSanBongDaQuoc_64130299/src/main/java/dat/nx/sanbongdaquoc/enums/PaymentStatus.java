@@ -1,4 +1,4 @@
-package myEnum;
+package dat.nx.sanbongdaquoc.enums;
 
 public enum PaymentStatus {
     PAID("Paid"),    // Đã thanh toán

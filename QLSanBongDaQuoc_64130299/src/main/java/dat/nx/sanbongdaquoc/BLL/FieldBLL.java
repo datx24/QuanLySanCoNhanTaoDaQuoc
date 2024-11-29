@@ -1,11 +1,11 @@
-package BLL;
+package dat.nx.sanbongdaquoc.BLL;
 
-import DTO.FieldDTO;
-import myEnum.FieldStatus;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 import java.util.List;
 
-import DAL.FieldDAL;
+import dat.nx.sanbongdaquoc.DAL.*;
 
 public class FieldBLL {
 	private FieldDAL fieldDAL = new FieldDAL();

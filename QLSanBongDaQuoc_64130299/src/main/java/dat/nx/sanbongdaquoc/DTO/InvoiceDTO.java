@@ -1,9 +1,9 @@
-package DTO;
+package dat.nx.sanbongdaquoc.DTO;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-import myEnum.PaymentMethod;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class InvoiceDTO {
 	private String invoiceID;

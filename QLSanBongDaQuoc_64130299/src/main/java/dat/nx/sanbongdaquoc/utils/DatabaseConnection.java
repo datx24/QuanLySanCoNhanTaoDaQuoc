@@ -1,4 +1,4 @@
-package Utils;
+package dat.nx.sanbongdaquoc.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package myEnum;
+package dat.nx.sanbongdaquoc.enums;
 
 public enum PaymentMethod {
     CASH("Cash"),// tiền mặt

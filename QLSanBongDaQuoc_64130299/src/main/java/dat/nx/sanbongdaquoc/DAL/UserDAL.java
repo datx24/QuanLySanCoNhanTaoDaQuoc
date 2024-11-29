@@ -1,4 +1,5 @@
-package DAL;
+package dat.nx.sanbongdaquoc.DAL;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +9,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.UserDTO;
-import Utils.CommonUtils;
-import Utils.DatabaseConnection;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.utils.*;
 
 public class UserDAL {
 	private UserDTO userDTO = new UserDTO();

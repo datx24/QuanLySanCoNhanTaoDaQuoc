@@ -1,4 +1,4 @@
-package myEnum;
+package dat.nx.sanbongdaquoc.enums;
 
 public enum FieldStatus {
     AVAILABLE("Available"),//có sẵn

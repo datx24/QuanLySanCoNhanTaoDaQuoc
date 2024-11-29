@@ -1,12 +1,12 @@
-package BLL;
+package dat.nx.sanbongdaquoc.BLL;
 
-import DTO.BookingDTO;
-import myEnum.BookingStatus;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import DAL.BookingDAL;
+import dat.nx.sanbongdaquoc.DAL.*;
 
 
 public class BookingBLL {

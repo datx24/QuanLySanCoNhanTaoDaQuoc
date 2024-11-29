@@ -1,12 +1,12 @@
-package myTest;
+package dat.nx.sanbongdaquoc.app;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import BLL.UserBLL;
-import DAL.UserDAL;
-import Utils.DatabaseConnection;
+import dat.nx.sanbongdaquoc.BLL.*;
+import dat.nx.sanbongdaquoc.DAL.*;
+import dat.nx.sanbongdaquoc.utils.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +18,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginRegisterView.fxml")); 
         primaryStage.setTitle("Quản Lý Sân Bóng");
-        primaryStage.setWidth(800);
-        primaryStage.setHeight(600);
+//        primaryStage.setWidth(1100);
+//        primaryStage.setHeight(600);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

@@ -1,10 +1,10 @@
-package DAL;
+package dat.nx.sanbongdaquoc.DAL;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.MaintenanceDTO;
+import dat.nx.sanbongdaquoc.DTO.*;
 
 public class MaintenanceDAL {
 	private MaintenanceDTO maintenanceDTO = new MaintenanceDTO();

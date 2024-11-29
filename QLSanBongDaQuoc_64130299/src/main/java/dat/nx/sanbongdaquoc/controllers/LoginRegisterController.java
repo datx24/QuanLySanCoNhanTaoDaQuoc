@@ -1,8 +1,8 @@
-package controllers;
+package dat.nx.sanbongdaquoc.controllers;
 
 import java.io.IOException;
 
-import BLL.UserBLL;
+import dat.nx.sanbongdaquoc.BLL.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +50,7 @@ public class LoginRegisterController {
     		showAlert("Thông báo", "Đăng nhập thành công!", AlertType.INFORMATION);
     		// Chuyển sang màn hình mới (HomePage.fxml)
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HomePage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DashBoard.fxml"));
                 Parent root = loader.load();
 
                 Stage stage = (Stage) emailField.getScene().getWindow();

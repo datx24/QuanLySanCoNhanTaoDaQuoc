@@ -1,6 +1,6 @@
-package DTO;
+package dat.nx.sanbongdaquoc.DTO;
 
-import myEnum.FieldStatus;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class FieldDTO {
 	private int fieldID;// ID duy nhất cho mỗi sân bóng

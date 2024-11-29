@@ -1,11 +1,11 @@
-package DAL;
+package dat.nx.sanbongdaquoc.DAL;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.BookingDTO;
-import myEnum.BookingStatus;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class BookingDAL {
 	private BookingDTO bookingDTO = new BookingDTO();

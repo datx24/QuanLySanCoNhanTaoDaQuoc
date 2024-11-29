@@ -1,10 +1,10 @@
-package DAL;
+package dat.nx.sanbongdaquoc.DAL;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.FieldDTO;
-import myEnum.FieldStatus;
+import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class FieldDAL {
 	private FieldDTO fieldDTO = new FieldDTO();

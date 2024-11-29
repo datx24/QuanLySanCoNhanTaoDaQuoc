@@ -1,12 +1,12 @@
-package BLL;
+package dat.nx.sanbongdaquoc.BLL;
 
-import DTO.UserDTO;
+import dat.nx.sanbongdaquoc.DTO.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import Utils.CommonUtils;
+import dat.nx.sanbongdaquoc.utils.*;
 
-import DAL.UserDAL;
+import dat.nx.sanbongdaquoc.DAL.*;
 
 public class UserBLL {
 	private UserDAL userDAL = new UserDAL();

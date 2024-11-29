@@ -1,11 +1,10 @@
-package DTO;
+package dat.nx.sanbongdaquoc.DTO;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import myEnum.BookingStatus;
-import myEnum.PaymentStatus;
+import dat.nx.sanbongdaquoc.enums.*;
 
 public class BookingDTO {
 	private String bookingID;  
