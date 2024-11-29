@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginRegisterView.fxml")); 
+        Parent root = FXMLLoader.load(getClass().getResource("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml")); 
         primaryStage.setTitle("Quản Lý Sân Bóng");
 //        primaryStage.setWidth(1100);
 //        primaryStage.setHeight(600);

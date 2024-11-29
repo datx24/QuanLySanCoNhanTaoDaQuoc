@@ -132,7 +132,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </TextField>
-                                    <TableView fx:id="userTable" prefHeight="386.0" prefWidth="907.0">
+                                    <TableView fx:id="userTable">
                                       <columns>
                                         <TableColumn fx:id="sttColumn" prefWidth="75.20001220703125" text="STT" />
                                         <TableColumn fx:id="nameColumn" prefWidth="254.40008544921875" text="Họ và tên" />

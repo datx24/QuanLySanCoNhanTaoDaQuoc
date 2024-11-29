@@ -50,7 +50,7 @@ public class LoginRegisterController {
     		showAlert("Thông báo", "Đăng nhập thành công!", AlertType.INFORMATION);
     		// Chuyển sang màn hình mới (HomePage.fxml)
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DashBoard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dat/nx/sanbongdaquoc/fxml/DashBoard.fxml"));
                 Parent root = loader.load();
 
                 Stage stage = (Stage) emailField.getScene().getWindow();
