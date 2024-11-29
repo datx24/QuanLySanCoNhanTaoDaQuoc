@@ -132,13 +132,13 @@
                                           <Insets />
                                        </VBox.margin>
                                     </TextField>
-                                    <TableView prefHeight="386.0" prefWidth="907.0">
+                                    <TableView fx:id="userTable" prefHeight="386.0" prefWidth="907.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.20001220703125" text="STT" />
-                                        <TableColumn prefWidth="254.40008544921875" text="Họ và tên" />
-                                          <TableColumn prefWidth="239.99993896484375" text="Email" />
-                                          <TableColumn prefWidth="195.99993896484375" text="Số điện thoại" />
-                                          <TableColumn prefWidth="146.40008544921875" text="Thời gian tạo" />
+                                        <TableColumn fx:id="sttColumn" prefWidth="75.20001220703125" text="STT" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="254.40008544921875" text="Họ và tên" />
+                                          <TableColumn fx:id="emailColumn" prefWidth="239.99993896484375" text="Email" />
+                                          <TableColumn fx:id="phoneColumn" prefWidth="195.99993896484375" text="Số điện thoại" />
+                                          <TableColumn fx:id="createdAtColumn" prefWidth="146.40008544921875" text="Thời gian tạo" />
                                       </columns>
                                     </TableView>
                                     <HBox prefHeight="278.0" prefWidth="907.0">
