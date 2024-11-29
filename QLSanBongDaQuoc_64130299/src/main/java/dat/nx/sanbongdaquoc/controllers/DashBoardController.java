@@ -2,7 +2,11 @@ package dat.nx.sanbongdaquoc.controllers;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import com.google.protobuf.Field;
+
+import dat.nx.sanbongdaquoc.BLL.UserBLL;
 import dat.nx.sanbongdaquoc.DTO.UserDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +50,9 @@ public class DashBoardController {
     @FXML
     private TableColumn<UserDTO, Timestamp> createdAtColumn; //Cột thời gian tạo
     
+    //Tạo các biến BLL để giao tiếp với controller
+    UserBLL userBLL = new UserBLL();
+    
  // Phương thức xử lý sự kiện chuyển trang
     @FXML
     private void switchPage(ActionEvent event) {
@@ -82,6 +89,11 @@ public class DashBoardController {
     	}
     }
     
+    @FXML
+    private void initialize() {
+    	setupTableColumns();
+	}
+    
     //Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
     private void setupTableColumns() {
     	//Gán thuộc tính cho từng cột
@@ -97,4 +109,9 @@ public class DashBoardController {
     	//Load dữ liệu
     	loadUserData();
     }
+
+	private void loadUserData() {
+		List<UserDTO> userDTOs = userBLL.getAllUsers();
+		userTable.getItems().setAll(userDTOs);
+	}
 }
