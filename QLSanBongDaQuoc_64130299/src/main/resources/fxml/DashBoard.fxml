@@ -4,6 +4,7 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -120,11 +121,26 @@
                <center>
                   <AnchorPane BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="paneToShowUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: blue;" />
-                        <AnchorPane fx:id="paneToShowFields" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: yellow;" />
-                        <AnchorPane fx:id="paneToShowBookings" layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" />
-                        <AnchorPane fx:id="paneToShowInvoices" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: pink;" />
-                        <AnchorPane fx:id="paneToShowMaintenances" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: #F85959;" />
+                        <AnchorPane fx:id="paneToShowUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: blue;">
+                           <children>
+                              <TextField text="Trang 1" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="paneToShowFields" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0" style="-fx-background-color: yellow;" visible="false">
+                           <children>
+                              <TextField text="Trang 2" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="paneToShowBookings" layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" visible="false">
+                           <children>
+                              <TextField text="Trang 3" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="paneToShowInvoices" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: pink;" visible="false">
+                           <children>
+                              <TextField text="Trang 4" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="paneToShowMaintenances" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: #F85959;" visible="false">
+                           <children>
+                              <TextField text="Trang 5" />
+                           </children></AnchorPane>
                      </children></AnchorPane>
                </center>
             </BorderPane>
