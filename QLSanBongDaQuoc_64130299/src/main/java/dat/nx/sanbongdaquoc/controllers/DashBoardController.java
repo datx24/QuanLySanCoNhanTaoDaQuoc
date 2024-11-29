@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class DashBoardController {
@@ -35,7 +36,7 @@ public class DashBoardController {
     @FXML
     private TableView<UserDTO> userTable; //Bảng danh sách người dùng
     @FXML
-    private TableColumn<UserDTO, String> sttColumn; //Cột số thứ tự người dùng
+    private TableColumn<UserDTO, Integer> sttColumn; //Cột số thứ tự người dùng
     @FXML
     private TableColumn<UserDTO, String> nameColumn; //Cột tên người dùng
     @FXML
@@ -79,5 +80,21 @@ public class DashBoardController {
     		paneToShowInvoices.setVisible(false);
     		paneToShowMaintenances.setVisible(true);
     	}
+    }
+    
+    //Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
+    private void setupTableColumns() {
+    	//Gán thuộc tính cho từng cột
+    	nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+    	emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+    	phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+    	createdAtColumn.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+    	//Tạo số thứ tự
+    	sttColumn.setCellValueFactory(cellData -> {
+    		int index = userTable.getItems().indexOf(cellData.getValue()) + 1;
+    		return new javafx.beans.property.SimpleIntegerProperty(index).asObject();
+    	});
+    	//Load dữ liệu
+    	loadUserData();
     }
 }
