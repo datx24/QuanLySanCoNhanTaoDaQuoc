@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,26 @@ public class UserDAL {
 
 	// Lấy tất cả người dùng từ cơ sở dữ liệu
 	public List<UserDTO> getAllUsers() {
+		String query = "SELECT * FROM users_64130299 ";
+		try {
+			Connection conn = DatabaseConnection.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				String userID = rs.getString("UserID");
+				String fullName = rs.getString("FullName");
+				String email = rs.getString("Email");
+				String phoneNumber = rs.getString("PhoneNumber");
+				String passwordHash = rs.getString("PasswordHash");
+				boolean idAdmin = rs.getBoolean("IsAdmin");
+				Timestamp createdAt = rs.getTimestamp("CreatedAt");
+				Timestamp updatedAt = rs.getTimestamp("UpdatedAt");
+				userDTOs.add(new UserDTO(userID,fullName,email,phoneNumber,passwordHash,idAdmin, createdAt,updatedAt));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return userDTOs;
 	}
 
