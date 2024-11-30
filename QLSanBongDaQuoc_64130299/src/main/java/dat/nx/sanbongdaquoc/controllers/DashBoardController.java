@@ -12,6 +12,7 @@ import dat.nx.sanbongdaquoc.DTO.UserDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,6 +31,8 @@ public class DashBoardController {
 	paneToShowInvoices,paneToShowMaintenances;
 	@FXML
     private Button btnUserPage,btnFieldPage,btnBookingPage,btnInvoicePage,btnMaintenancePage;
+	@FXML
+	private Button btnLogout;
     @FXML
     private TableView<UserDTO> userTable; //Bảng danh sách người dùng
     @FXML
@@ -127,5 +130,14 @@ public class DashBoardController {
 	private void loadUserData() {
 		List<UserDTO> userDTOs = userBLL.getAllUsers();
 		userTable.getItems().setAll(userDTOs);
+	}
+	
+	@FXML
+	private void handleLogout() {
+		if(userBLL.checkLogout()) {
+			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
+		} else {
+			System.out.println(Alert.AlertType.ERROR);	
+		}
 	}
 }
