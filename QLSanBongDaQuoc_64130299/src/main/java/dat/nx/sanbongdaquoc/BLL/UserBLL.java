@@ -69,6 +69,17 @@ public class UserBLL {
             return false;
         }
 	}
+	//Phương thức đăng xuất
+	public boolean checkLogout() {
+		if(SessionManager.isLoggedIn()) {
+			SessionManager.logout();
+			System.out.println("Đăng xuất thành công!");
+			return true;
+		} else {
+			System.out.println("Bạn chưa đăng nhập!");
+			return false;
+		}
+	}
 	
 	
 	//Tìm danh sách người dùng dựa trên nhiều tiêu chí
