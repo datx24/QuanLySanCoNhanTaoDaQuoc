@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -135,10 +136,20 @@ public class DashBoardController {
 	@FXML
 	private void handleLogout() {
 		if(userBLL.checkLogout()) {
-			System.out.println("Đăng xuất thành công !");
+			//Hiển thị thông báo đăng xuất thành công
+    		showAlert("Thông báo", "Đăng nhập thành công!", AlertType.INFORMATION);
 			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
 		} else {
 			System.out.println(Alert.AlertType.ERROR);	
 		}
 	}
+	
+	// Phương thức hiển thị thông báo
+		private void showAlert(String title, String message, AlertType alertType) {
+			Alert alert = new Alert(alertType);
+			alert.setTitle(title);
+			alert.setHeaderText(null);
+			alert.setContentText(message);
+			alert.showAndWait();
+		}
 }
