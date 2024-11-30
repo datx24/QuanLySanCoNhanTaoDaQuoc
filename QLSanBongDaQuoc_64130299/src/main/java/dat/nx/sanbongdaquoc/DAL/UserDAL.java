@@ -58,7 +58,27 @@ public class UserDAL {
 	}
 
 	// Lấy thông tin người dùng dựa vào ID
-	public UserDTO getUserByID(String UserID) {
+	public UserDTO getUserByID(String userID) {
+		String query = "SELECT * From users_64130299 where UserID = ?";
+		Connection connection;
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		try {
+			connection = DatabaseConnection.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userID);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				userDTO.setUserID(resultSet.getString("UserID"));
+				userDTO.setFullName(resultSet.getString("FullName"));
+				userDTO.setEmail(resultSet.getString("Email"));
+				userDTO.setPhoneNumber(resultSet.getString("PhoneNumber"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return userDTO;
 	}
 
