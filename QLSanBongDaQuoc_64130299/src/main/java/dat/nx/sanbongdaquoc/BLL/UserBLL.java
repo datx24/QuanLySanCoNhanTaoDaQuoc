@@ -81,7 +81,6 @@ public class UserBLL {
 		}
 	}
 	
-	
 	//Tìm danh sách người dùng dựa trên nhiều tiêu chí
 	public List<UserDTO> searchUsers(String keyword) {
 		return getAllUsers();//Xử lý thêm ở phần trả về để lọc
