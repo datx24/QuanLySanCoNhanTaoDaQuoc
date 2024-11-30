@@ -10,7 +10,7 @@ Dự án **Quản Lý Sân Bóng** được phát triển nhằm hỗ trợ qu�
 
 #### 1. Đăng nhập/Đăng xuất và Phân quyền
 - **Chức năng:**
-  - Giao diện đăng nhập dành riêng cho admin.
+  - Giao diện đăng nhập dành riêng cho admin.(Done)
   - Kiểm tra tài khoản và phân quyền (admin hoặc user thường).
   - Đảm bảo admin có thể truy cập được các trang quản trị (dashboard), trong khi user không được phép.
 - **Mục tiêu:**
@@ -48,7 +48,7 @@ Dự án **Quản Lý Sân Bóng** được phát triển nhằm hỗ trợ qu�
 
 #### 5. Quản lý người dùng (`users_64130299`)
 - **Chức năng:**
-  - Hiển thị danh sách người dùng (email, tên, trạng thái hoạt động).
+  - Hiển thị danh sách người dùng (email, tên).(Done)
   - Tìm kiếm người dùng theo tên, email.
   - Khóa/mở khóa tài khoản người dùng khi cần thiết.
 - **Mục tiêu:**
@@ -110,4 +110,3 @@ Dự án **Quản Lý Sân Bóng** được phát triển nhằm hỗ trợ qu�
 
 ---
 
-Chúc bạn triển khai thành công hệ thống quản lý sân bóng! 🚀
