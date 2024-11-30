@@ -2,6 +2,7 @@ package dat.nx.sanbongdaquoc.controllers;
 
 
 import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.google.protobuf.Field;
@@ -14,35 +15,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class DashBoardController {
 	@FXML
+	private TextField txtUserID,txtFullName,txtEmail,txtPhoneNumber,txtCreatedAt;
+	@FXML
 	private StackPane myStackPane;
 	@FXML
-	private AnchorPane anchorPaneTop;
+	private AnchorPane anchorPaneTop,paneToShowUsers,paneToShowFields,paneToShowBookings,
+	paneToShowInvoices,paneToShowMaintenances;
 	@FXML
-    private Button btnUserPage; // Nút chuyển trang danh sách người dùng
-	@FXML
-	private Button btnFieldPage; //Nút chuyển trang danh sách sân
-	@FXML
-	private Button btnBookingPage; //Nút chuyển trang danh sách đặt sân
-	@FXML
-	private Button btnInvoicePage; //Nút chuyển trang danh sách hóa đơn
-	@FXML
-	private Button btnMaintenancePage; //Nút chuyển trang danh sách bảo trì sân
-    @FXML
-    private AnchorPane paneToShowUsers; // Vùng AnchorPane hiển thị danh sách người dùng
-    @FXML
-    private AnchorPane paneToShowFields; // Vùng AnchorPane hiển thị danh sách sân
-    @FXML
-    private AnchorPane paneToShowBookings; // Vùng AnchorPane hiển thị danh sách đặt sân
-    @FXML
-    private AnchorPane paneToShowInvoices; // Vùng AnchorPane hiển thị danh sách hóa đơn
-    @FXML
-    private AnchorPane paneToShowMaintenances; // Vùng AnchorPane hiển thị danh sách bảo trì sân
+    private Button btnUserPage,btnFieldPage,btnBookingPage,btnInvoicePage,btnMaintenancePage;
     @FXML
     private TableView<UserDTO> userTable; //Bảng danh sách người dùng
     @FXML
@@ -119,6 +106,22 @@ public class DashBoardController {
     	});
     	//Load dữ liệu
     	loadUserData();
+    	//Xử lý sự kiện khi bấm vào 1 hàng
+    	userTable.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) -> {
+    		if(newValue != null) {
+    			txtUserID.setText(newValue.getUserID());
+    			txtFullName.setText(newValue.getFullName());
+    			txtEmail.setText(newValue.getEmail());
+    			txtPhoneNumber.setText(newValue.getPhoneNumber());
+    			//Chuyển TimeStamp sang String trước khi hiển thị
+    			if(newValue.getCreatedAt() != null) {
+    				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-HH-dd HH:mm:ss");
+    				txtCreatedAt.setText(newValue.getCreatedAt().toLocalDateTime().format(formatter));
+    			} else {
+    				txtCreatedAt.setText("");
+    			}
+    		}
+    	});
     }
 
 	private void loadUserData() {
