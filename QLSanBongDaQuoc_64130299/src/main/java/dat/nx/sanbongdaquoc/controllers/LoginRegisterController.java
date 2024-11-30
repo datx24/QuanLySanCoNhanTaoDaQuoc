@@ -66,12 +66,6 @@ public class LoginRegisterController {
     	}
     }
 
-	// Xử lý đăng kí
-	@FXML
-	public void handleRegister() {
-
-	}
-
 	// Phương thức hiển thị thông báo
 	private void showAlert(String title, String message, AlertType alertType) {
 		Alert alert = new Alert(alertType);

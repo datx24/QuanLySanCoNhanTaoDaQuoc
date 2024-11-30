@@ -136,7 +136,8 @@ public class DashBoardController {
 	@FXML
 	private void handleLogout() {
 		if(userBLL.checkLogout()) {
-			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
+			System.out.println("Đăng nhập thành công !");
+//			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
 		} else {
 			System.out.println(Alert.AlertType.ERROR);	
 		}

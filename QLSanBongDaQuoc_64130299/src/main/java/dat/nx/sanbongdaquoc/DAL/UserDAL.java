@@ -110,10 +110,5 @@ public class UserDAL {
 		return false; // Đăng nhập thất bại
 	}
 
-	// đăng kí
-	public boolean register(String fullName, String email, String phoneNumber, String passwordHash, Timestamp createdAt,
-			Timestamp updatedAt) {
-		return true;
-	}
-
+	
 }
