@@ -2,7 +2,9 @@ package dat.nx.sanbongdaquoc.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class SceneManager {
@@ -14,8 +16,8 @@ public class SceneManager {
 
     public static void changeScene(String fxmlFile) {
         try {
-            Pane pane = FXMLLoader.load(SceneManager.class.getResource(fxmlFile));
-            Scene scene = new Scene(pane);
+            AnchorPane anchorPane = FXMLLoader.load(SceneManager.class.getResource(fxmlFile));
+            Scene scene = new Scene(anchorPane);
             primaryStage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
