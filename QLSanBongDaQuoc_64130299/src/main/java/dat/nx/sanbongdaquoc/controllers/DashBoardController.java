@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import com.google.protobuf.Field;
 
 import dat.nx.sanbongdaquoc.BLL.UserBLL;
 import dat.nx.sanbongdaquoc.DTO.UserDTO;
@@ -136,8 +135,8 @@ public class DashBoardController {
 	@FXML
 	private void handleLogout() {
 		if(userBLL.checkLogout()) {
-			System.out.println("Đăng nhập thành công !");
-//			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
+			System.out.println("Đăng xuất thành công !");
+			SceneManager.changeScene("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml");
 		} else {
 			System.out.println(Alert.AlertType.ERROR);	
 		}
