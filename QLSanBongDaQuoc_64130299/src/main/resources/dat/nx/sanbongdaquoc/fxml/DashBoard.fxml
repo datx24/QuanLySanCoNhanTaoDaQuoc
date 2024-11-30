@@ -149,16 +149,16 @@
                                                 <Label text="Họ và tên" />
                                                 <Label text="Email" />
                                                 <Label text="Số điện thoại" />
-                                                <Label text="Mật khẩu" />
+                                                <Label text="Thời gian tạo" />
                                              </children>
                                           </VBox>
                                           <VBox prefHeight="100.0" prefWidth="529.0">
                                              <children>
-                                                <TextField disable="true" />
-                                                <TextField />
-                                                <TextField />
-                                                <TextField />
-                                                <TextField />
+                                                <TextField fx:id="txtUserID" disable="true" />
+                                                <TextField fx:id="txtFullName" />
+                                                <TextField fx:id="txtEmail" />
+                                                <TextField fx:id="txtPhoneNumber" />
+                                                <TextField fx:id="txtCreatedAt" disable="true" />
                                              </children>
                                           </VBox>
                                        </children>
