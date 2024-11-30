@@ -54,10 +54,15 @@ public class UserBLL {
             System.out.println("Mật khẩu không hợp lệ");
             return false;
         }
-		//Goijlogin để kiểm tra đăng nhập
+		//Goi login để kiểm tra đăng nhập
 		boolean isValidUser = userDAL.login(email, password);
 		// Nếu thông tin đăng nhập đúng
         if (isValidUser) {
+        	//Lấy thông tin người dùng từ cơ sở dữ liệu
+        	UserDTO currentUser = getUserByEmail(email);
+        	//Lưu thông tin người dùng 
+        	SessionManager.setCurrentUser(currentUser);
+        	System.out.println("Đăng nhập thành công.Xin chào: " + currentUser.getFullName());
             return true;
         } else {
             System.out.println("Tên đăng nhập hoặc mật khẩu không chính xác.");
@@ -65,17 +70,6 @@ public class UserBLL {
         }
 	}
 	
-	//Kiểm tra thông tin đăng kí
-	public boolean checkRegister(UserDTO userDTO) {
-		return userDAL.register(
-                userDTO.getFullName(),
-                userDTO.getEmail(),
-                userDTO.getPhoneNumber(),
-                userDTO.getPasswordHash(),
-                userDTO.getCreatedAt(),
-                userDTO.getUpdatedAt()
-        );
-	}
 	
 	//Tìm danh sách người dùng dựa trên nhiều tiêu chí
 	public List<UserDTO> searchUsers(String keyword) {
