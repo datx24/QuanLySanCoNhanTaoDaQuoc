@@ -165,7 +165,7 @@
                                     </HBox>
                                     <HBox prefHeight="129.0" prefWidth="907.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Thêm" />
+                                          <Button mnemonicParsing="false" onAction="#handleAddUser" text="Thêm" />
                                           <Button mnemonicParsing="false" text="Xóa" />
                                           <Button mnemonicParsing="false" text="Sửa" />
                                        </children>
