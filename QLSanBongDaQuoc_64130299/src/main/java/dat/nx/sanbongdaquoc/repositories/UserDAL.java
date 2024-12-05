@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.utils.*;
 
 public class UserDAL {

@@ -1,6 +1,6 @@
 package dat.nx.sanbongdaquoc.utils;
 
-import dat.nx.sanbongdaquoc.DTO.UserDTO;
+import dat.nx.sanbongdaquoc.models.entities.UserDTO;
 
 public class SessionManager {
 	private static UserDTO currentUser;

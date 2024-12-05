@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import dat.nx.sanbongdaquoc.DTO.UserDTO;
+import dat.nx.sanbongdaquoc.models.entities.UserDTO;
 import dat.nx.sanbongdaquoc.services.UserBLL;
 import dat.nx.sanbongdaquoc.utils.SceneManager;
 import javafx.event.ActionEvent;

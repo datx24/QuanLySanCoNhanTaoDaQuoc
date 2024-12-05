@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import dat.nx.sanbongdaquoc.DTO.*;
+import dat.nx.sanbongdaquoc.models.entities.*;
 
 public class MaintenanceDAL {
 	private MaintenanceDTO maintenanceDTO = new MaintenanceDTO();

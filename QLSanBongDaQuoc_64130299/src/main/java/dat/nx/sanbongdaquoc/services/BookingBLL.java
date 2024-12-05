@@ -1,7 +1,7 @@
 package dat.nx.sanbongdaquoc.services;
 
-import dat.nx.sanbongdaquoc.DTO.*;
 import dat.nx.sanbongdaquoc.enums.*;
+import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.repositories.*;
 
 import java.time.LocalDate;

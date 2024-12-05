@@ -1,4 +1,4 @@
-package dat.nx.sanbongdaquoc.DTO;
+package dat.nx.sanbongdaquoc.models.entities;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

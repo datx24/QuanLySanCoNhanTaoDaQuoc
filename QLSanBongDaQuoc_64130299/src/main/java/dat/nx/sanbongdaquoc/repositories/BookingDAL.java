@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import dat.nx.sanbongdaquoc.DTO.*;
 import dat.nx.sanbongdaquoc.enums.*;
+import dat.nx.sanbongdaquoc.models.entities.*;
 
 public class BookingDAL {
 	private BookingDTO bookingDTO = new BookingDTO();
