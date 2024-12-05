@@ -243,6 +243,17 @@ public class DashBoardController {
 			confirmAlert.setTitle("Xác nhận cập nhật");
 			confirmAlert.showAndWait().ifPresent(response -> {
 				if(response == ButtonType.YES) {
+					
+					//Nhận dữ liệu mới từ các TextField
+					String newFullName = txtFullName.getText();
+					String newEmail = txtEmail.getText();
+					String newPhoneNumber = txtPhoneNumber.getText();
+					
+					//Gán dữ liệu mới vào user
+					selectedUser.setFullName(newFullName);
+					selectedUser.setEmail(newEmail);
+					selectedUser.setPhoneNumber(newPhoneNumber);
+					
 					//Gọi BLL để xử lý
 					boolean result = userBLL.updateUser(selectedUser);
 					
