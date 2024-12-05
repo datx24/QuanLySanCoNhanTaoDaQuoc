@@ -38,13 +38,28 @@ public class UserDAL {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	// cập nhật  người dùng
 	public boolean updateUser(UserDTO user) {
-		return true;
+		String query = "UPDATE users_64130299 SET FullName = ?, Email = ?, PhoneNumber = ? WHERE UserID = ?";
+		
+		//Kết nối cơ sở dữ liệu và thực thi câu lệnh
+		try(PreparedStatement psmt = DatabaseConnection.getConnection().prepareStatement(query)) {
+			psmt.setString(1,user.getFullName());
+			psmt.setString(2,user.getEmail());
+			psmt.setString(1,user.getPhoneNumber());
+			
+		//Thực thi câu lệnh và kiểm tra kết quả
+		int rowsAffected = psmt.executeUpdate();
+		return rowsAffected > 0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	// xóa người dùng
@@ -53,15 +68,14 @@ public class UserDAL {
 		try(Connection conn = DatabaseConnection.getConnection();
 			PreparedStatement psmt = conn.prepareStatement(query)) {
 			psmt.setString(1, user.getUserID());
-			int rowAffected  = psmt.executeUpdate();
+			int rowsAffected  = psmt.executeUpdate();
 			
-			return rowAffected > 0;
+			return rowsAffected > 0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
-		
-		return false;
 	}
 
 	// Lấy tất cả người dùng từ cơ sở dữ liệu
