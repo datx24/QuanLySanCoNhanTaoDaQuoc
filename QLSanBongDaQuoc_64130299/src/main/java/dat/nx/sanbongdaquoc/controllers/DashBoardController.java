@@ -175,6 +175,7 @@ public class DashBoardController {
 			newUser.setFullName(fullName);
 			newUser.setEmail(email);
 			newUser.setPhoneNumber(phoneNumber);
+			newUser.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 			
 			//Gọi hàm thêm người dùng từ UserBLL
 			if(userBLL.addUser(newUser)) {
