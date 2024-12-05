@@ -182,4 +182,12 @@ public class DashBoardController {
 				showAlert("Thất bại","Không thể thêm người dùng",Alert.AlertType.ERROR);
 			}
 		}
+
+		private void clearInputsFields() {
+			txtUserID.clear();
+			txtFullName.clear();
+			txtEmail.clear();
+			txtPhoneNumber.clear();
+			txtCreatedAt.clear();
+		}
 }
