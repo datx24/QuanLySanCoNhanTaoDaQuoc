@@ -1,5 +1,6 @@
 package dat.nx.sanbongdaquoc.controllers;
 
+import java.net.ResponseCache;
 import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -195,5 +197,37 @@ public class DashBoardController {
 			txtEmail.clear();
 			txtPhoneNumber.clear();
 			txtCreatedAt.clear();
+		}
+	//Phương thức xóa người dùng
+		@FXML
+		private void handleDeleteUser() {
+			// Lấy người dùng được chọn từ table view
+			UserDTO selectedUser = userTable.getSelectionModel().getSelectedItem();
+			
+			// Kiểm tra xem đã lấy người dùng để xóa chưa
+			if(selectedUser == null) {
+				showAlert("Cảnh báo","Vui lòng chọn người dùng để xóa", Alert.AlertType.WARNING);
+				return;
+			}
+			
+			//Hiển thị hộp thoại xác nhận
+			Alert confirmAlert = new Alert(AlertType.CONFIRMATION,"Bạn có chắc chắn muốn xóa người dùng"
+					+ "này hay không ?", ButtonType.YES, ButtonType.NO);
+			confirmAlert.setTitle("Xác nhận xóa người dùng");
+			confirmAlert.showAndWait().ifPresent(response -> {
+				if(response == ButtonType.YES) {
+					//Gọi lớp BLL để xử lý
+					boolean result = userBLL.deleteUser(selectedUser);
+				
+					if(result) {
+						//Xóa người dùng ra khỏi danh sách hiển thị
+						userList.remove(selectedUser);
+						userTable.setItems(userList);
+						showAlert("Thông báo", "Xóa người dùng thành công", Alert.AlertType.INFORMATION);
+					} else {
+						showAlert("Lỗi", "Xóa người dùng thất bại", Alert.AlertType.ERROR);
+					}
+				}
+			});
 		}
 }
