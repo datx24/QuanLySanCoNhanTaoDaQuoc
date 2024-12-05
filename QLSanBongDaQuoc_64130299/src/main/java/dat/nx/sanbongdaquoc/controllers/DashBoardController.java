@@ -158,6 +158,7 @@ public class DashBoardController {
 		}
 		
 	 //Phương thức thêm người dùng
+		@FXML
 		private void handleAddUser(ActionEvent event) {
 			//Lấy dữ liệu từ các trường nhập người dùng
 			String fullName = txtFullName.getText();
