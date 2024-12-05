@@ -19,9 +19,9 @@ public class UserDAL {
 
 	// thêm người dùng
 	public boolean insertUser(UserDTO user) {
-		String sql = "INSERT INTO users_64130299 (FullName,Email,PhoneNumber) VALUES(?,?,?)";
+		String query = "INSERT INTO users_64130299 (FullName,Email,PhoneNumber) VALUES(?,?,?)";
 		try(Connection conn = DatabaseConnection.getConnection();
-				PreparedStatement psmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+				PreparedStatement psmt = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS)) {
 			psmt.setString(1, user.getFullName());
 			psmt.setString(2, user.getEmail());
 			psmt.setString(3, user.getPhoneNumber());
@@ -49,7 +49,19 @@ public class UserDAL {
 
 	// xóa người dùng
 	public boolean deleteUser(UserDTO user) {
-		return true;
+		String query = "DELETE FROM users_64130299 WHERE UserID = ?";
+		try(Connection conn = DatabaseConnection.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(query)) {
+			psmt.setString(1, user.getUserID());
+			int rowAffected  = psmt.executeUpdate();
+			
+			return rowAffected > 0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 	// Lấy tất cả người dùng từ cơ sở dữ liệu
