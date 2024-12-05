@@ -1,4 +1,4 @@
-package dat.nx.sanbongdaquoc.DAL;
+package dat.nx.sanbongdaquoc.repositories;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

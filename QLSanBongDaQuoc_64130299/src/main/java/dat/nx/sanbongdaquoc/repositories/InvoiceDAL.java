@@ -1,4 +1,4 @@
-package dat.nx.sanbongdaquoc.DAL;
+package dat.nx.sanbongdaquoc.repositories;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
