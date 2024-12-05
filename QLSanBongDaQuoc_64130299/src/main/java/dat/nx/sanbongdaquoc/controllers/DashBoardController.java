@@ -41,11 +41,7 @@ public class DashBoardController {
     @FXML
     private TableColumn<UserDTO, Integer> sttColumn; //Cột số thứ tự người dùng
     @FXML
-    private TableColumn<UserDTO, String> nameColumn; //Cột tên người dùng
-    @FXML
-    private TableColumn<UserDTO, String> emailColumn; //Cột email người dùng
-    @FXML
-    private TableColumn<UserDTO, String> phoneColumn; //Cột số diện thoại người dùng
+    private TableColumn<UserDTO, String> nameColumn,emailColumn,phoneColumn; //Cột tên,email,số điện thoại người dùng
     @FXML
     private TableColumn<UserDTO, Timestamp> createdAtColumn; //Cột thời gian tạo
     
@@ -230,4 +226,35 @@ public class DashBoardController {
 				}
 			});
 		}
+	//Phương thức cập nhật thông tin người dùng
+		@FXML
+		private void updateUser() {
+			//Lấy người dùng được chọn từ table view
+			UserDTO selectedUser = userTable.getSelectionModel().getSelectedItem();
+			
+			//Kiểm tra xem đã lấy người dùng để chuẩn bị cập nhật
+			if(selectedUser == null) {
+				showAlert("Cảnh báo", "Vui lòng chọn người dùng để xóa", AlertType.WARNING);
+			}
+			
+			//Hiển thị hộp thoại xác nhận
+			Alert confirmAlert = new Alert(AlertType.WARNING,"Bạn có muốn cập nhật thông tin người dùng "
+					+ "này hay không",ButtonType.YES,ButtonType.NO);
+			confirmAlert.setTitle("Xác nhận cập nhật");
+			confirmAlert.showAndWait().ifPresent(response -> {
+				if(response == ButtonType.YES) {
+					//Gọi BLL để xử lý
+					boolean result = userBLL.updateUser(selectedUser);
+					
+					if(result) {
+						//Cập nhật danh sách để hiển thị
+						userTable.refresh();
+						showAlert("Thông báo","Cập nhật người dùng thành công",AlertType.INFORMATION);
+					} else {
+						showAlert("Lỗi", "Cập nhật người dùng thất bại", AlertType.ERROR);
+					}
+				}
+			});
+		}
 }
+
