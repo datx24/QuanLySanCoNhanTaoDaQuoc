@@ -51,6 +51,7 @@ public class UserDAL {
 			psmt.setString(1,user.getFullName());
 			psmt.setString(2,user.getEmail());
 			psmt.setString(3,user.getPhoneNumber());
+			psmt.setString(4,user.getUserID());
 			
 		//Thực thi câu lệnh và kiểm tra kết quả
 		int rowsAffected = psmt.executeUpdate();
