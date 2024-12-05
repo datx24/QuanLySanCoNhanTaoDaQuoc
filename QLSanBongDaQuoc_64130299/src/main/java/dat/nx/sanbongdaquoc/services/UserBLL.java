@@ -12,6 +12,27 @@ public class UserBLL {
 	
 	//Xử lý dữ liệu đầu vào trước khi gọi DAL thêm người dùng
 	public boolean addUser(UserDTO userDTO) {
+		// Kiểm tra null
+		if(userDTO == null) {
+			System.out.println("Thông tin người dùng không được để trống");
+		}
+		
+		//Kiểm tra các trường bắt buộc
+		if(userDTO.getFullName() == null || userDTO.getFullName().trim().isEmpty()) {
+			System.out.println("Tên không được để trống");
+			return false;
+		}
+		
+		if(!CommonUtils.isValidEmail(userDTO.getEmail())) {
+			System.out.println("Email không hợp lệ");
+			return false;
+		}
+		if(!CommonUtils.isValidPassword(userDTO.getPasswordHash())) {
+			System.out.println("Mật khẩu bắt buộc phải có độ dài từ 6 chữ số");
+		}
+		
+		//Chuẩn hóa dữ liệu
+		userDTO.setFullName(userDTO.getFullName().trim());
 		return userDAL.insertUser(userDTO);
 	}
 	
