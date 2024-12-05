@@ -167,7 +167,7 @@
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#handleAddUser" text="Thêm" />
                                           <Button mnemonicParsing="false" onAction="#handleDeleteUser" text="Xóa" />
-                                          <Button mnemonicParsing="false" text="Sửa" />
+                                          <Button mnemonicParsing="false" onAction="#updateUser" text="Sửa" />
                                           <Button fx:id="btnReset" mnemonicParsing="false" onAction="#clearInputsFields" text="Reser dữ liệu" />
                                        </children>
                                     </HBox>
