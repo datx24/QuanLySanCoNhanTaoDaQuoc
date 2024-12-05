@@ -1,4 +1,4 @@
-package dat.nx.sanbongdaquoc.BLL;
+package dat.nx.sanbongdaquoc.services;
 
 import dat.nx.sanbongdaquoc.DTO.*;
 import dat.nx.sanbongdaquoc.repositories.*;
