@@ -39,6 +39,20 @@ public class UserBLL {
 	
 	//Kiểm tra dữ liệu hợp lệ trước khi gọi DAL để cập nhật thông tin người dùng
 	public boolean updateUser(UserDTO userDTO) {
+		if(userDTO.getFullName() == null || userDTO.getFullName().trim().isEmpty()) {
+			System.out.println("Tên người dùng không được để trống !");
+			return false;
+		}
+		
+		if(!CommonUtils.isValidEmail(userDTO.getEmail())) {
+			System.out.println("Email không hợp lệ");
+			return false;
+		}
+		
+		if(!CommonUtils.isValidPhoneNumber(userDTO.getPhoneNumber())) {
+			System.out.println("Số điện thoại không hợp lệ");
+			return false;
+		}
 		return userDAL.updateUser(userDTO);
 	}
 	
