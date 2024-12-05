@@ -1,6 +1,5 @@
 package dat.nx.sanbongdaquoc.controllers;
 
-
 import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -8,6 +7,8 @@ import java.util.List;
 import dat.nx.sanbongdaquoc.models.entities.UserDTO;
 import dat.nx.sanbongdaquoc.services.UserBLL;
 import dat.nx.sanbongdaquoc.utils.SceneManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -48,6 +49,7 @@ public class DashBoardController {
     
     //Tạo các biến BLL để giao tiếp với controller
     UserBLL userBLL = new UserBLL();
+    private ObservableList<UserDTO> userList = FXCollections.observableArrayList();
     
  // Phương thức xử lý sự kiện chuyển trang
     @FXML
@@ -150,5 +152,34 @@ public class DashBoardController {
 			alert.setHeaderText(null);
 			alert.setContentText(message);
 			alert.showAndWait();
+		}
+		
+	 //Phương thức thêm người dùng
+		private void handleAddUser(ActionEvent event) {
+			//Lấy dữ liệu từ các trường nhập người dùng
+			String fullName = txtFullName.getText();
+			String email = txtEmail.getText();
+			String phoneNumber = txtPhoneNumber.getText();
+			
+			//Kiểm tra lỗi khi người dùng để trống trường nhập
+			if(fullName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
+				showAlert("Lỗi", "Vui lòng điền đầy đủ thông tin", Alert.AlertType.ERROR);
+			}
+			
+			//Tạo đối tượng UserDTO
+			UserDTO newUser = new UserDTO();
+			newUser.setFullName(fullName);
+			newUser.setEmail(email);
+			newUser.setPhoneNumber(phoneNumber);
+			
+			//Gọi hàm thêm người dùng từ UserBLL
+			if(userBLL.addUser(newUser)) {
+				userList.add(newUser);
+				userTable.refresh();
+				clearInputsFields();
+				showAlert("Thành công","Thêm người dùng thành công",Alert.AlertType.INFORMATION);
+			} else {
+				showAlert("Thất bại","Không thể thêm người dùng",Alert.AlertType.ERROR);
+			}
 		}
 }
