@@ -166,7 +166,7 @@
                                     <HBox prefHeight="129.0" prefWidth="907.0">
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#handleAddUser" text="Thêm" />
-                                          <Button mnemonicParsing="false" text="Xóa" />
+                                          <Button mnemonicParsing="false" onAction="#handleDeleteUser" text="Xóa" />
                                           <Button mnemonicParsing="false" text="Sửa" />
                                           <Button fx:id="btnReset" mnemonicParsing="false" onAction="#clearInputsFields" text="Reser dữ liệu" />
                                        </children>
