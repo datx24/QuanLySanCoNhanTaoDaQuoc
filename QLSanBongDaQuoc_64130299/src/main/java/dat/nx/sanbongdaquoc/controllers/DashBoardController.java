@@ -187,7 +187,8 @@ public class DashBoardController {
 				showAlert("Thất bại","Không thể thêm người dùng",Alert.AlertType.ERROR);
 			}
 		}
-
+		
+		@FXML
 		private void clearInputsFields() {
 			txtUserID.clear();
 			txtFullName.clear();
