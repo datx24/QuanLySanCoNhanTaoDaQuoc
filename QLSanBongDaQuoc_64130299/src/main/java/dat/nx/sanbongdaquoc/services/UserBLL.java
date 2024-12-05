@@ -44,6 +44,15 @@ public class UserBLL {
 	
 	//Thực hiện kiểm tra hoặc xác nhận trước khi xóa người dùng
 	public boolean deleteUser(UserDTO userDTO) {
+		// Kiểm tra nếu người dùng không tồn tại
+		if(userDTO != null) {
+			System.out.println("Người dùng không tồn tại");
+		}
+		
+		//Kiểm tra nếu người dùng là admin thì không được xóa
+		if(userDTO.isAdmin() == true) {
+			System.out.println("Không thể xóa người dùng admin");
+		}
 		return userDAL.deleteUser(userDTO);
 	}
 	
