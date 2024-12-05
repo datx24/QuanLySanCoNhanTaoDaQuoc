@@ -42,7 +42,7 @@ public class UserDAL {
 		}
 	}
 
-	// cập nhật  người dùng
+	// cập nhật thông tin người dùng
 	public boolean updateUser(UserDTO user) {
 		String query = "UPDATE users_64130299 SET FullName = ?, Email = ?, PhoneNumber = ? WHERE UserID = ?";
 		
@@ -50,7 +50,7 @@ public class UserDAL {
 		try(PreparedStatement psmt = DatabaseConnection.getConnection().prepareStatement(query)) {
 			psmt.setString(1,user.getFullName());
 			psmt.setString(2,user.getEmail());
-			psmt.setString(1,user.getPhoneNumber());
+			psmt.setString(3,user.getPhoneNumber());
 			
 		//Thực thi câu lệnh và kiểm tra kết quả
 		int rowsAffected = psmt.executeUpdate();
