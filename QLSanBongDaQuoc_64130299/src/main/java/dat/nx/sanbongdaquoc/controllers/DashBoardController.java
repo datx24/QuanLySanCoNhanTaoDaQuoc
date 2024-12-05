@@ -95,6 +95,9 @@ public class DashBoardController {
     		myStackPane.prefHeightProperty().bind(scene.heightProperty());
     	}
     	setupTableColumns();
+    	
+    	//Liên kết userList với bảng
+    	userTable.setItems(userList);
 	}
     
     //Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
@@ -131,7 +134,7 @@ public class DashBoardController {
 
 	private void loadUserData() {
 		List<UserDTO> userDTOs = userBLL.getAllUsers();
-		userTable.getItems().setAll(userDTOs);
+		userList.setAll(userDTOs);
 	}
 	
 	@FXML
