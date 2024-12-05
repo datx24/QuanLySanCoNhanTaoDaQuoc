@@ -24,11 +24,15 @@ public class UserBLL {
 		}
 		
 		if(!CommonUtils.isValidEmail(userDTO.getEmail())) {
-			System.out.println("Email không hợp lệ");
+			System.out.println("Email không hợp lệ !");
 			return false;
 		}
 		if(!CommonUtils.isValidPassword(userDTO.getPasswordHash())) {
-			System.out.println("Mật khẩu bắt buộc phải có độ dài từ 6 chữ số");
+			System.out.println("Mật khẩu bắt buộc phải có độ dài từ 6 chữ số !");
+		}
+		
+		if(!CommonUtils.isValidPhoneNumber(userDTO.getPhoneNumber())) {
+			System.out.println("Số điện thoại không hợp lệ !");
 		}
 		
 		//Chuẩn hóa dữ liệu
