@@ -19,15 +19,35 @@ public class UserDAL {
 
 	// thêm người dùng
 	public boolean insertUser(UserDTO user) {
-		return true;
+		String sql = "INSERT INTO users_64130299 (FullName,Email,PhoneNumber) VALUES(?,?,?)";
+		try(Connection conn = DatabaseConnection.getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+			psmt.setString(1, user.getFullName());
+			psmt.setString(2, user.getEmail());
+			psmt.setString(3, user.getPhoneNumber());
+			psmt.executeUpdate();
+			
+			//Lấy id vừa được tạo
+			try (ResultSet generatedKeys = psmt.getGeneratedKeys()) {
+				if(generatedKeys.next()) {
+					String id = generatedKeys.getString(1); // Lấy id kiểu chuỗi
+					userDTOs.add(user);
+				}
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
-	// xóa người dùng
+	// cập nhật  người dùng
 	public boolean updateUser(UserDTO user) {
 		return true;
 	}
 
-	// cập nhật người dùng
+	// xóa người dùng
 	public boolean deleteUser(UserDTO user) {
 		return true;
 	}
