@@ -10,6 +10,7 @@ import dat.nx.sanbongdaquoc.services.UserBLL;
 import dat.nx.sanbongdaquoc.utils.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -93,12 +94,33 @@ public class DashBoardController {
     		myStackPane.prefHeightProperty().bind(scene.heightProperty());
     	}
     	setupTableColumns();
+    	setupUserSearchByName();
     	
     	//Liên kết userList với bảng
     	userTable.setItems(userList);
 	}
     
-    //Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
+    //Lọc danh sách người dùng theo tên
+    private void setupUserSearchByName() {
+		FilteredList<UserDTO> filterUserList = 
+			new FilteredList<UserDTO>(userList, p -> true);//p -> true nghĩa là toàn bộ các p tử trong danh sách được hiển thị
+		
+		//Lắng nghe sự thay đổi trong ô Search để cập nhật bộ lọc
+		searchField.textProperty().addListener((observable,olaValue,newValue) -> {
+			filterUserList.setPredicate(user -> {
+				//Nếu không nhập gì,hiển thị tất cả
+				if(newValue == null || newValue.isEmpty()) {
+					return true;	
+				}
+				//So sánh tên (không phân biệt hoa thường)
+				String lowerCaseFilter = newValue.toLowerCase();
+				return user.getFullName().toLowerCase().contains(lowerCaseFilter);
+			});
+		});
+		userTable.setItems(filterUserList);
+	}
+
+	//Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
     private void setupTableColumns() {
     	//Gán thuộc tính cho từng cột
     
