@@ -127,7 +127,7 @@
                            <children>
                               <VBox prefHeight="548.0" prefWidth="907.0">
                                  <children>
-                                    <TextField promptText="Tìm kiếm tên người dùng">
+                                    <TextField fx:id="searchField" promptText="Tìm kiếm tên người dùng">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
