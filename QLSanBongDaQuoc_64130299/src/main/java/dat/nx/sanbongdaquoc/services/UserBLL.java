@@ -80,9 +80,14 @@ public class UserBLL {
 		return userDAL.getUserByID(userID);
 	}
 	
-	//Tìm người dùng theo email
+	//Tìm người dùng theo tên
 	public UserDTO getUserByName(String name) {
 		return userDAL.getUserByName(name);
+	}
+	
+	//Tìm kiếm người dùng theo email
+	public UserDTO getUserByEmail(String name) {
+		return userDAL.getUserByEmail(name);
 	}
 	
 	//Kiểm tra thông tin đăng nhập
