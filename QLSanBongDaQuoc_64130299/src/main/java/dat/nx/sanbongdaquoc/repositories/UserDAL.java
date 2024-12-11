@@ -126,7 +126,7 @@ public class UserDAL {
 		return userDTO;
 	}
 
-	// Lấy thông tin người dùng dựa vào email
+	// Lấy thông tin danh sách người dùng dựa vào tên
 	public List<UserDTO> getUserByName(String name) {
 		String query = "SELECT * FROM users_64130299 WHERE FullName LIKE ?";
 		
@@ -175,7 +175,27 @@ public class UserDAL {
 	
 	// Tìm kiếm người dùng bằng email
 	public UserDTO getUserByEmail(String email) {
-		return null;
+		String query = "SELECT * FROM users_64130299 WHERE Email = ?";
+		
+		try(Connection connection = DatabaseConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			
+			preparedStatement.setString(1,"Email");
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				userDTO.setUserID(resultSet.getString("UserID"));
+				userDTO.setFullName(resultSet.getString("FullName"));
+				userDTO.setEmail(resultSet.getString("Email"));
+				userDTO.setPhoneNumber(resultSet.getString("PhoneNumber"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Lỗi không thể tìm kiếm người dùng bằng email");
+		}
+		return userDTO;
 	}
 	
 }
