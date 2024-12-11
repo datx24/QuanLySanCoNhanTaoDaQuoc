@@ -159,6 +159,7 @@ public class DashBoardController {
 		@FXML
 		private void handleAddUser(ActionEvent event) {
 			//Lấy dữ liệu từ các trường nhập người dùng
+			String userID = txtUserID.getText();
 			String fullName = txtFullName.getText();
 			String email = txtEmail.getText();
 			String phoneNumber = txtPhoneNumber.getText();
@@ -170,6 +171,7 @@ public class DashBoardController {
 			
 			//Tạo đối tượng UserDTO
 			UserDTO newUser = new UserDTO();
+			newUser.setUserID(userID);
 			newUser.setFullName(fullName);
 			newUser.setEmail(email);
 			newUser.setPhoneNumber(phoneNumber);
