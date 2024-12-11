@@ -15,7 +15,7 @@ import dat.nx.sanbongdaquoc.utils.*;
 
 public class UserDAL {
 	private UserDTO userDTO = new UserDTO();
-	private List<UserDTO> userDTOs = new ArrayList();
+	private List<UserDTO> userDTOs = new ArrayList<UserDTO>();
 
 	// thêm người dùng
 	public boolean insertUser(UserDTO user) {
@@ -132,25 +132,27 @@ public class UserDAL {
 	}
 
 	// Lấy thông tin người dùng dựa vào email
-	public UserDTO getUserByName(String name) {
-		String query = "SELECT * From users_64130299 where FullName = ?";
+	public List<UserDTO> getUserByName(String name) {
+		String query = "SELECT * FROM users_64130299 WHERE FullName LIKE ?";
+		
 		try(Connection connection = DatabaseConnection.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			preparedStatement.setString(1, name);
+			//Thêm ký tự đại diện cho tham số
+			preparedStatement.setString(1, "%" + name + "%");
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()) {
+			while(resultSet.next()) {
+				//Tạo đối tượng và thêm vào danh sách
 				userDTO.setUserID(resultSet.getString("UserID"));
 				userDTO.setFullName(resultSet.getString("FullName"));
 				userDTO.setEmail(resultSet.getString("Email"));
 				userDTO.setPhoneNumber(resultSet.getString("PhoneNumber"));
+				userDTOs.add(userDTO);
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Lỗi không thể tìm kiếm tên người dùng !");
 		}
-		return userDTO;
+		return userDTOs;
 	}
 
 	// đăng nhập
@@ -161,7 +163,7 @@ public class UserDAL {
 		// Thay đổi tên cột nếu cần thiết
 		String sql = "SELECT COUNT(*) FROM users_64130299 WHERE email = ? AND passwordHash = ?";
 		try (Connection conn = DatabaseConnection.getConnection(); // Kết nối từ DatabaseConnection
-				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 			stmt.setString(1, email);
 			stmt.setString(2, passwordHash);
@@ -175,6 +177,10 @@ public class UserDAL {
 		}
 		return false; // Đăng nhập thất bại
 	}
-
+	
+	// Tìm kiếm người dùng bằng email
+	public UserDTO getUserByEmail(String email) {
+		return null;
+	}
 	
 }
