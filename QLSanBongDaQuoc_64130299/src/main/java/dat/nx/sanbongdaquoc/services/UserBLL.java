@@ -81,7 +81,10 @@ public class UserBLL {
 	}
 	
 	//Tìm người dùng theo tên
-	public UserDTO getUserByName(String name) {
+	public List<UserDTO> searchUserByName(String name) {
+		if(name == null || name.isEmpty()) {
+			System.out.println("Tên không được để trống");
+		}
 		return userDAL.getUserByName(name);
 	}
 	
