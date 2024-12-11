@@ -1,9 +1,9 @@
 package dat.nx.sanbongdaquoc.enums;
 
 public enum FieldStatus {
-    AVAILABLE("Available"),//có sẵn
-    MAINTENANCE("Maintenance"),//bảo trì
-    BOOKED("Booked");//đã đặt
+    AVAILABLE("Có sẵn"),
+    MAINTENANCE("Bảo trì"),
+    BOOKED("Đã đặt");
 
     private final String status;
 
@@ -14,7 +14,7 @@ public enum FieldStatus {
     public String getStatus() {
         return status;
     }
-
+    
     public static FieldStatus fromString(String status) {
         for (FieldStatus fs : FieldStatus.values()) {
             if (fs.getStatus().equalsIgnoreCase(status)) {
