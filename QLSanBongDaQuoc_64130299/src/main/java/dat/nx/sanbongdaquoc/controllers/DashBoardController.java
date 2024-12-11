@@ -26,7 +26,7 @@ import javafx.scene.layout.StackPane;
 
 public class DashBoardController {
 	@FXML
-	private TextField txtUserID,txtFullName,txtEmail,txtPhoneNumber,txtCreatedAt;
+	private TextField txtUserID,txtFullName,txtEmail,txtPhoneNumber,txtCreatedAt,searchField;
 	@FXML
 	private StackPane myStackPane;
 	@FXML
@@ -101,6 +101,7 @@ public class DashBoardController {
     //Phương thức thiết lập dữ liệu các cột trong bảng danh sách người dùng
     private void setupTableColumns() {
     	//Gán thuộc tính cho từng cột
+    
     	nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
     	emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
     	phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
@@ -179,6 +180,7 @@ public class DashBoardController {
 			
 			//Gọi hàm thêm người dùng từ UserBLL
 			if(userBLL.addUser(newUser)) {
+				UserDTO savedUser = userBLL.getUserByEmail(email); // Giả sử email là duy nhất
 				userList.add(newUser);
 				userTable.refresh();
 				clearInputsFields();
@@ -195,39 +197,44 @@ public class DashBoardController {
 			txtEmail.clear();
 			txtPhoneNumber.clear();
 			txtCreatedAt.clear();
+			userTable.refresh();
 		}
 	//Phương thức xóa người dùng
 		@FXML
 		private void handleDeleteUser() {
-			// Lấy người dùng được chọn từ table view
-			UserDTO selectedUser = userTable.getSelectionModel().getSelectedItem();
-			
-			// Kiểm tra xem đã lấy người dùng để xóa chưa
-			if(selectedUser == null) {
-				showAlert("Cảnh báo","Vui lòng chọn người dùng để xóa", Alert.AlertType.WARNING);
-				return;
-			}
-			
-			//Hiển thị hộp thoại xác nhận
-			Alert confirmAlert = new Alert(AlertType.CONFIRMATION,"Bạn có chắc chắn muốn xóa người dùng"
-					+ "này hay không ?", ButtonType.YES, ButtonType.NO);
-			confirmAlert.setTitle("Xác nhận xóa người dùng");
-			confirmAlert.showAndWait().ifPresent(response -> {
-				if(response == ButtonType.YES) {
-					//Gọi lớp BLL để xử lý
-					boolean result = userBLL.deleteUser(selectedUser);
-				
-					if(result) {
-						//Xóa người dùng ra khỏi danh sách hiển thị
-						userList.remove(selectedUser);
-						userTable.setItems(userList);
-						showAlert("Thông báo", "Xóa người dùng thành công", Alert.AlertType.INFORMATION);
-					} else {
-						showAlert("Lỗi", "Xóa người dùng thất bại", Alert.AlertType.ERROR);
-					}
-				}
-			});
+		    // Lấy chỉ số của người dùng được chọn từ table view
+		    int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
+		    
+		    // Kiểm tra nếu người dùng chưa được chọn hoặc không có chỉ số hợp lệ
+		    if (selectedIndex == -1) {
+		        showAlert("Cảnh báo", "Vui lòng chọn người dùng để xóa", Alert.AlertType.WARNING);
+		        return;
+		    }
+
+		    // Lấy người dùng từ chỉ số trong userList
+		    UserDTO selectedUser = userList.get(selectedIndex);
+		    
+		    // Hiển thị hộp thoại xác nhận trước khi xóa
+		    Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Bạn có chắc chắn muốn xóa người dùng này không?", ButtonType.YES, ButtonType.NO);
+		    confirmAlert.setTitle("Xác nhận xóa người dùng");
+		    confirmAlert.showAndWait().ifPresent(response -> {
+		        if (response == ButtonType.YES) {
+		            // Gọi phương thức xóa từ BLL
+		            boolean result = userBLL.deleteUser(selectedUser);
+		            
+		            if (result) {
+		                // Xóa người dùng ra khỏi danh sách hiển thị và cập nhật TableView
+		                userList.remove(selectedIndex);
+		                userTable.setItems(userList);
+		                showAlert("Thông báo", "Xóa người dùng thành công", Alert.AlertType.INFORMATION);
+		            } else {
+		                showAlert("Lỗi", "Xóa người dùng thất bại", Alert.AlertType.ERROR);
+		            }
+		        }
+		    });
 		}
+
+
 	//Phương thức cập nhật thông tin người dùng
 		@FXML
 		private void updateUser() {
