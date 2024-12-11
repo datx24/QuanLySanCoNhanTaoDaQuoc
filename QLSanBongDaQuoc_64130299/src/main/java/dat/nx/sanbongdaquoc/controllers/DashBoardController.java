@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import dat.nx.sanbongdaquoc.enums.FieldStatus;
+import dat.nx.sanbongdaquoc.models.entities.FieldDTO;
 import dat.nx.sanbongdaquoc.models.entities.UserDTO;
 import dat.nx.sanbongdaquoc.services.UserBLL;
 import dat.nx.sanbongdaquoc.utils.SceneManager;
@@ -17,9 +19,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -38,13 +44,31 @@ public class DashBoardController {
 	@FXML
 	private Button btnLogout;
     @FXML
-    private TableView<UserDTO> userTable; //Bảng danh sách người dùng
+    private TableView<UserDTO> userTable,fieldTable;
     @FXML
     private TableColumn<UserDTO, Integer> sttColumn; //Cột số thứ tự người dùng
     @FXML
     private TableColumn<UserDTO, String> nameColumn,emailColumn,phoneColumn; //Cột tên,email,số điện thoại người dùng
     @FXML
     private TableColumn<UserDTO, Timestamp> createdAtColumn; //Cột thời gian tạo
+    @FXML
+    private TableColumn<FieldDTO, String> colFieldName,colFieldStatus,colDescription;
+    @FXML
+    private TableColumn<FieldDTO, Integer> colFieldID;
+    @FXML
+    private TableColumn<FieldDTO, Double> colPricePerHour;
+    @FXML
+    private Button btnAddField,btnEditField,btnDeleteField;
+    @FXML
+    private ComboBox<FieldStatus> fieldStatusCB; //trạng thái sân
+    @FXML
+    private TextField txtFieldName,txtPricePerHour; //tên và giá sân
+    @FXML
+    private TextArea txtAreaDescription;
+    @FXML
+    private RadioButton radioAvailable,radioMaintenance,radioBooked,radioAll;// nút lọc trạng thái sân
+    @FXML
+    private ToggleGroup fieldStatusToggleGroup;
     
     //Tạo các biến BLL để giao tiếp với controller
     UserBLL userBLL = new UserBLL();
