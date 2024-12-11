@@ -94,10 +94,9 @@ public class DashBoardController {
     		myStackPane.prefHeightProperty().bind(scene.heightProperty());
     	}
     	setupTableColumns();
-    	setupUserSearchByName();
-    	
     	//Liên kết userList với bảng
     	userTable.setItems(userList);
+      	setupUserSearchByName();
 	}
     
     //Lọc danh sách người dùng theo tên
