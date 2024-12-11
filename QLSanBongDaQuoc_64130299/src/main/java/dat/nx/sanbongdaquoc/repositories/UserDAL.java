@@ -109,15 +109,10 @@ public class UserDAL {
 	// Lấy thông tin người dùng dựa vào ID
 	public UserDTO getUserByID(String userID) {
 		String query = "SELECT * From users_64130299 where UserID = ?";
-		Connection connection;
-		PreparedStatement preparedStatement;
-		ResultSet resultSet;
-		try {
-			connection = DatabaseConnection.getConnection();
-			preparedStatement = connection.prepareStatement(query);
+		try(Connection connection = DatabaseConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query);) {
 			preparedStatement.setString(1, userID);
-			resultSet = preparedStatement.executeQuery();
-			
+			ResultSet resultSet  = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				userDTO.setUserID(resultSet.getString("UserID"));
 				userDTO.setFullName(resultSet.getString("FullName"));
