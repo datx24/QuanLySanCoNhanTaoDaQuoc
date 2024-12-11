@@ -31,7 +31,9 @@ public class UserDAL {
 			try (ResultSet generatedKeys = psmt.getGeneratedKeys()) {
 				if(generatedKeys.next()) {
 					String id = generatedKeys.getString(1); // Lấy id kiểu chuỗi
+					user.setUserID(id); // Gán ID vào đối tượng user
 					userDTOs.add(user);
+					
 				}
 				return true;
 			}
@@ -130,7 +132,24 @@ public class UserDAL {
 	}
 
 	// Lấy thông tin người dùng dựa vào email
-	public UserDTO getUserByEmail(String email) {
+	public UserDTO getUserByName(String name) {
+		String query = "SELECT * From users_64130299 where FullName = ?";
+		try(Connection connection = DatabaseConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, name);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				userDTO.setUserID(resultSet.getString("UserID"));
+				userDTO.setFullName(resultSet.getString("FullName"));
+				userDTO.setEmail(resultSet.getString("Email"));
+				userDTO.setPhoneNumber(resultSet.getString("PhoneNumber"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return userDTO;
 	}
 
