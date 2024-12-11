@@ -59,7 +59,7 @@ public class UserBLL {
 	//Thực hiện kiểm tra hoặc xác nhận trước khi xóa người dùng
 	public boolean deleteUser(UserDTO userDTO) {
 		// Kiểm tra nếu người dùng không tồn tại
-		if(userDTO != null) {
+		if(userDTO == null) {
 			System.out.println("Người dùng không tồn tại");
 		}
 		
@@ -81,8 +81,8 @@ public class UserBLL {
 	}
 	
 	//Tìm người dùng theo email
-	public UserDTO getUserByEmail(String email) {
-		return userDAL.getUserByEmail(email);
+	public UserDTO getUserByName(String name) {
+		return userDAL.getUserByName(name);
 	}
 	
 	//Kiểm tra thông tin đăng nhập
