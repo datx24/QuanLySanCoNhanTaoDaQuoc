@@ -1,18 +1,20 @@
 package dat.nx.sanbongdaquoc.models.entities;
 
+import java.math.BigDecimal;
+
 import dat.nx.sanbongdaquoc.enums.*;
 
 public class FieldDTO {
 	private int fieldID;// ID duy nhất cho mỗi sân bóng
     private String fieldName;// Tên sân bóng
     private FieldStatus status;// Trạng thái của sân bóng (có sẵn, bảo trì, đă đặt)
-    private double pricePerHour;// Giá thuê sân mỗi giờ
+    private BigDecimal pricePerHour;// Giá thuê sân mỗi giờ
     private String description;// Mô tả sân bóng
     
 	public FieldDTO() {
 	}
 
-	public FieldDTO(int fieldID, String fieldName, FieldStatus status, double pricePerHour, 
+	public FieldDTO(int fieldID, String fieldName, FieldStatus status, BigDecimal pricePerHour, 
 			String description) {
 		super();
 		this.fieldID = fieldID;
@@ -46,11 +48,11 @@ public class FieldDTO {
 		this.status = status;
 	}
 
-	public double getPricePerHour() {
+	public BigDecimal getPricePerHour() {
 		return pricePerHour;
 	}
 
-	public void setPricePerHour(double pricePerHour) {
+	public void setPricePerHour(BigDecimal pricePerHour) {
 		this.pricePerHour = pricePerHour;
 	}
 
@@ -62,5 +64,7 @@ public class FieldDTO {
 		this.description = description;
 	}
 
-    
+	public String getStatusString() {
+        return status.getStatus();
+    }
 }
