@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +27,29 @@ public class FieldDAL {
 		}
 	}
 
-	//Thêm sân
 	public boolean insertField(FieldDTO field) {
-	    String query = "INSERT INTO fields_64130299 (FieldID, FieldName, Status, PricePerHour, Description) VALUES (?, ?, ?, ?, ?)";
-	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-	        preparedStatement.setInt(1, field.getFieldID());
-	        preparedStatement.setString(2, field.getFieldName());
-	        preparedStatement.setString(3, field.getStatus().toString());
-	        preparedStatement.setBigDecimal(4, field.getPricePerHour());
-	        preparedStatement.setString(5, field.getDescription());
-	        int result = preparedStatement.executeUpdate();
-	        return result > 0;
+	    String query = "INSERT INTO fields_64130299 (FieldName, Status, PricePerHour, Description) VALUES (?, ?, ?, ?)";
+	    try (PreparedStatement psmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+	        psmt.setString(1, field.getFieldName());
+	        psmt.setString(2, field.getStatus().getStatus());
+	        psmt.setBigDecimal(3, field.getPricePerHour());
+	        psmt.setString(4, field.getDescription());
+	        // Thực thi câu lệnh INSERT
+	        psmt.executeUpdate();
+
+	        // Lấy ID tự động tạo từ cơ sở dữ liệu
+	        try (ResultSet generatedKeys = psmt.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                int id = generatedKeys.getInt(1);
+	                field.setFieldID(id);
+	                return true;
+	            }
+	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        return false;
 	    }
+	    return false;
 	}
 
 	//Cập nhật thông tin sân
@@ -48,7 +57,7 @@ public class FieldDAL {
 	    String query = "UPDATE fields_64130299 SET FieldName = ?, Status = ?, PricePerHour = ?, Description = ? WHERE FieldID = ?";
 	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 	        preparedStatement.setString(1, field.getFieldName());
-	        preparedStatement.setString(2, field.getStatus().toString());
+	        preparedStatement.setString(2, field.getStatus().getStatus());
 	        preparedStatement.setBigDecimal(3, field.getPricePerHour());
 	        preparedStatement.setString(4, field.getDescription());
 	        preparedStatement.setInt(5, field.getFieldID());
@@ -60,7 +69,6 @@ public class FieldDAL {
 	    }
 	}
 
-	
 	//Xóa sân
 	public boolean deleteField(FieldDTO fieldDTO) {
 	    String query = "DELETE FROM fields_64130299 WHERE FieldID = ?";
@@ -100,7 +108,7 @@ public class FieldDAL {
 	}
 	
 	// Lấy sân bóng theo id
-	public FieldDTO getFieldByID(String fieldID) {
+	public FieldDTO getFieldByID(int fieldID) {
 	    FieldDTO field = null; // Khởi tạo đối tượng FieldDTO để lưu trữ kết quả tìm kiếm
 
 	    // Câu lệnh SQL để lấy thông tin sân theo FieldID
@@ -108,7 +116,7 @@ public class FieldDAL {
 
 	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 	        // Thiết lập giá trị cho tham số trong câu lệnh SQL
-	        preparedStatement.setString(1, fieldID);
+	        preparedStatement.setInt(1, fieldID);
 
 	        // Thực thi câu lệnh và lấy kết quả
 	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -117,10 +125,11 @@ public class FieldDAL {
 	                int id = resultSet.getInt("FieldID");
 	                String fieldName = resultSet.getString("FieldName");
 	                String statusString = resultSet.getString("Status");
-	                // Chuyển đổi statusString sang FieldStatus enum
-	                FieldStatus status = FieldStatus.valueOf(statusString.toUpperCase());
+					// Chuyển đổi String sang enum một cách an toàn
+		            FieldStatus status = FieldStatus.fromString(statusString); // Sử dụng fromString() thay vì valueOf()
 	                BigDecimal pricePerHour = resultSet.getBigDecimal("PricePerHour");
 	                String description = resultSet.getString("Description");
+
 	                // Tạo đối tượng FieldDTO từ dữ liệu truy vấn và gán vào biến field
 	                field = new FieldDTO(id, fieldName, status, pricePerHour, description);
 	            }
@@ -130,8 +139,6 @@ public class FieldDAL {
 	    }
 	    return field;
 	}
-
-	
 	
 	// Tìm kiếm sân theo status
 	public FieldDTO getFieldsByStatus(FieldStatus status) {
