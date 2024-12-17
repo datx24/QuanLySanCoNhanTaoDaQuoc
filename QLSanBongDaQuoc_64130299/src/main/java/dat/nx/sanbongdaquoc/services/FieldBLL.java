@@ -16,12 +16,8 @@ public class FieldBLL {
 	//Kiểm tra tính hợp lệ của thông tin sân bóng trước khi gọi phương thức thêm
 	public boolean addField(FieldDTO fieldDTO) {
 	    // Kiểm tra tính hợp lệ của thông tin sân
-	    if (fieldDTO.getFieldID() <= 0 || fieldDTO.getFieldName().isEmpty() || fieldDTO.getPricePerHour() == null || fieldDTO.getDescription().isEmpty()) {
+	    if (fieldDTO.getFieldName().isEmpty() || fieldDTO.getPricePerHour() == null || fieldDTO.getDescription().isEmpty()) {
 	        return false; // Nếu thông tin không hợp lệ, trả về false
-	    }
-	    // Kiểm tra nếu sân bóng đã tồn tại chưa (dựa vào FieldID)
-	    if (getFieldByID(String.valueOf(fieldDTO.getFieldID())) != null) {
-	        return false; // Nếu sân bóng đã tồn tại, không thể thêm
 	    }
 	    // Thực hiện thêm sân bóng vào cơ sở dữ liệu
 	    return fieldDAL.insertField(fieldDTO);
@@ -36,7 +32,7 @@ public class FieldBLL {
 	    }
 
 	    // Kiểm tra xem sân bóng có tồn tại trong cơ sở dữ liệu không (dựa vào FieldID)
-	    if (getFieldByID(String.valueOf(fieldDTO.getFieldID())) == null) {
+	    if (getFieldByID(fieldDTO.getFieldID()) == null) {
 	        return false; // Nếu sân bóng không tồn tại, không thể cập nhật
 	    }
 
@@ -45,9 +41,9 @@ public class FieldBLL {
 	}
 	
 	//Thực hiện kiểm tra xem sân bóng có tồn tại không (dựa vào id) trước khi xóa
-	public boolean deleteField(String fieldID) {
+	public boolean deleteField(int id) {
 	    // Kiểm tra nếu sân bóng tồn tại trước khi xóa
-	    FieldDTO fieldDTO = getFieldByID(fieldID);
+	    FieldDTO fieldDTO = getFieldByID(id);
 
 	    // Nếu không tìm thấy sân bóng với FieldID, trả về false
 	    if (fieldDTO == null) {
@@ -64,7 +60,7 @@ public class FieldBLL {
 	}
 	
 	//Tìm kiếm sân bóng theo ID
-	public FieldDTO getFieldByID(String fieldID) {
+	public FieldDTO getFieldByID(int fieldID) {
 		return fieldDAL.getFieldByID(fieldID);
 	}
 	
