@@ -27,23 +27,53 @@ public class FieldDAL {
 	}
 
 	//Thêm sân
-	public boolean addField(FieldDTO field) {
-		return true;
+	public boolean insertField(FieldDTO field) {
+	    String query = "INSERT INTO fields_64130299 (FieldID, FieldName, Status, PricePerHour, Description) VALUES (?, ?, ?, ?, ?)";
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        preparedStatement.setInt(1, field.getFieldID());
+	        preparedStatement.setString(2, field.getFieldName());
+	        preparedStatement.setString(3, field.getStatus().toString());
+	        preparedStatement.setBigDecimal(4, field.getPricePerHour());
+	        preparedStatement.setString(5, field.getDescription());
+	        int result = preparedStatement.executeUpdate();
+	        return result > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
+
 	//Cập nhật thông tin sân
 	public boolean updateField(FieldDTO field) {
-		return true;
+	    String query = "UPDATE fields_64130299 SET FieldName = ?, Status = ?, PricePerHour = ?, Description = ? WHERE FieldID = ?";
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        preparedStatement.setString(1, field.getFieldName());
+	        preparedStatement.setString(2, field.getStatus().toString());
+	        preparedStatement.setBigDecimal(3, field.getPricePerHour());
+	        preparedStatement.setString(4, field.getDescription());
+	        preparedStatement.setInt(5, field.getFieldID());
+	        int result = preparedStatement.executeUpdate();
+	        return result > 0; 
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
-	
-	//Chỉnh sửa sân
-	public boolean editField(String fieldId) {
-		return true;
-	}
+
 	
 	//Xóa sân
 	public boolean deleteField(FieldDTO fieldDTO) {
-		return true;
+	    String query = "DELETE FROM fields_64130299 WHERE FieldID = ?";
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        preparedStatement.setInt(1, fieldDTO.getFieldID());
+	        int result = preparedStatement.executeUpdate();
+	        return result > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
+
 	
 	//Lấy tất cả sân bóng từ cơ sở dữ liệu
 	public List<FieldDTO> getAllFields() {
