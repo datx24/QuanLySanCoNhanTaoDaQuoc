@@ -1,5 +1,6 @@
 package dat.nx.sanbongdaquoc.repositories;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,8 +17,7 @@ public class FieldDAL {
 	private List<FieldDTO> fieldDTOs = new ArrayList<>();
 	private Connection connection;
 	
-	
-	public FieldDAL(Connection connection) {
+	public FieldDAL() {
 		try {
 			connection = DatabaseConnection.getConnection();
 		} catch (SQLException e) {
@@ -25,6 +25,7 @@ public class FieldDAL {
 			e.printStackTrace();
 		}
 	}
+
 	//Thêm sân
 	public boolean addField(FieldDTO field) {
 		return true;
@@ -46,7 +47,7 @@ public class FieldDAL {
 	
 	//Lấy tất cả sân bóng từ cơ sở dữ liệu
 	public List<FieldDTO> getAllFields() {
-		String query = "SELECT FieldID,FieldName,Status,PricePerHour,Description";
+		String query = "SELECT FieldID,FieldName,Status,PricePerHour,Description FROM fields_64130299";
 		
 		try(PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -54,9 +55,9 @@ public class FieldDAL {
 				int fieldID = resultSet.getInt("FieldID");
 				String fieldName = resultSet.getString("FieldName");
 				String statusString = resultSet.getString("Status");
-				// chuyển đổi String sang enum
-				FieldStatus status = FieldStatus.valueOf(statusString.toUpperCase()); 
-				double pricePerHour	= resultSet.getDouble("PricePerHour");
+				// Chuyển đổi String sang enum một cách an toàn
+	            FieldStatus status = FieldStatus.fromString(statusString); // Sử dụng fromString() thay vì valueOf()
+				BigDecimal pricePerHour	= resultSet.getBigDecimal("PricePerHour");
 				String description = resultSet.getString("Description");
 				
 				fieldDTOs.add(new FieldDTO(fieldID,fieldName,status,pricePerHour,description));
