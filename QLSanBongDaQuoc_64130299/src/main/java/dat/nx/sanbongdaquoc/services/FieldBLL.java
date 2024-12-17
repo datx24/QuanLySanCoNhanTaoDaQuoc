@@ -10,7 +10,7 @@ public class FieldBLL {
 	private FieldDAL fieldDAL;
 	
 	public FieldBLL(FieldDAL fieldDAL) {
-		this.fieldDAL = fieldDAL;
+		this.fieldDAL = new FieldDAL();
 	}
 
 	//Kiểm tra tính hợp lệ của thông tin sân bóng trước khi gọi phương thức thêm
