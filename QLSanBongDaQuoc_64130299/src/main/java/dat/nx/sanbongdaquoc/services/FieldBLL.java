@@ -64,9 +64,8 @@ public class FieldBLL {
 		return fieldDAL.getFieldByID(fieldID);
 	}
 	
-	//Tìm kiếm sân bóng theo trạng thái
-	public List<FieldDTO> getFieldsByStatus(FieldStatus status) {
-		return fieldDAL.getAllFields(); // cài đặt thêm phần trả về
-	}
-	
+	// Phương thức lọc sân theo trạng thái
+    public List<FieldDTO> getFieldsByStatus(FieldStatus status) {
+        return fieldDAL.getFieldsByStatus(status);  // Trả về danh sách các sân theo trạng thái
+    }
 }
