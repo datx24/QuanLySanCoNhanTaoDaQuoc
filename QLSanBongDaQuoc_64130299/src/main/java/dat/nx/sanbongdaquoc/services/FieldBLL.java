@@ -15,18 +15,47 @@ public class FieldBLL {
 
 	//Kiểm tra tính hợp lệ của thông tin sân bóng trước khi gọi phương thức thêm
 	public boolean addField(FieldDTO fieldDTO) {
-		return fieldDAL.addField(fieldDTO);
+	    // Kiểm tra tính hợp lệ của thông tin sân
+	    if (fieldDTO.getFieldID() <= 0 || fieldDTO.getFieldName().isEmpty() || fieldDTO.getPricePerHour() == null || fieldDTO.getDescription().isEmpty()) {
+	        return false; // Nếu thông tin không hợp lệ, trả về false
+	    }
+	    // Kiểm tra nếu sân bóng đã tồn tại chưa (dựa vào FieldID)
+	    if (getFieldByID(String.valueOf(fieldDTO.getFieldID())) != null) {
+	        return false; // Nếu sân bóng đã tồn tại, không thể thêm
+	    }
+	    // Thực hiện thêm sân bóng vào cơ sở dữ liệu
+	    return fieldDAL.insertField(fieldDTO);
 	}
+
 	
 	//Kiểm tra xem sân bóng có tồn tại không (dựa vào id) trước khi cập nhật
 	public boolean updateField(FieldDTO fieldDTO) {
-		return fieldDAL.updateField(fieldDTO);
+	    // Kiểm tra tính hợp lệ của thông tin sân
+	    if (fieldDTO.getFieldID() <= 0 || fieldDTO.getFieldName().isEmpty() || fieldDTO.getPricePerHour() == null || fieldDTO.getDescription().isEmpty()) {
+	        return false; // Nếu thông tin không hợp lệ, trả về false
+	    }
+
+	    // Kiểm tra xem sân bóng có tồn tại trong cơ sở dữ liệu không (dựa vào FieldID)
+	    if (getFieldByID(String.valueOf(fieldDTO.getFieldID())) == null) {
+	        return false; // Nếu sân bóng không tồn tại, không thể cập nhật
+	    }
+
+	    // Thực hiện cập nhật sân bóng vào cơ sở dữ liệu
+	    return fieldDAL.updateField(fieldDTO);
 	}
 	
 	//Thực hiện kiểm tra xem sân bóng có tồn tại không (dựa vào id) trước khi xóa
 	public boolean deleteField(String fieldID) {
+	    // Kiểm tra nếu sân bóng tồn tại trước khi xóa
 	    FieldDTO fieldDTO = getFieldByID(fieldID);
-	    return true;
+
+	    // Nếu không tìm thấy sân bóng với FieldID, trả về false
+	    if (fieldDTO == null) {
+	        return false; // Không thể xóa vì sân không tồn tại
+	    }
+
+	    // Thực hiện xóa sân bóng khỏi cơ sở dữ liệu
+	    return fieldDAL.deleteField(fieldDTO);
 	}
 	
 	//Lấy danh sách sân bóng, có thế áp dụng bộ lọc hoặc sắp xếp nếu cần
