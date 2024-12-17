@@ -7,7 +7,12 @@ import dat.nx.sanbongdaquoc.repositories.*;
 import java.util.List;
 
 public class FieldBLL {
-	private FieldDAL fieldDAL = new FieldDAL();
+	private FieldDAL fieldDAL;
+	
+	public FieldBLL(FieldDAL fieldDAL) {
+		this.fieldDAL = fieldDAL;
+	}
+
 	//Kiểm tra tính hợp lệ của thông tin sân bóng trước khi gọi phương thức thêm
 	public boolean addField(FieldDTO fieldDTO) {
 		return fieldDAL.addField(fieldDTO);
