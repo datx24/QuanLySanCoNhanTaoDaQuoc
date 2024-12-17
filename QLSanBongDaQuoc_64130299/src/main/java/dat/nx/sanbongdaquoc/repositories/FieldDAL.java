@@ -99,10 +99,38 @@ public class FieldDAL {
 		return fieldDTOs;
 	}
 	
-	//Lấy sân bóng theo id
+	// Lấy sân bóng theo id
 	public FieldDTO getFieldByID(String fieldID) {
-		return fieldDTO;
+	    FieldDTO field = null; // Khởi tạo đối tượng FieldDTO để lưu trữ kết quả tìm kiếm
+
+	    // Câu lệnh SQL để lấy thông tin sân theo FieldID
+	    String query = "SELECT FieldID, FieldName, Status, PricePerHour, Description FROM fields_64130299 WHERE FieldID = ?";
+
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        // Thiết lập giá trị cho tham số trong câu lệnh SQL
+	        preparedStatement.setString(1, fieldID);
+
+	        // Thực thi câu lệnh và lấy kết quả
+	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	            // Kiểm tra nếu có kết quả trả về từ câu lệnh SELECT
+	            if (resultSet.next()) {
+	                int id = resultSet.getInt("FieldID");
+	                String fieldName = resultSet.getString("FieldName");
+	                String statusString = resultSet.getString("Status");
+	                // Chuyển đổi statusString sang FieldStatus enum
+	                FieldStatus status = FieldStatus.valueOf(statusString.toUpperCase());
+	                BigDecimal pricePerHour = resultSet.getBigDecimal("PricePerHour");
+	                String description = resultSet.getString("Description");
+	                // Tạo đối tượng FieldDTO từ dữ liệu truy vấn và gán vào biến field
+	                field = new FieldDTO(id, fieldName, status, pricePerHour, description);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return field;
 	}
+
 	
 	
 	// Tìm kiếm sân theo status
