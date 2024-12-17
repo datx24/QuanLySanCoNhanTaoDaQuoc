@@ -23,6 +23,5 @@ public enum FieldStatus {
         }
         throw new IllegalArgumentException("Unknown status: " + status);
     }
-
 }
 
