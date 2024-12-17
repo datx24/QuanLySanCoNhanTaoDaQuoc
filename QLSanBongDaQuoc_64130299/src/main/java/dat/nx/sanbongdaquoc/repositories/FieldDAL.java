@@ -85,6 +85,7 @@ public class FieldDAL {
 	
 	//Lấy tất cả sân bóng từ cơ sở dữ liệu
 	public List<FieldDTO> getAllFields() {
+		List<FieldDTO> listAllFields = new ArrayList<>();
 		String query = "SELECT FieldID,FieldName,Status,PricePerHour,Description FROM fields_64130299";
 		
 		try(PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -98,13 +99,13 @@ public class FieldDAL {
 				BigDecimal pricePerHour	= resultSet.getBigDecimal("PricePerHour");
 				String description = resultSet.getString("Description");
 				
-				fieldDTOs.add(new FieldDTO(fieldID,fieldName,status,pricePerHour,description));
+				listAllFields.add(new FieldDTO(fieldID,fieldName,status,pricePerHour,description));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fieldDTOs;
+		return listAllFields;
 	}
 	
 	// Lấy sân bóng theo id
@@ -141,7 +142,30 @@ public class FieldDAL {
 	}
 	
 	// Tìm kiếm sân theo status
-	public FieldDTO getFieldsByStatus(FieldStatus status) {
-		return fieldDTO;
+	public List<FieldDTO> getFieldsByStatus(FieldStatus status) {
+	    List<FieldDTO> listFieldsByStatus = new ArrayList<>(); // Khởi tạo danh sách tạm thời để chứa kết quả
+	    String query = "SELECT FieldID, FieldName, Status, PricePerHour, Description FROM fields_64130299 WHERE Status = ?";
+	    
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        // Thiết lập tham số trạng thái sân
+	        preparedStatement.setString(1, status.getStatus());  // Sử dụng phương thức getStatus() từ enum FieldStatus
+
+	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	            while (resultSet.next()) {
+	                int fieldID = resultSet.getInt("FieldID");
+	                String fieldName = resultSet.getString("FieldName");
+	                String statusString = resultSet.getString("Status");
+	                FieldStatus fieldStatus = FieldStatus.fromString(statusString);  // Chuyển String thành enum FieldStatus
+	                BigDecimal pricePerHour = resultSet.getBigDecimal("PricePerHour");
+	                String description = resultSet.getString("Description");
+
+	                // Tạo đối tượng FieldDTO và thêm vào danh sách
+	                listFieldsByStatus.add(new FieldDTO(fieldID, fieldName, fieldStatus, pricePerHour, description));
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return listFieldsByStatus; // Trả về danh sách các sân theo trạng thái
 	}
 }
