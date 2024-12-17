@@ -105,10 +105,10 @@
         </GridPane>
         <!-- Action Buttons -->
         <HBox alignment="CENTER" spacing="15" style="-fx-spacing: 15;">
-            <Button fx:id="addButton" prefWidth="80" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Thêm" />
-            <Button fx:id="deleteButton" prefWidth="80" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Xóa" />
-            <Button fx:id="editButton" prefWidth="80" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Sửa" />
-            <Button fx:id="resetButton" prefWidth="80" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Reset" />
+            <Button fx:id="addButton" onAction="#handleAddField" prefWidth="80" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Thêm" />
+            <Button fx:id="deleteButton" onAction="#handleDeleteField" prefWidth="80" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Xóa" />
+            <Button fx:id="editButton" onAction="#handleEditField" prefWidth="80" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Sửa" />
+            <Button fx:id="resetButton" onAction="#handleResetFields" prefWidth="80" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Reset" />
             <VBox.margin>
                 <Insets bottom="10.0" />
             </VBox.margin>
