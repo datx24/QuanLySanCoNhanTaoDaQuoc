@@ -3,14 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -75,7 +68,7 @@
                                     <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                               </Line>
-                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
+                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadUserPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -83,22 +76,22 @@
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
+                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFieldPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
+                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadBookingPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
+                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadInvoicePage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
+                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadMaintenancePage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -125,129 +118,7 @@
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-                     <children>
-                        <AnchorPane fx:id="paneToShowUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false">
-                           <children>
-                              <VBox prefHeight="548.0" prefWidth="907.0">
-                                 <children>
-                                    <TextField fx:id="searchField" promptText="Tìm kiếm tên người dùng">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <TableView fx:id="userTable">
-                                      <columns>
-                                        <TableColumn fx:id="sttColumn" prefWidth="75.20001220703125" text="STT" />
-                                        <TableColumn fx:id="nameColumn" prefWidth="254.40008544921875" text="Họ và tên" />
-                                          <TableColumn fx:id="emailColumn" prefWidth="239.99993896484375" text="Email" />
-                                          <TableColumn fx:id="phoneColumn" prefWidth="195.99993896484375" text="Số điện thoại" />
-                                          <TableColumn fx:id="createdAtColumn" prefWidth="146.40008544921875" text="Thời gian tạo" />
-                                      </columns>
-                                    </TableView>
-                                    <HBox prefHeight="278.0" prefWidth="907.0">
-                                       <children>
-                                          <VBox prefHeight="100.0" prefWidth="526.0">
-                                             <children>
-                                                <Label text="ID người dùng" />
-                                                <Label text="Họ và tên" />
-                                                <Label text="Email" />
-                                                <Label text="Số điện thoại" />
-                                                <Label text="Thời gian tạo" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="100.0" prefWidth="529.0">
-                                             <children>
-                                                <TextField fx:id="txtUserID" disable="true" />
-                                                <TextField fx:id="txtFullName" />
-                                                <TextField fx:id="txtEmail" />
-                                                <TextField fx:id="txtPhoneNumber" />
-                                                <TextField fx:id="txtCreatedAt" disable="true" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="129.0" prefWidth="907.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#handleAddUser" text="Thêm" />
-                                          <Button mnemonicParsing="false" onAction="#handleDeleteUser" text="Xóa" />
-                                          <Button mnemonicParsing="false" onAction="#updateUser" text="Sửa" />
-                                          <Button fx:id="btnReset" mnemonicParsing="false" onAction="#clearInputsFields" text="Reser dữ liệu" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                        <AnchorPane fx:id="paneToShowFields" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="905.0">
-                           <children>
-                              <VBox prefHeight="548.0" prefWidth="906.0">
-                                 <children>
-                                    <Label text="Quản lý sân bóng" />
-                                    <TableView fx:id="fieldTable" prefHeight="200.0" prefWidth="200.0">
-                                      <columns>
-                                        <TableColumn fx:id="colFieldID" prefWidth="117.60000610351562" text="ID sân bóng" />
-                                        <TableColumn fx:id="colFieldName" prefWidth="84.7999267578125" text="Tên sân bóng" />
-                                          <TableColumn fx:id="colFieldStatus" prefWidth="127.20001220703125" text="Trạng thái sân" />
-                                          <TableColumn fx:id="colPricePerHour" prefWidth="131.20001220703125" text="Giá thuê sân/giờ" />
-                                          <TableColumn fx:id="colDescription" prefWidth="442.39996337890625" text="Mô tả" />
-                                      </columns>
-                                    </TableView>
-                                    <HBox>
-                                       <children>
-                                          <Button fx:id="btnAddField" mnemonicParsing="false" text="Thêm sân" />
-                                          <Button fx:id="btnEditField" mnemonicParsing="false" text="Chỉnh sửa sân" />
-                                          <Button fx:id="btnDeleteField" mnemonicParsing="false" text="Xóa sân" />
-                                          <Button mnemonicParsing="false" text="Reset" />
-                                       </children>
-                                    </HBox>
-                                    <HBox>
-                                       <children>
-                                          <Label text="Lọc theo trạng thái :" />
-                                          <RadioButton fx:id="radioAvailable" mnemonicParsing="false" text="Sân có sẵn">
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="fieldStatusToggleGroup" />
-                                             </toggleGroup>
-                                          </RadioButton>
-                                          <RadioButton fx:id="radioMaintenance" mnemonicParsing="false" text="Sân đang bảo trì" toggleGroup="$fieldStatusToggleGroup" />
-                                          <RadioButton fx:id="radioBooked" mnemonicParsing="false" text="Sân đã đặt" toggleGroup="$fieldStatusToggleGroup" />
-                                          <RadioButton fx:id="radioAll" mnemonicParsing="false" text="Tất cả" toggleGroup="$fieldStatusToggleGroup" />
-                                       </children>
-                                    </HBox>
-                                    <VBox>
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Tên sân" />
-                                                <TextField fx:id="txtFieldName" />
-                                             </children>
-                                          </HBox>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Giá thuê/giờ" />
-                                                <TextField fx:id="txtPricePerHour" />
-                                             </children>
-                                          </HBox>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Trạng thái:" />
-                                                <ComboBox fx:id="fieldStatusCB" prefWidth="150.0" />
-                                             </children>
-                                          </HBox>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Mô tả: " />
-                                                <TextArea fx:id="txtAreaDescription" prefHeight="100.0" prefWidth="210.0" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                        <AnchorPane fx:id="paneToShowBookings" layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="907.0" style="-fx-background-color: green;" visible="false" />
-                        <AnchorPane fx:id="paneToShowInvoices" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: pink;" visible="false" />
-                        <AnchorPane fx:id="paneToShowMaintenances" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="906.0" style="-fx-background-color: #F85959;" visible="false" />
-                     </children></AnchorPane>
+                  <AnchorPane fx:id="contentArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </children>
