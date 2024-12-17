@@ -1,6 +1,7 @@
 package dat.nx.sanbongdaquoc.controllers;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import dat.nx.sanbongdaquoc.enums.FieldStatus;
@@ -73,6 +74,13 @@ public class FieldPageController {
 	
 	@FXML
 	public void initialize() {
+		// Khởi tạo statusGroup và liên kết với các thành phần điều khiển
+	    statusGroup = new ToggleGroup();
+	    allStatusRadio.setToggleGroup(statusGroup);
+	    availableRadio.setToggleGroup(statusGroup);
+	    maintenanceRadio.setToggleGroup(statusGroup);
+	    bookedRadio.setToggleGroup(statusGroup);
+		
 		//Cấu hình các cột table view
 		setupTableColumn();
 		
@@ -90,6 +98,20 @@ public class FieldPageController {
 	        }
 	    });
 	}
+	
+	@FXML
+    private void handleApplyButton() {
+        // Kiểm tra trạng thái đã chọn
+        RadioButton selectedRadioButton = (RadioButton) statusGroup.getSelectedToggle();
+        
+        // Kiểm tra xem người dùng đã chọn một trạng thái nào chưa
+        if (selectedRadioButton != null) {
+            String selectedStatus = selectedRadioButton.getText(); // Lấy tên trạng thái đã chọn
+            
+            // Bạn có thể lọc dữ liệu tại đây dựa trên trạng thái
+            filterDataByStatus(selectedStatus);
+        }
+    }
 	
 	private void displayFieldInfo(FieldDTO field) {
 	    // Điền thông tin sân vào các TextField và ComboBox
@@ -237,4 +259,23 @@ public class FieldPageController {
 	    fieldTable.getSelectionModel().clearSelection();
 	}
 	
+	private void filterDataByStatus(String status) {
+	    System.out.println("Lọc dữ liệu theo trạng thái: " + status);
+	    
+	    ObservableList<FieldDTO> filteredFields = FXCollections.observableArrayList();  // Dùng ObservableList thay vì ArrayList
+
+	    if (status.equals("Tất cả")) {
+	    	setupTableColumn();
+	    } else if (status.equals("Có sẵn")) {
+	        filteredFields = FXCollections.observableArrayList(fieldBLL.getFieldsByStatus(FieldStatus.AVAILABLE));
+	        fieldTable.setItems(filteredFields);  // Set lại ObservableList cho TableView
+	    } else if (status.equals("Bảo trì")) {
+	        filteredFields = FXCollections.observableArrayList(fieldBLL.getFieldsByStatus(FieldStatus.MAINTENANCE));
+	        fieldTable.setItems(filteredFields);  // Set lại ObservableList cho TableView
+	    } else if (status.equals("Đã đặt")) {
+	        filteredFields = FXCollections.observableArrayList(fieldBLL.getFieldsByStatus(FieldStatus.BOOKED));
+	        fieldTable.setItems(filteredFields);  // Set lại ObservableList cho TableView
+	    }
+	}
+
 }
