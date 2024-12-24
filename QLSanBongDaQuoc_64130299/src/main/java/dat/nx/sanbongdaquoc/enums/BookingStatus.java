@@ -1,10 +1,9 @@
 package dat.nx.sanbongdaquoc.enums;
 
 public enum BookingStatus {
-    PENDING("Pending"), // chờ duyệt
-    CONFIRMED("Confirmed"), // xác nhận
-    CANCELLED("Cancelled"), // đã hủy
-    NOSHOW("No-Show"); // không xuất hiện
+    PENDING("Chờ duyệt"),
+    CONFIRMED("Xác nhận"),
+    CANCELLED("Đã hủy");
 
     private final String status;
 
@@ -34,4 +33,3 @@ public enum BookingStatus {
         throw new IllegalArgumentException("No enum constant with status " + status);
     }
 }
-
