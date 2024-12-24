@@ -33,6 +33,9 @@ public class BookingPageController {
 	private DatePicker bookingDatePicker;
 	@FXML
 	private Button searchButton;
+	//Phần thanh công cụ làm mới,thống kê,xác nhận,hủy
+	@FXML
+	private Button refreshButton, reportButton, confirmButton, cancelButton;
 	
 	//Gọi lớp BLL để xử lý
 	private BookingBLL bookingBLL = new BookingBLL(new BookingDAL());
@@ -54,6 +57,22 @@ public class BookingPageController {
 
         // Xử lý sự kiện tìm kiếm
         setupSearchButton();
+        
+        // Xử lý sự kiện làm mới
+        setupRefreshButton();
+	}
+
+	private void setupRefreshButton() {
+		refreshButton.setOnAction(event -> {
+	        // Reset ComboBox
+	        fieldComboBox.setValue(null);
+
+	        // Reset DatePicker
+	        bookingDatePicker.setValue(null);
+
+	        // Load lại toàn bộ danh sách đặt sân
+	        setupTableColumn();
+	    });
 	}
 
 	private void setupSearchButton() {
