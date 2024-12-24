@@ -14,10 +14,10 @@
 <?import javafx.scene.shape.Line?>
 
 <AnchorPane fx:id="root" accessibleHelp="a" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.BookingPageController">
-   <VBox alignment="CENTER" prefHeight="600.0" prefWidth="907.0" spacing="15">
+   <VBox alignment="CENTER" prefHeight="548.0" prefWidth="907.0" spacing="15">
       <children>
          <!-- Title -->
-         <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Quản Lý Đặt Sân">
+         <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Quản Lý Đặt Sân">
             <padding>
                 <Insets top="10.0" />
             </padding>
@@ -32,16 +32,20 @@
          </HBox>
       
          <!-- Bảng yêu cầu đặt sân -->
-         <TableView fx:id="bookingTable" prefHeight="200.0" style="-fx-background-color: white; -fx-border-color: green; -fx-border-width: 2;">
-            <columns>
-               <TableColumn fx:id="bookingIDCol" prefWidth="62.3999924659729" text="ID" />
-               <TableColumn fx:id="bookingTimeCol" prefWidth="390.40003204345703" text="Thời gian yêu cầu" />
-               <TableColumn fx:id="statusCol" prefWidth="127.19998168945312" text="Trạng thái" />
-               <TableColumn fx:id="customerCol" prefWidth="197.5999755859375" text="Khách hàng" />
-               <TableColumn fx:id="fieldNameCol" prefWidth="119.2000732421875" text="Sân" />
-            </columns>
-         </TableView>
-         
+		<TableView fx:id="bookingTable" prefHeight="181.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1px;">
+		    <columns>
+		        <TableColumn fx:id="bookingIDCol" prefWidth="60" text="ID" />
+		        <TableColumn fx:id="bookingTimeCol" prefWidth="197.59999084472656" text="Thời gian yêu cầu" />
+		        <TableColumn fx:id="statusCol" prefWidth="124.00006103515625" text="Trạng thái" />
+		        <TableColumn fx:id="paymentStatusCol" prefWidth="143.99990844726562" text="Trạng thái thanh toán" />
+		        <TableColumn fx:id="customerCol" prefWidth="245.60000610351562" text="Khách hàng" />
+		        <TableColumn fx:id="fieldNameCol" prefWidth="104.0" text="Sân" />
+		    </columns>
+		    <VBox.margin>
+		        <Insets left="10.0" right="10.0" />
+		    </VBox.margin>
+		</TableView>
+		 
          <Pane>
             <children>
                <VBox alignment="CENTER" layoutX="356.0" layoutY="-3.0" spacing="5.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C); -fx-border-width: 2;">
@@ -52,11 +56,11 @@
                      <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Chi tiết yêu cầu" />
                      <Line endX="100.0" startX="-100.0" />
                      <VBox spacing="5">
-                        <Label fx:id="customerDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 18;" text="Tên khách hàng: " />
-                        <Label fx:id="fieldDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 18;" text="Sân: " />
-                        <Label fx:id="bookingDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 18;" text="Thời gian yêu cầu: " />
-                        <Label fx:id="statusDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 18;" text="Trạng thái: " />
-                        <Label fx:id="paymentStatusLabel" style="-fx-text-fill: white; -fx-font-size: 18;" text="Trạng thái thanh toán: " />
+                        <Label fx:id="customerDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Tên khách hàng: " />
+                        <Label fx:id="fieldDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Sân: " />
+                        <Label fx:id="bookingDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Thời gian yêu cầu: " />
+                        <Label fx:id="statusDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Trạng thái: " />
+                        <Label fx:id="paymentStatusLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Trạng thái thanh toán: " />
                      </VBox>
                   </children>
                </VBox>
@@ -64,7 +68,7 @@
          </Pane>
       
          <!-- Thanh công cụ -->
-         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="908.0" spacing="10">
+         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="908.0" spacing="10.0">
             <Button fx:id="refreshButton" style="-fx-background-color: #17a2b8; -fx-text-fill: white;" text="Làm mới" />
             <Button fx:id="reportButton" style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Xuất báo cáo" />
             <Button fx:id="confirmButton" style="-fx-background-color: #28a745; -fx-text-fill: white;" text="Xác nhận" />
