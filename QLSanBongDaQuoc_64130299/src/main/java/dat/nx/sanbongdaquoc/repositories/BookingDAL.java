@@ -125,7 +125,35 @@ public class BookingDAL {
 	}
 	
 	// Lấy thông tin của 1 đơn đặt sân theo id
-		public BookingDTO getBookingById(String bookingId) {
-			return bookingDTO;
-		}
+	public BookingDTO getBookingById(String bookingID) {
+	    String query = "SELECT " +
+	            "b.BookingID, " +
+	            "CONCAT(DATE_FORMAT(b.StartTime, '%H:%i'), ' - ', DATE_FORMAT(b.EndTime, '%H:%i'), ', ', DATE_FORMAT(b.BookingDate, '%d/%m/%Y')) AS TimeDetails, " +
+	            "b.Status, " +
+	            "b.PaymentStatus, " +
+	            "u.FullName AS UserName, " +
+	            "f.FieldName " +
+	            "FROM bookings_64130299 b " +
+	            "JOIN users_64130299 u ON b.UserID = u.UserID " +
+	            "JOIN fields_64130299 f ON b.FieldID = f.FieldID " +
+	            "WHERE b.BookingID = ?";
+	    BookingDTO bookingDTO = null;
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        preparedStatement.setString(1, bookingID);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+	        if (resultSet.next()) {
+	            bookingDTO = new BookingDTO();
+	            bookingDTO.setBookingID(resultSet.getString("BookingID"));
+	            bookingDTO.setTimeDetails(resultSet.getString("TimeDetails"));
+	            bookingDTO.setStatus(BookingStatus.fromString(resultSet.getString("Status")));
+	            bookingDTO.setUserName(resultSet.getString("UserName"));
+	            bookingDTO.setFieldName(resultSet.getString("FieldName"));
+	            bookingDTO.setPaymentStatus(PaymentStatus.fromString(resultSet.getString("PaymentStatus")));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return bookingDTO;
+	}
 }

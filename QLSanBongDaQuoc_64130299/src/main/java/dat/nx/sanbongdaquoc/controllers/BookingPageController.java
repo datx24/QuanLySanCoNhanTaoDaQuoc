@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,6 +38,9 @@ public class BookingPageController {
 	//Phần thanh công cụ làm mới,thống kê,xác nhận,hủy
 	@FXML
 	private Button refreshButton, reportButton, confirmButton, cancelButton;
+	//Bảng các label hiển thị chi tiết 1 nội dung đặt sân
+	@FXML
+	private Label customerDetailsLabel,fieldDetailsLabel,bookingDetailsLabel,statusDetailsLabel,paymentStatusLabel;
 	
 	//Gọi lớp BLL để xử lý
 	private BookingBLL bookingBLL = new BookingBLL(new BookingDAL());
@@ -66,6 +70,22 @@ public class BookingPageController {
         setupReportButton(); 
 	}
 	
+	// Phương thức được gọi khi chọn một bản ghi trong bảng
+    @FXML
+    private void onBookingSelected() {
+        BookingDTO selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
+        if (selectedBooking != null) {
+            BookingDTO bookingDetails = bookingBLL.getBookingById(selectedBooking.getBookingID());
+            if (bookingDetails != null) {
+                // Gán dữ liệu lên các Label
+                customerDetailsLabel.setText("Tên khách hàng: " + bookingDetails.getUserName());
+                fieldDetailsLabel.setText("Sân: " + bookingDetails.getFieldName());
+                bookingDetailsLabel.setText("Thời gian yêu cầu: " + bookingDetails.getTimeDetails());
+                statusDetailsLabel.setText("Trạng thái: " + bookingDetails.getStatus().getStatus());
+                paymentStatusLabel.setText("Trạng thái thanh toán: " + bookingDetails.getPaymentStatus().getStatus());
+            }
+        }
+    }
 	@FXML
 	private void setupReportButton() {
 	    reportButton.setOnAction(event -> {
