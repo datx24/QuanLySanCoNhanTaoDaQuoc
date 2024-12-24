@@ -32,7 +32,7 @@
          </HBox>
       
          <!-- Bảng yêu cầu đặt sân -->
-		<TableView fx:id="bookingTable" prefHeight="181.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1px;">
+		<TableView fx:id="bookingTable" onMouseClicked="#onBookingSelected" prefHeight="181.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1px;">
 		    <columns>
 		        <TableColumn fx:id="bookingIDCol" prefWidth="60" text="ID" />
 		        <TableColumn fx:id="bookingTimeCol" prefWidth="197.59999084472656" text="Thời gian yêu cầu" />
@@ -48,13 +48,13 @@
 		 
          <Pane>
             <children>
-               <VBox alignment="CENTER" layoutX="356.0" layoutY="-3.0" spacing="5.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C); -fx-border-width: 2;">
+               <VBox alignment="CENTER" layoutX="302.0" layoutY="-3.0" prefHeight="165.0" prefWidth="327.0" spacing="5.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C); -fx-border-width: 2;">
                   <padding>
                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                   </padding>
                   <children>
                      <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Chi tiết yêu cầu" />
-                     <Line endX="100.0" startX="-100.0" />
+                     <Line endX="212.49285888671875" endY="0.5928886532783508" startX="-100.0" />
                      <VBox spacing="5">
                         <Label fx:id="customerDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Tên khách hàng: " />
                         <Label fx:id="fieldDetailsLabel" style="-fx-text-fill: white; -fx-font-size: 15;" text="Sân: " />
@@ -69,10 +69,10 @@
       
          <!-- Thanh công cụ -->
 		<HBox alignment="CENTER" prefHeight="60.0" prefWidth="915.0" spacing="15.0">
-		    <Button fx:id="refreshButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Làm mới" />
-		    <Button fx:id="reportButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xuất báo cáo" />
-		    <Button fx:id="confirmButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xác nhận" />
-		    <Button fx:id="cancelButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Hủy" />
+		    <Button fx:id="refreshButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Làm mới" />
+		    <Button fx:id="reportButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xuất báo cáo" />
+		    <Button fx:id="confirmButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xác nhận" />
+		    <Button fx:id="cancelButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Hủy" />
 		</HBox>
       </children>
    </VBox>
