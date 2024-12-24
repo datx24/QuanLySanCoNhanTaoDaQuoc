@@ -35,21 +35,7 @@ public class BookingBLL {
 	public List<BookingDTO> getAllBookings() {
 		return bookingDAL.getAllBookings();
 	}
-	
-	//Lọc danh sách các đơn theo trạng thái
-	public List<BookingDTO> getBookingByStatus(BookingStatus status) {
-		return bookingDAL.getBookingByStatus(status);
-	}
-	
-	//Lọc danh sách các đơn theo ngày
-	public List<BookingDTO> getBookingByDate(LocalDate bookingDate) {
-		return bookingDAL.getBookingByDate(bookingDate);
-	}
-	
-	//Lấy thông tin đơn đặt sân theo ID
-	public BookingDTO getBookingById(String bookingId) {
-		return bookingDAL.getBookingById(bookingId);
-	}
+
 	
 	//Phương thức kiểm tra tình trạng sân trống
 	public boolean checkFieldAvailability(LocalDate bookingDate, String fieldId, 
@@ -61,4 +47,11 @@ public class BookingBLL {
 	public boolean updateBookingStatus(String bookingId, BookingStatus newStatus) {
 		return true;
 	}
+	
+	public List<BookingDTO> searchBookings(String fieldName, LocalDate bookingDate) {
+        if ((fieldName == null || fieldName.isEmpty()) && bookingDate == null) {
+            throw new IllegalArgumentException("Vui lòng chọn tên sân hoặc ngày đặt.");
+        }
+        return bookingDAL.searchBookings(fieldName, bookingDate);
+    }
 }	
