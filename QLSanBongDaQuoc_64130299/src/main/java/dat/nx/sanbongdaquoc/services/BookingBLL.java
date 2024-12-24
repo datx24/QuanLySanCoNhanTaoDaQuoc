@@ -9,8 +9,12 @@ import java.util.List;
 
 
 public class BookingBLL {
-	private BookingDAL bookingDAL = new BookingDAL();
+	private BookingDAL bookingDAL;
 	
+	public BookingBLL(BookingDAL bookingDAL) {
+		this.bookingDAL = bookingDAL;
+	}
+
 	//Kiểm tra các thuộc tính trước khi thêm đơn
 	public boolean addBooking(BookingDTO bookingDTO) {
 		return bookingDAL.addBooking(bookingDTO);
