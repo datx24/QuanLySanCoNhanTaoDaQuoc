@@ -1,8 +1,8 @@
 package dat.nx.sanbongdaquoc.enums;
 
 public enum PaymentStatus {
-    PAID("Paid"),    // Đã thanh toán
-    UNPAID("Unpaid"); // Chưa thanh toán
+    PAID("Đã thanh toán"),    // Đã thanh toán
+    UNPAID("Chưa thanh toán"); // Chưa thanh toán
 
     private final String status;
 
