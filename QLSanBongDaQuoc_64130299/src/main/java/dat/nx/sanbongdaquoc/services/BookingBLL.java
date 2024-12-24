@@ -54,4 +54,8 @@ public class BookingBLL {
         }
         return bookingDAL.searchBookings(fieldName, bookingDate);
     }
+	
+    public BookingDTO getBookingById(String bookingID) {
+        return bookingDAL.getBookingById(bookingID);
+    }
 }	
