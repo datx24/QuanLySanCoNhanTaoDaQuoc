@@ -9,6 +9,7 @@ import dat.nx.sanbongdaquoc.repositories.BookingDAL;
 import dat.nx.sanbongdaquoc.repositories.FieldDAL;
 import dat.nx.sanbongdaquoc.services.BookingBLL;
 import dat.nx.sanbongdaquoc.services.FieldBLL;
+import dat.nx.sanbongdaquoc.utils.CommonUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -60,6 +61,27 @@ public class BookingPageController {
         
         // Xử lý sự kiện làm mới
         setupRefreshButton();
+        
+        // Gán sự kiện cho nút xuất báo cáo
+        setupReportButton(); 
+	}
+	
+	@FXML
+	private void setupReportButton() {
+	    reportButton.setOnAction(event -> {
+	        // Lấy thông tin lọc từ ComboBox và DatePicker
+	        String selectedField = fieldComboBox.getValue();
+	        LocalDate selectedDate = bookingDatePicker.getValue();
+	        
+	        // Lọc danh sách booking dựa trên tiêu chí tìm kiếm
+	        List<BookingDTO> filteredBookings = bookingBLL.searchBookings(selectedField, selectedDate);
+
+	        // Chỉ định đường dẫn file để lưu
+	        String filePath = "E:\\64CNTT_CLC2\\QuanLySanCoNhanTaoDaQuoc\\QLSanBongDaQuoc_64130299\\BaoCaoQLSanBong.xlsx";
+
+	        // Gọi phương thức xuất báo cáo
+	        CommonUtils.exportToExcel(filteredBookings, filePath);
+	    });
 	}
 
 	private void setupRefreshButton() {
