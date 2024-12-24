@@ -10,38 +10,33 @@ public class BookingDTO {
 	private String bookingID;  
 	private String userID; 
 	private int fieldID;
-	private LocalDate bookingDate;// Ngày khách hàng đặt sân
-	private LocalTime startTime;// Giờ bắt đầu thuê sân
-	private LocalTime endTime;// Giờ kết thúc thuê sân
+	private String timeDetails;
 	private BookingStatus  status;// Trạng thái đặt sân (Pending, Confirmed, Cancelled, No-Show)
 	private String approvedBy;// ID của người quản lý xác nhận
 	private PaymentStatus paymentStatus;// Trạng thái thanh toán (Paid, Unpaid)
 	private Timestamp createdAt;
+	private String userName;
+    private String fieldName;
+    private LocalDate bookingDate;
 	
 	public BookingDTO() {
 	}
-	
-	public BookingDTO(String bookingID, String userID, int fieldID, LocalDate bookingDate, LocalTime startTime, LocalTime endTime,
-			BookingStatus  status, String approvedBy, PaymentStatus paymentStatus,Timestamp createdAt) {
+
+	public BookingDTO(String bookingID, String userID, int fieldID, String timeDetails, BookingStatus status,
+			String approvedBy, PaymentStatus paymentStatus, Timestamp createdAt, String userName, String fieldName,
+			LocalDate bookingDate) {
 		super();
 		this.bookingID = bookingID;
 		this.userID = userID;
 		this.fieldID = fieldID;
-		this.bookingDate = bookingDate;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.timeDetails = timeDetails;
 		this.status = status;
 		this.approvedBy = approvedBy;
 		this.paymentStatus = paymentStatus;
 		this.createdAt = createdAt;
-	}
-
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
+		this.userName = userName;
+		this.fieldName = fieldName;
+		this.bookingDate = bookingDate;
 	}
 
 	public LocalDate getBookingDate() {
@@ -50,6 +45,22 @@ public class BookingDTO {
 
 	public void setBookingDate(LocalDate bookingDate) {
 		this.bookingDate = bookingDate;
+	}
+
+	public String getTimeDetails() {
+		return timeDetails;
+	}
+
+	public void setTimeDetails(String timeDetails) {
+		this.timeDetails = timeDetails;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public String getBookingID() {
@@ -76,22 +87,6 @@ public class BookingDTO {
 		this.fieldID = fieldID;
 	}
 
-	public LocalTime getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
-
-	public LocalTime getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
-
 	public BookingStatus  getStatus() {
 		return status;
 	}
@@ -114,6 +109,22 @@ public class BookingDTO {
 
 	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 	
 	
