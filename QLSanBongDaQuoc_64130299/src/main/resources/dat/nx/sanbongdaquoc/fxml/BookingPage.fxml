@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 
 <AnchorPane fx:id="root" accessibleHelp="a" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.BookingPageController">
-   <VBox alignment="CENTER" prefHeight="548.0" prefWidth="907.0" spacing="15">
+   <VBox alignment="CENTER" prefHeight="548.0" prefWidth="907.0" spacing="10.0">
       <children>
          <!-- Title -->
          <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Quản Lý Đặt Sân">
@@ -68,12 +68,12 @@
          </Pane>
       
          <!-- Thanh công cụ -->
-         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="908.0" spacing="10.0">
-            <Button fx:id="refreshButton" style="-fx-background-color: #17a2b8; -fx-text-fill: white;" text="Làm mới" />
-            <Button fx:id="reportButton" style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Xuất báo cáo" />
-            <Button fx:id="confirmButton" style="-fx-background-color: #28a745; -fx-text-fill: white;" text="Xác nhận" />
-            <Button fx:id="cancelButton" style="-fx-background-color: #dc3545; -fx-text-fill: white;" text="Hủy" />
-         </HBox>
+		<HBox alignment="CENTER" prefHeight="60.0" prefWidth="915.0" spacing="15.0">
+		    <Button fx:id="refreshButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Làm mới" />
+		    <Button fx:id="reportButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xuất báo cáo" />
+		    <Button fx:id="confirmButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Xác nhận" />
+		    <Button fx:id="cancelButton" prefWidth="120.0" prefHeight="40.0" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Hủy" />
+		</HBox>
       </children>
    </VBox>
 </AnchorPane>
