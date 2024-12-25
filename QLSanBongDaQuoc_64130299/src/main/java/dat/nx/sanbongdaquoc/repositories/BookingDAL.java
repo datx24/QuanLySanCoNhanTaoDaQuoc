@@ -232,4 +232,30 @@ public class BookingDAL {
             return false;
         }
     }
+    
+    public boolean processPayment(BookingDTO booking) {
+        try {
+            booking.setPaymentStatus(PaymentStatus.PAID);
+            return updatePaymentStatus(booking); // Cập nhật trạng thái trong cơ sở dữ liệu
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    //Cập nhật trạng thái thanh toán
+    public boolean updatePaymentStatus(BookingDTO booking) {
+        String sql = "UPDATE bookings_64130299 SET PaymentStatus = ? WHERE BookingID = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, booking.getPaymentStatus().toString());
+            stmt.setString(2, booking.getBookingID());
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
