@@ -3,6 +3,7 @@ package dat.nx.sanbongdaquoc.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import dat.nx.sanbongdaquoc.enums.BookingStatus;
 import dat.nx.sanbongdaquoc.models.entities.BookingDTO;
 import dat.nx.sanbongdaquoc.models.entities.FieldDTO;
 import dat.nx.sanbongdaquoc.repositories.BookingDAL;
@@ -13,6 +14,8 @@ import dat.nx.sanbongdaquoc.utils.CommonUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -67,9 +70,59 @@ public class BookingPageController {
         setupRefreshButton();
         
         // Gán sự kiện cho nút xuất báo cáo
-        setupReportButton(); 
+        setupReportButton();
+        
+        // Gán sự kiện cho nút xác nhận
+        setupConfirmButton();
+
+        // Gán sự kiện cho nút hủy
+        setupCancelButton();
 	}
 	
+	// Phương thức xử lý sự kiện nút Hủy
+    private void setupCancelButton() {
+        cancelButton.setOnAction(event -> {
+            BookingDTO selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
+            if (selectedBooking != null) {
+                // Thay đổi trạng thái thành "Đã hủy"
+                selectedBooking.setStatus(BookingStatus.CANCELLED);
+                bookingBLL.updateBookingStatus(selectedBooking);
+                showAlert(AlertType.INFORMATION, "Thông báo", "Đơn đặt sân đã bị hủy.");
+                loadAllBookings(); // Làm mới danh sách
+            }
+        });
+    }
+
+    // Phương thức xử lý sự kiện nút Xác Nhận
+    private void setupConfirmButton() {
+        confirmButton.setOnAction(event -> {
+            BookingDTO selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
+            if (selectedBooking != null) {
+                // Kiểm tra tình trạng booking có hợp lệ để xác nhận không
+                boolean isConflict = bookingBLL.checkTimeConflictAndUpdateStatus(selectedBooking);
+                if (!isConflict) {
+                    // Hiển thị thông báo lỗi nếu có sự trùng lặp
+                    showAlert(AlertType.ERROR, "Lỗi", "Đơn đặt sân bị trùng lặp.");
+                } else {
+                    // Cập nhật trạng thái thành "Đã xác nhận"
+                    selectedBooking.setStatus(BookingStatus.CONFIRMED);
+                    bookingBLL.updateBookingStatus(selectedBooking);
+                    showAlert(AlertType.INFORMATION, "Thành công", "Đơn đặt sân đã được xác nhận.");
+                    loadAllBookings(); // Làm mới danh sách
+                }
+            }
+        });
+    }
+    
+    // Phương thức hiển thị thông báo Alert
+    private void showAlert(AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 	// Phương thức được gọi khi chọn một bản ghi trong bảng
     @FXML
     private void onBookingSelected() {
@@ -157,5 +210,6 @@ public class BookingPageController {
 		bookingList.setAll(bookings);
 		bookingTable.setItems(bookingList);
 	}
+	
 	
 }
