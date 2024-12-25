@@ -1,8 +1,8 @@
 package dat.nx.sanbongdaquoc.enums;
 
 public enum PaymentMethod {
-    CASH("Cash"),// tiền mặt
-    ONLINE("Online");// chuyển khoản
+    CASH("Tiền mặt"),// tiền mặt
+    ONLINE("Chuyển khoản");// chuyển khoản
 
     private final String method;
 
