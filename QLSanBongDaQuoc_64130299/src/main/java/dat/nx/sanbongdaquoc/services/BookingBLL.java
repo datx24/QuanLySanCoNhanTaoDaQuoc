@@ -12,11 +12,12 @@ import java.util.List;
 
 public class BookingBLL {
 	private BookingDAL bookingDAL;
+	private InvoiceDAL invoiceDAL = new InvoiceDAL();
 	
 	public BookingBLL(BookingDAL bookingDAL) {
 		this.bookingDAL = bookingDAL;
 	}
-
+	
 	//Kiểm tra các thuộc tính trước khi thêm đơn
 	public boolean addBooking(BookingDTO bookingDTO) {
 		return bookingDAL.addBooking(bookingDTO);
@@ -66,48 +67,6 @@ public class BookingBLL {
         return bookingDAL.getBookingById(bookingID);
     }
     
-    public boolean checkTimeConflictAndUpdateStatus(BookingDTO newBooking) {
-        List<BookingDTO> existingBookings = bookingDAL.getAllBookings();
-        System.out.println("Tổng số đơn đặt sân hiện có: " + existingBookings.size());
-
-        for (BookingDTO existingBooking : existingBookings) {
-            // Bỏ qua chính đối tượng đang được kiểm tra
-            if (existingBooking.getBookingID().equals(newBooking.getBookingID())) {
-                System.out.println("Bỏ qua đối tượng trùng với chính nó: " + existingBooking.getBookingID());
-                continue;
-            }
-
-            System.out.println("Debug: Kiểm tra với đơn đặt sân:");
-            System.out.println("- BookingDate: " + existingBooking.getBookingDate());
-            System.out.println("- StartTime: " + existingBooking.getStartTime());
-            System.out.println("- EndTime: " + existingBooking.getEndTime());
-
-            if (existingBooking.getStartTime() != null && existingBooking.getEndTime() != null) {
-                boolean isOverlapping = isTimeOverlapping(
-                    newBooking.getBookingDate(), newBooking.getStartTime(), newBooking.getEndTime(),
-                    existingBooking.getBookingDate(), existingBooking.getStartTime(), existingBooking.getEndTime()
-                );
-
-                System.out.println("So sánh với: ");
-                System.out.println("- New BookingDate: " + newBooking.getBookingDate());
-                System.out.println("- New StartTime: " + newBooking.getStartTime());
-                System.out.println("- New EndTime: " + newBooking.getEndTime());
-                System.out.println("Kết quả isOverlapping: " + isOverlapping);
-
-                if (isOverlapping) {
-                    System.out.println("Xung đột thời gian với: " + existingBooking.getTimeDetails());
-                    return false; // Có xung đột -> không cập nhật trạng thái
-                }
-            } else {
-                System.out.println("Thời gian không hợp lệ: " + existingBooking.getTimeDetails());
-            }
-        }
-
-        // Nếu không có xung đột thời gian, tiến hành cập nhật trạng thái
-        System.out.println("Không có xung đột thời gian. Tiến hành xác nhận trạng thái.");
-        return bookingDAL.updateBookingStatus(newBooking.getBookingID(), BookingStatus.CONFIRMED);
-    }
-    
     private boolean isTimeOverlapping(LocalDate bookingDate1, LocalTime startTime1, LocalTime endTime1,
             LocalDate bookingDate2, LocalTime startTime2, LocalTime endTime2) {
 		// Kiểm tra nếu ngày khác nhau, không thể chồng lấn
@@ -124,5 +83,31 @@ public class BookingBLL {
     public boolean cancelBooking(String bookingID) {
         return bookingDAL.updateBookingStatus(bookingID, BookingStatus.CANCELLED);
     }
+    
+    public boolean processPayment(BookingDTO booking) {
+        try {
+            // Cập nhật trạng thái thanh toán của booking
+            booking.setPaymentStatus(PaymentStatus.PAID);
 
+            // Cập nhật trạng thái thanh toán trong cơ sở dữ liệu
+            boolean isPaymentUpdated = bookingDAL.updatePaymentStatus(booking);
+            
+            // Nếu thanh toán đã được cập nhật thành công, tạo hóa đơn
+            if (isPaymentUpdated) {
+                // Tạo hóa đơn từ BookingDTO
+                InvoiceDTO invoice = invoiceDAL.createInvoiceFromBooking(booking);
+                
+                // Lưu hóa đơn vào cơ sở dữ liệu
+                boolean isInvoiceSaved = invoiceDAL.insertInvoice(invoice);
+                
+                // Trả về kết quả nếu hóa đơn được lưu thành công
+                return isInvoiceSaved;
+            }
+            
+            return false;  // Nếu cập nhật thanh toán thất bại
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }	
