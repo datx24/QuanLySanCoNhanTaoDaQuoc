@@ -35,11 +35,12 @@
 		<TableView fx:id="bookingTable" onMouseClicked="#onBookingSelected" prefHeight="181.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1px;">
 		    <columns>
 		        <TableColumn fx:id="bookingIDCol" prefWidth="60" text="ID" />
-		        <TableColumn fx:id="bookingTimeCol" prefWidth="197.59999084472656" text="Thời gian yêu cầu" />
-		        <TableColumn fx:id="statusCol" prefWidth="124.00006103515625" text="Trạng thái" />
-		        <TableColumn fx:id="paymentStatusCol" prefWidth="143.99990844726562" text="Trạng thái thanh toán" />
-		        <TableColumn fx:id="customerCol" prefWidth="245.60000610351562" text="Khách hàng" />
-		        <TableColumn fx:id="fieldNameCol" prefWidth="104.0" text="Sân" />
+		        <TableColumn fx:id="bookingTimeCol" prefWidth="175.9999542236328" text="Thời gian yêu cầu" />
+		        <TableColumn fx:id="statusCol" prefWidth="120.800048828125" text="Trạng thái" />
+		        <TableColumn fx:id="paymentStatusCol" prefWidth="136.79998779296875" text="Trạng thái thanh toán" />
+		        <TableColumn fx:id="customerCol" prefWidth="155.199951171875" text="Khách hàng" />
+		        <TableColumn fx:id="fieldNameCol" prefWidth="83.20001220703125" text="Sân" />
+		        <TableColumn fx:id="actionColumn" prefWidth="144.7999267578125" text="Hành động" />
 		    </columns>
 		    <VBox.margin>
 		        <Insets left="10.0" right="10.0" />
