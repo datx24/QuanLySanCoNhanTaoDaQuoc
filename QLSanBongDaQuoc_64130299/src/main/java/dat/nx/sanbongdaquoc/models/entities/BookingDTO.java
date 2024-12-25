@@ -18,25 +18,38 @@ public class BookingDTO {
 	private String userName;
     private String fieldName;
     private LocalDate bookingDate;
+    private LocalTime startTime,endTime;
 	
 	public BookingDTO() {
 	}
+	
+    public BookingDTO(String bookingID, String timeDetails, BookingStatus status, String userName, String fieldName,
+                      PaymentStatus paymentStatus, LocalTime startTime, LocalTime endTime, LocalDate bookingDate) {
+        this.bookingID = bookingID;
+        this.timeDetails = timeDetails;
+        this.status = status;
+        this.userName = userName;
+        this.fieldName = fieldName;
+        this.paymentStatus = paymentStatus;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.bookingDate = bookingDate;
+    }
+    
+	public LocalTime getStartTime() {
+		return startTime;
+	}
 
-	public BookingDTO(String bookingID, String userID, int fieldID, String timeDetails, BookingStatus status,
-			String approvedBy, PaymentStatus paymentStatus, Timestamp createdAt, String userName, String fieldName,
-			LocalDate bookingDate) {
-		super();
-		this.bookingID = bookingID;
-		this.userID = userID;
-		this.fieldID = fieldID;
-		this.timeDetails = timeDetails;
-		this.status = status;
-		this.approvedBy = approvedBy;
-		this.paymentStatus = paymentStatus;
-		this.createdAt = createdAt;
-		this.userName = userName;
-		this.fieldName = fieldName;
-		this.bookingDate = bookingDate;
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalTime endTime) {
+		this.endTime = endTime;
 	}
 
 	public LocalDate getBookingDate() {
@@ -87,7 +100,7 @@ public class BookingDTO {
 		this.fieldID = fieldID;
 	}
 
-	public BookingStatus  getStatus() {
+	public BookingStatus getStatus() {
 		return status;
 	}
 
