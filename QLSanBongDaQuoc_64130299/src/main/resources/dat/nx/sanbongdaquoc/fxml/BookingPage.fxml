@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane fx:id="root" accessibleHelp="a" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.BookingPageController">
+<AnchorPane accessibleHelp="a" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.BookingPageController">
    <VBox alignment="CENTER" prefHeight="548.0" prefWidth="907.0" spacing="10.0">
       <children>
          <!-- Title -->
