@@ -6,16 +6,39 @@ import dat.nx.sanbongdaquoc.repositories.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class InvoiceBLL {
-	private InvoiceDAL invoiceDAL = new InvoiceDAL();
+	private InvoiceDAL invoiceDAL;
+	
+	public InvoiceBLL(InvoiceDAL invoiceDAL) {
+		this.invoiceDAL = invoiceDAL;
+	}
+
 	
 	//Xử lý trước khi thêm hóa đơn
-	public boolean addInvoice(InvoiceDTO invoiceDTO) {
-		return invoiceDAL.addInvoice(invoiceDTO);
-	}
+	public InvoiceDTO createInvoice(BookingDTO booking, PaymentMethod paymentMethod) {
+        if (booking == null || paymentMethod == null) {
+            throw new IllegalArgumentException("Đơn đặt sân hoặc phương thức thanh toán không được null.");
+        }
+
+        // Tạo hóa đơn mới
+        InvoiceDTO invoice = new InvoiceDTO();
+        invoice.setBookingID(booking.getBookingID());
+        invoice.setAmount(BigDecimal.valueOf(100)); // Có thể tính tổng giá trị từ booking nếu có
+        invoice.setPaymentMethod(paymentMethod);
+        invoice.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+
+        boolean success = invoiceDAL.insertInvoice(invoice);
+
+        if (!success) {
+            throw new RuntimeException("Không thể lưu hóa đơn vào cơ sở dữ liệu.");
+        }
+
+        return invoice;
+    }
 	
 	//Xử lý trước khi cập nhật hóa đơn
 	public boolean updateInvoice(InvoiceDTO invoiceDTO) {
@@ -74,4 +97,9 @@ public class InvoiceBLL {
 		List<InvoiceDTO> invoices = invoiceDAL.getAllInvoices();
 		return "Invoice Summary: " + invoices.size() + " invoices found.";
 	}
+	
+	//Tạo hóa đơn sau khi xác nhận thanh toán thành công từ lớp bookinh
+    public InvoiceDTO createInvoiceFromBooking(BookingDTO booking) {
+        return invoiceDAL.createInvoiceFromBooking(booking);
+    }
 }
