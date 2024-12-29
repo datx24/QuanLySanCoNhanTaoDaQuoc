@@ -4,7 +4,8 @@ import java.sql.Date;
 
 public class MaintenanceDTO {
 	private String maintenanceID;
-    private int fieldID; 
+    private String fieldName; 
+    private int fieldId;
     private Date startDate;
     private Date endDate;
     private String description;// Mô tả chi tiết lý do hoặc thông tin bảo trì
@@ -13,15 +14,33 @@ public class MaintenanceDTO {
 	public MaintenanceDTO() {
 	}
 
-	public MaintenanceDTO(String maintenanceID, int fieldID, Date startDate, Date endDate, String description,
+	public MaintenanceDTO(String maintenanceID, String fieldName, Date startDate, Date endDate, String description,
 			String createdBy) {
 		super();
 		this.maintenanceID = maintenanceID;
-		this.fieldID = fieldID;
+		this.fieldName = fieldName;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.description = description;
 		this.createdBy = createdBy;
+	}
+	
+	
+
+	public int getFieldId() {
+		return fieldId;
+	}
+
+	public void setFieldId(int fieldId) {
+		this.fieldId = fieldId;
+	}
+
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
 	}
 
 	public String getMaintenanceID() {
@@ -32,13 +51,7 @@ public class MaintenanceDTO {
 		this.maintenanceID = maintenanceID;
 	}
 
-	public int getFieldID() {
-		return fieldID;
-	}
-
-	public void setFieldID(int fieldID) {
-		this.fieldID = fieldID;
-	}
+	
 
 	public Date getStartDate() {
 		return startDate;
