@@ -4,55 +4,58 @@ import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.repositories.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MaintenanceBLL {
-	private MaintenanceDAL maintenanceDAL = new MaintenanceDAL();
+	private MaintenanceDAL maintenanceDAL;
 	
-	//Xử lý logic trước khi thêm lịch bảo trì
-	public boolean addMaintenanceIfNotOverlap(MaintenanceDTO maintenanceDTO) {
-		//Cài đặt xử lý trước khi thêm
-		return maintenanceDAL.addMaintenance(maintenanceDTO);
+	public MaintenanceBLL(MaintenanceDAL maintenanceDAL) {
+		this.maintenanceDAL = maintenanceDAL;
 	}
-	
-	//Cập nhật thông tin bảo trì
-	public boolean updateMaintenance(MaintenanceDTO maintenanceDTO) {
-		return maintenanceDAL.updateMaintenance(maintenanceDTO);
-	}
-	
-	//Xóa lịch bảo trì
-	public boolean deleteMaintenance(String maintenanceID) {
-		MaintenanceDTO maintenanceDTO = getMaintenanceByID(maintenanceID);
-		return maintenanceDAL.deleteMaintenance(maintenanceDTO);
-	}
-	
-	//Lấy thông tin bảo trì theo ID
-	public MaintenanceDTO getMaintenanceByID(String maintenanceID) {
-		return maintenanceDAL.getMaintenanceByID(maintenanceID);
-	}
+
+
+    // Thêm lịch bảo trì (có kiểm tra trùng ngày)
+    public boolean addMaintenance(MaintenanceDTO maintenance) {
+            return maintenanceDAL.addMaintenance(maintenance);
+    }
+
+    // Sửa lịch bảo trì (có kiểm tra trùng ngày)
+    public boolean updateMaintenance(MaintenanceDTO maintenance) {
+        return maintenanceDAL.updateMaintenance(maintenance);
+    }
+
+    // Xóa lịch bảo trì
+    public boolean deleteMaintenance(MaintenanceDTO maintenance) {
+        return maintenanceDAL.deleteMaintenance(maintenance);
+    }
+
+    // Phương thức kiểm tra trùng lịch bảo trì
+    public boolean checkMaintenanceOverlap(String fieldName, LocalDate startDate, LocalDate endDate) {
+        // Lấy danh sách các lịch bảo trì của sân dựa vào fieldName
+        List<MaintenanceDTO> maintenances = maintenanceDAL.getMaintenancesByFieldName(fieldName);
+
+        // Kiểm tra xem lịch mới có trùng với lịch bảo trì cũ không
+        for (MaintenanceDTO maintenance : maintenances) {
+            LocalDate existingStartDate = maintenance.getStartDate().toLocalDate();
+            LocalDate existingEndDate = maintenance.getEndDate().toLocalDate();
+
+            // Kiểm tra trùng lịch
+            if (!(endDate.isBefore(existingStartDate) || startDate.isAfter(existingEndDate))) {
+                return true; // Có trùng lịch
+            }
+        }
+        return false; // Không trùng lịch
+    }
+
 	
 	//Lấy tất cả lịch bảo trì
 	public List<MaintenanceDTO> getAllMaintenance() {
-		return maintenanceDAL.getAllMaintenance();
+		return maintenanceDAL.getAllMaintenances();
 	}
 	
 	//Lấy lịch bảo trì theo sân
-	public List<MaintenanceDTO> getMaintenanceByFieldID(int fieldID) {
-		return maintenanceDAL.getMaintenanceByFieldID(fieldID);
+	public List<MaintenanceDTO> getMaintenanceByFieldName(String fieldName) {
+		return maintenanceDAL.getMaintenanceByFieldName(fieldName);
 	}
-	
-	//Kiểm tra lịch bảo trì có trùng không
-	public boolean checkMaintenanceOverlap(int fieldID, Date startDate, Date endDate) {
-		return maintenanceDAL.checkMaintenanceOverlap(fieldID, startDate, endDate);
-	}
-	
-	//Lấy tất cả lịch bảo trì theo thời gian
-	public List<MaintenanceDTO> getMaintenanceByDateRange(Date startDate, Date endDate) {
-        return maintenanceDAL.getMaintenanceByDateRange(startDate, endDate);
-    }
-	
-	// Lấy lịch bảo trì sắp tới
-    public List<MaintenanceDTO> getUpcomingMaintenance() {
-        return maintenanceDAL.getUpcomingMaintenance();
-    }
 }
