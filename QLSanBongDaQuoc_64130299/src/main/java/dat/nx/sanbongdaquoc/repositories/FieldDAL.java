@@ -170,4 +170,22 @@ public class FieldDAL {
 	    }
 	    return listFieldsByStatus; // Trả về danh sách các sân theo trạng thái
 	}
+	
+	// Lấy danh sách tên sân từ bảng field_64130299
+    public List<String> getAllFieldNames() {
+        List<String> fieldNames = new ArrayList<>();
+        String query = "SELECT FieldName FROM fields_64130299";
+
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                fieldNames.add(resultSet.getString("FieldName"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fieldNames;
+    }
 }
