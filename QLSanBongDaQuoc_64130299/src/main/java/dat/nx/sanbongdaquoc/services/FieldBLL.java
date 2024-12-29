@@ -68,4 +68,9 @@ public class FieldBLL {
     public List<FieldDTO> getFieldsByStatus(FieldStatus status) {
         return fieldDAL.getFieldsByStatus(status);  // Trả về danh sách các sân theo trạng thái
     }
+    
+    // Lấy danh sách tên sân từ BLL
+    public List<String> getAllFieldNames() {
+        return fieldDAL.getAllFieldNames();
+    }
 }
