@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="dat.nx.sanbongdaquoc.controllers.MaintenancePageController">
-	<children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Label  layoutX="72.0" layoutY="92.0" text="Maintence" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane prefHeight="548.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.MaintenancePageController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-padding: 20;">
+            <!-- Tiêu đề -->
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2A2A2A;" text="Quản Lý Bảo Trì Sân" />
+
+            <!-- Thanh tìm kiếm -->
+            <HBox alignment="CENTER" spacing="10">
+                <TextField fx:id="searchFieldName" promptText="Tìm kiếm tên sân" style="-fx-font-size: 14px; -fx-pref-width: 300px;" />
+                <Button fx:id="searchButton" style="-fx-font-size: 14px; -fx-background-color: #0078D7; -fx-text-fill: white;" text="Tìm kiếm" />
+            </HBox>
+
+            <!-- Bảng hiển thị danh sách bảo trì -->
+            <TableView fx:id="maintenanceTable" prefHeight="174.0" prefWidth="840.0" style="-fx-font-size: 14px;">
+                <columns>
+                    <TableColumn fx:id="maintenanceIDColumn" prefWidth="120.80002212524414" text="ID bảo trì" />
+                    <TableColumn fx:id="fieldNameColumn" prefWidth="129.59999084472656" text="Tên Sân" />
+                    <TableColumn fx:id="startDateColumn" prefWidth="150" text="Ngày bắt đầu" />
+                    <TableColumn fx:id="endDateColumn" prefWidth="150" text="Ngày kết thúc" />
+                    <TableColumn fx:id="descriptionColumn" prefWidth="312.800048828125" text="Mô tả" />
+                </columns>
+            </TableView>
+
+            <!-- Các nút chức năng -->
+            <HBox alignment="CENTER" spacing="20">
+                <Button fx:id="addButton" style="-fx-font-size: 14px; -fx-background-color: #5CB85C; -fx-text-fill: white;" text="Thêm mới" />
+                <Button fx:id="editButton" style="-fx-font-size: 14px; -fx-background-color: #0078D7; -fx-text-fill: white;" text="Chỉnh sửa" />
+                <Button fx:id="deleteButton" style="-fx-font-size: 14px; -fx-background-color: #D9534F; -fx-text-fill: white;" text="Xóa" />
+            </HBox>
+
+            <!-- Vùng nhập liệu -->
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20; -fx-border-color: #C0C0C0; -fx-border-radius: 5; -fx-border-width: 1;">
+                <!-- Cột bên trái -->
+                <VBox alignment="CENTER_LEFT" spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Field ID:" />
+                        <ComboBox fx:id="fieldIDCombobox" prefWidth="150.0" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Ngày bắt đầu:" />
+                        <DatePicker fx:id="startDatePicker" style="-fx-pref-width: 300px;" />
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Ngày kết thúc:" />
+                        <DatePicker fx:id="endDatePicker" style="-fx-pref-width: 300px;" />
+                    </HBox>
+                </VBox>
+            <HBox spacing="10.0">
+               <children>
+                       <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Mô tả:" />
+                       <TextArea fx:id="descriptionArea" prefHeight="120.0" prefWidth="320.0" style="-fx-wrap-text: true;" />
+               </children>
+            </HBox>
+            </HBox>
+        </VBox>
+    </children>
 </AnchorPane>
-
