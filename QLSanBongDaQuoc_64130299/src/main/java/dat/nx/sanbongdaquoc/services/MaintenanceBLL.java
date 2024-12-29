@@ -33,7 +33,7 @@ public class MaintenanceBLL {
     // Phương thức kiểm tra trùng lịch bảo trì
     public boolean checkMaintenanceOverlap(String fieldName, LocalDate startDate, LocalDate endDate) {
         // Lấy danh sách các lịch bảo trì của sân dựa vào fieldName
-        List<MaintenanceDTO> maintenances = maintenanceDAL.getMaintenancesByFieldName(fieldName);
+        List<MaintenanceDTO> maintenances = maintenanceDAL.getMaintenanceByFieldName(fieldName);
 
         // Kiểm tra xem lịch mới có trùng với lịch bảo trì cũ không
         for (MaintenanceDTO maintenance : maintenances) {
