@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="dat.nx.sanbongdaquoc.controllers.InvoicePageController">
-	<children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Label  layoutX="72.0" layoutY="92.0" text="Invoice" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane prefHeight="548.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.InvoicePageController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="548.0" prefWidth="907.0" spacing="10.0">
+            <children>
+                <!-- Tiêu đề chính -->
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Quản Lý Hóa Đơn" />
+
+                <!-- Thanh tìm kiếm -->
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <TextField fx:id="searchField" prefWidth="250.0" promptText="Nhập Booking ID..." style="-fx-font-size: 14px; -fx-padding: 5;" />
+                        <DatePicker fx:id="startDatePicker" promptText="Ngày bắt đầu" style="-fx-font-size: 14px;" />
+                        <DatePicker fx:id="endDatePicker" promptText="Ngày kết thúc" style="-fx-font-size: 14px;" />
+                        <Button fx:id="searchButton" style="-fx-font-size: 14px; -fx-background-color: #0078D7; -fx-text-fill: white;" text="Tìm kiếm" />
+                    </children>
+                </HBox>
+
+                <!-- Bảng chính hiển thị hóa đơn -->
+                <TableView fx:id="invoiceTable" prefHeight="394.0" prefWidth="905.0" style="-fx-font-size: 14px;">
+                    <columns>
+                        <TableColumn fx:id="invoiceIDColumn" prefWidth="120.0" text="Invoice ID" />
+                        <TableColumn fx:id="bookingIDColumn" prefWidth="120.0" text="Booking ID" />
+                        <TableColumn fx:id="amountColumn" prefWidth="150.0" text="Số tiền" />
+                        <TableColumn fx:id="paymentMethodColumn" prefWidth="200.0" text="Phương thức thanh toán" />
+                        <TableColumn fx:id="createdAtColumn" prefWidth="294.4000244140625" text="Ngày tạo" />
+                    </columns>
+                </TableView>
+
+                <!-- Hàng nút chức năng -->
+                <HBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Button fx:id="editButton1" style="-fx-font-size: 14px; -fx-background-color: #0078D7; -fx-text-fill: white; -fx-pref-width: 120px;" text="Chỉnh sửa" />
+                        <Button fx:id="deleteButton1" style="-fx-font-size: 14px; -fx-background-color: #D9534F; -fx-text-fill: white; -fx-pref-width: 120px;" text="Xóa" />
+                        <Button fx:id="statisticsButton1" onAction="#showStatisticsPopup" style="-fx-font-size: 14px; -fx-background-color: #5CB85C; -fx-text-fill: white; -fx-pref-width: 120px;" text="Thống kê" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Popup thống kê -->
+        <VBox fx:id="statisticsPopup" alignment="CENTER" layoutX="264.0" layoutY="156.0" prefHeight="263.0" prefWidth="358.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-padding: 20; -fx-border-radius: 5;" visible="false">
+            <children>
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Thống Kê Hóa Đơn" />
+                <Label fx:id="totalInvoicesLabel" style="-fx-font-size: 20px;" text="Tổng số hóa đơn: 0" />
+                <Label fx:id="totalAmountLabel" style="-fx-font-size: 20px;" text="Tổng số tiền: 0 VNĐ" />
+                <Button onAction="#hideStatisticsPopup" style="-fx-font-size: 16px; -fx-background-color: #D9534F; -fx-text-fill: white;" text="Đóng" />
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
-
