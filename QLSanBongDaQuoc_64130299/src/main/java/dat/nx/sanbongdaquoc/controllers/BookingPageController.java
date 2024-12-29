@@ -302,7 +302,7 @@ public class BookingPageController {
 	            bookingBLL.processPayment(booking);
 
 	            // Làm mới danh sách đặt sân
-	            loadAllBookings();
+	            setupTableColumn();
 	        }
 	    }
 	}
