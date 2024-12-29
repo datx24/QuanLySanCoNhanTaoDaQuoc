@@ -6,6 +6,8 @@ import dat.nx.sanbongdaquoc.repositories.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,51 +42,63 @@ public class InvoiceBLL {
         return invoice;
     }
 	
-	//Xử lý trước khi cập nhật hóa đơn
-	public boolean updateInvoice(InvoiceDTO invoiceDTO) {
-		return invoiceDAL.updateInvoice(invoiceDTO);
-	}
+	// Xử lý trước khi xóa hóa đơn
+    public boolean deleteInvoice(String invoiceID) {
+        return invoiceDAL.deleteInvoice(invoiceID);
+    }
 	
-	//Xử lý trước khi xóa hóa đơn
-	public boolean deleteInvoice(String invoiceID) {
-		InvoiceDTO invoiceDTO = getInvoiceByID(invoiceID);
-		return invoiceDAL.deleteInvoice(invoiceDTO);
-	}
-	
+
 	//Lấy danh sách tất cả hóa đơn
 	public List<InvoiceDTO> getAllInvoices() {
 		return invoiceDAL.getAllInvoices();
 	}
 	
-	//Lấy hóa đơn theo id
-	public InvoiceDTO getInvoiceByID(String invoiceID) {
-		return invoiceDAL.getInvoiceByID(invoiceID);
-	}
+	// Phương thức tìm kiếm hóa đơn theo bookingID, startDate, endDate
+    public List<InvoiceDTO> searchInvoices(String bookingID, LocalDate startDate, LocalDate endDate) {
+        // Gọi phương thức tìm kiếm từ DAL
+        return invoiceDAL.searchBookings(bookingID, startDate, endDate);
+    }
+    
+    // Phương thức gọi DAL để cập nhật phương thức thanh toán
+    public boolean updatePaymentMethod(String invoiceID, PaymentMethod paymentMethod) {
+        return invoiceDAL.updatePaymentMethod(invoiceID, paymentMethod);
+    }
 	
-	//Lấy hóa đơn theo bookingID
-	public InvoiceDTO getInvoiceByBookingID(String invoiceID) {
-		return invoiceDAL.getInvoiceByBookingID(invoiceID);
-	}
-	
-	//Kiểm tra trạng thái thanh toán hóa đơn
-	public PaymentMethod checkPaymentMethodStatus(String invoiceID) {
-		return invoiceDAL.checkPaymentStatus(invoiceID);
-	}
-	
-	//Tính tổng số tiền của hóa đơn trong khoảng thời gian
-	public BigDecimal calculateTotalAmountByDateRange(Timestamp startDate, Timestamp endDate) {
-    	return invoiceDAL.calculateTotalAmountByDateRange(startDate, endDate);
+    // Phương thức tính tổng số tiền trong khoảng thời gian
+    public BigDecimal calculateTotalAmountByDateRange(Timestamp startDate, Timestamp endDate) {
+        // Lấy danh sách hóa đơn trong khoảng thời gian từ DAL
+        List<InvoiceDTO> invoices = invoiceDAL.getInvoicesByDateRange(startDate, endDate);
+        BigDecimal totalAmount = BigDecimal.ZERO;
+
+        // Tính tổng số tiền
+        for (InvoiceDTO invoice : invoices) {
+            totalAmount = totalAmount.add(invoice.getAmount());
+        }
+
+        // Định dạng số tiền theo chuẩn VND (thêm dấu phân cách cho hàng nghìn)
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.##"); // Định dạng cho dấu phân cách và phần thập phân
+
+        // Loại bỏ phần thập phân nếu là 0
+        String formattedAmount = decimalFormat.format(totalAmount);
+
+        // In ra số tiền theo định dạng VND
+        System.out.println("Tổng số tiền trong khoảng thời gian: " + formattedAmount + " VND");
+
+        return totalAmount;
+    }
+
+    // Phương thức tính tổng số hóa đơn trong khoảng thời gian
+    public int calculateTotalInvoicesByDateRange(Timestamp startDate, Timestamp endDate) {
+        // Lấy danh sách hóa đơn trong khoảng thời gian từ DAL
+        List<InvoiceDTO> invoices = invoiceDAL.getInvoicesByDateRange(startDate, endDate);
+
+        // Trả về số lượng hóa đơn
+        return invoices.size();
     }
 	
 	//Lấy danh sách các hóa đơn chưa thanh toán
 	public List<InvoiceDTO> getUnpaidInvoices() {
 		return invoiceDAL.getAllInvoices();//thay đổi cách trả về
-	}
-	
-	//Xử lý thanh toán hóa đơn
-	public boolean processPayment(String invoiceID, PaymentMethod method) {
-		InvoiceDTO invoiceDTO = getInvoiceByID(invoiceID);
-		return updateInvoice(invoiceDTO);
 	}
 	
 	//Lấy hóa đơn theo mã khách hàng
