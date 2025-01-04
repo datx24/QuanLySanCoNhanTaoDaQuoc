@@ -38,7 +38,7 @@ public class FieldPageController {
 	@FXML
 	private ToggleGroup statusGroup ;
 	@FXML
-	private RadioButton allStatusRadio,availableRadio,maintenanceRadio,bookedRadio;
+	private RadioButton allStatusRadio,availableRadio,maintenanceRadio;
 	@FXML
 	private Button applyButton;
 
@@ -79,7 +79,6 @@ public class FieldPageController {
 	    allStatusRadio.setToggleGroup(statusGroup);
 	    availableRadio.setToggleGroup(statusGroup);
 	    maintenanceRadio.setToggleGroup(statusGroup);
-	    bookedRadio.setToggleGroup(statusGroup);
 		
 		//Cấu hình các cột table view
 		setupTableColumn();

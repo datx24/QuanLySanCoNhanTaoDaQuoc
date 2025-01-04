@@ -2,277 +2,123 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
-	<!-- Thanh điều hướng -->
-	<top>
-		<MenuBar style="-fx-background-color: #4CAF50;">
-			<Menu style="-fx-text-fill: white; -fx-font-size: 20px;" text="Quản lý">
-				<MenuItem text="Đặt sân" />
-				<MenuItem text="Sân bóng" />
-				<MenuItem text="Hóa đơn" />
-				<MenuItem text="Bảo trì" />
-				<MenuItem text="Người dùng" />
-			</Menu>
-			<Menu style="-fx-text-fill: white; -fx-font-size: 20px;" text="Tài khoản">
-				<MenuItem text="Đăng xuất" />
-			</Menu>
-		</MenuBar>
-	</top>
+<AnchorPane style="-fx-font-family: Arial; -fx-font-size: 14px; -fx-base: #f0f0f0;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.HomePageController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="548.0" prefWidth="907.0" spacing="10.0">
+            <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #003366;" text="Tổng Quan Hệ Thống" />
 
-	<!-- Chế độ chia tab chính -->
-	<center>
-		<TabPane style="-fx-tab-min-width: 100px; -fx-tab-max-width: 150px; -fx-tab-overrun: ellipsis;" tabClosingPolicy="UNAVAILABLE">
-			<!-- Tab Quản lý Đặt sân -->
-			<Tab closable="false" style="-fx-font-size: 16px;" text="Đặt sân">
-				<VBox spacing="10.0" style="-fx-padding: 20;">
-               <HBox prefHeight="222.0" prefWidth="702.0" />
-					<TableView fx:id="bookingsTable" prefHeight="266.0" prefWidth="702.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
-						<!-- Cột thông tin đặt sân -->
-					</TableView>
-					<HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
-						<Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm đặt sân" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa đặt sân" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa đặt sân" />
-					</HBox>
-				</VBox>
-			</Tab>
+            <!-- Thông tin tổng quan -->
+            <HBox alignment="CENTER" spacing="20">
+                <VBox alignment="CENTER" prefWidth="200" style="-fx-background-color: #E6F7FF; -fx-border-color: #CCC; -fx-border-radius: 10; -fx-background-radius: 10;">
+                    <ImageView fitHeight="50" fitWidth="50">
+                  <image>
+                     <Image url="@../image/field.png" />
+                  </image></ImageView>
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: #003366;" text="Số Sân Bóng" />
+                    <Label fx:id="totalFieldsLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF4500;" text="12" />
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="200" style="-fx-background-color: #E6F7FF; -fx-border-color: #CCC; -fx-border-radius: 10; -fx-background-radius: 10;">
+                    <ImageView fitHeight="50" fitWidth="50">
+                  <image>
+                     <Image url="@../image/booking.png" />
+                  </image></ImageView>
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: #003366;" text="Lượt Đặt Sân Hôm Nay" />
+                    <Label fx:id="bookingCountLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF4500;" text="25" />
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="200" style="-fx-background-color: #E6F7FF; -fx-border-color: #CCC; -fx-border-radius: 10; -fx-background-radius: 10;">
+                    <ImageView fitHeight="50" fitWidth="50">
+                  <image>
+                     <Image url="@../image/salary.png" />
+                  </image></ImageView>
+                    <Label style="-fx-font-size: 16px; -fx-text-fill: #003366;" text="Tổng Doanh Thu" />
+                    <Label fx:id="totalRevenueLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF4500;" text="5,000,000 VND" />
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+                </VBox>
+            </HBox>
+         <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #003366;" text="Danh sách sân chưa duyệt" />
 
-			<!-- Tab Quản lý Sân bóng -->
-			<Tab style="-fx-font-size: 16px;" text="Sân bóng">
-				<VBox spacing="10" style="-fx-padding: 20;">
-               <HBox alignment="CENTER" prefHeight="128.0" prefWidth="702.0" VBox.vgrow="ALWAYS">
-                  <children>
-                     <VBox prefHeight="180.0" prefWidth="222.0" spacing="10.0">
-                        <children>
-                           <Label text="ID sân bóng">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label text="Tên sân bóng">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label text="Tình trạng">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label text="Giá thuê">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                        </children>
-                        <padding>
-                           <Insets bottom="20.0" left="20.0" top="20.0" />
-                        </padding>
-                     </VBox>
-                     <VBox prefHeight="180.0" prefWidth="266.0" spacing="10.0">
-                        <padding>
-                           <Insets bottom="20.0" right="20.0" top="20.0" />
-                        </padding>
-                        <children>
-                           <TextField>
-                              <font>
-                                 <Font size="13.0" />
-                              </font>
-                           </TextField>
-                           <TextField>
-                              <font>
-                                 <Font size="13.0" />
-                              </font>
-                           </TextField>
-                           <TextField>
-                              <font>
-                                 <Font size="13.0" />
-                              </font>
-                           </TextField>
-                           <TextField>
-                              <font>
-                                 <Font size="13.0" />
-                              </font>
-                           </TextField>
-                        </children>
-                        <opaqueInsets>
-                           <Insets />
-                        </opaqueInsets>
-                     </VBox>
-                     <HBox maxWidth="5000.0" prefHeight="180.0" prefWidth="470.0" spacing="5.0">
-                        <children>
-                           <Label prefHeight="27.0" prefWidth="56.0" text="Mô tả">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets right="10.0" />
-                              </HBox.margin>
-                           </Label>
-                           <TextArea prefHeight="140.0" prefWidth="278.0" HBox.hgrow="ALWAYS">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                              <HBox.margin>
-                                 <Insets />
-                              </HBox.margin>
-                           </TextArea>
-                        </children>
-                        <padding>
-                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                        </padding>
-                     </HBox>
-                  </children>
-               </HBox>
-					<TableView fx:id="fieldsTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
-						<!-- Cột thông tin sân bóng -->
-					</TableView>
-					<HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
-						<Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm sân bóng" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa sân bóng" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa sân bóng" />
-					</HBox>
-				</VBox>
-			</Tab>
+            <!-- Bảng thông tin đặt sân -->
+            <TableView fx:id="bookingTable" prefHeight="315.0" prefWidth="811.0">
+                <columns>
+               <TableColumn fx:id="colBookingID" prefWidth="87.19997978210449" text="Mã đặt sân" />
+               <TableColumn fx:id="colUserName" prefWidth="135.9999771118164" text="Tên người đặt" />
+               <TableColumn fx:id="colEmail" prefWidth="171.20001220703125" text="Email" />
+               <TableColumn fx:id="colPhoneNumber" prefWidth="111.19992065429688" text="Số điện thoại" />
+               <TableColumn fx:id="colFieldName" prefWidth="72.0" text="Tên Sân" />
+               <TableColumn fx:id="colTimeDetail" prefWidth="295.2000732421875" text="Ngày Giờ Đặt" />
+                </columns>
+            <VBox.margin>
+               <Insets left="20.0" right="20.0" />
+            </VBox.margin>
+            </TableView>
+         <HBox alignment="CENTER" spacing="10.0">
+            <children>
+               <Button mnemonicParsing="false" onAction="#handleShowBookingPane" style="-fx-padding: 10; -fx-background-color: #5bc0de; -fx-text-fill: white;" text="Đặt sân" />
+               <Button mnemonicParsing="false" onAction="#handleDeleteBooking" style="-fx-padding: 10; -fx-background-color: #dc3545; -fx-text-fill: white;" text="Xóa sân" textFill="#ffdfdf" />
+            </children>
+         </HBox>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+        </VBox>
 
-			<!-- Tab Quản lý Hóa đơn -->
-			<Tab style="-fx-font-size: 16px;" text="Hóa đơn">
-				<VBox spacing="10" style="-fx-padding: 20;">
-					<TableView fx:id="invoicesTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
-						<!-- Cột thông tin hóa đơn -->
-					</TableView>
-					<HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
-						<Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm hóa đơn" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa hóa đơn" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa hóa đơn" />
-					</HBox>
-				</VBox>
-			</Tab>
-
-			<!-- Tab Quản lý Bảo trì -->
-			<Tab style="-fx-font-size: 16px;" text="Bảo trì">
-				<VBox spacing="10" style="-fx-padding: 20;">
-					<TableView fx:id="maintenanceTable" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
-						<!-- Cột thông tin bảo trì -->
-					</TableView>
-					<HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
-						<Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm yêu cầu bảo trì" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa yêu cầu bảo trì" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa yêu cầu bảo trì" />
-					</HBox>
-				</VBox>
-			</Tab>
-
-			<!-- Tab Quản lý Người dùng -->
-			<Tab style="-fx-font-size: 16px;" text="Người dùng">
-				<VBox spacing="10" style="-fx-padding: 20;">
-               <HBox alignment="CENTER" prefHeight="106.0" prefWidth="702.0">
-                  <children>
-                     <VBox prefHeight="219.0" prefWidth="544.0" spacing="10.0">
-                        <children>
-                           <Label prefHeight="27.0" prefWidth="129.0" text="Mã người dùng">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="18.0" prefWidth="202.0" text="Họ và tên">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="18.0" prefWidth="202.0" text="Email">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="18.0" prefWidth="202.0" text="Số điện thoại">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                        </children>
-                        <opaqueInsets>
-                           <Insets />
-                        </opaqueInsets>
-                        <padding>
-                           <Insets bottom="20.0" left="180.0" right="40.0" top="20.0" />
-                        </padding>
-                        <HBox.margin>
-                           <Insets />
-                        </HBox.margin>
-                     </VBox>
-                     <VBox prefHeight="100.0" prefWidth="553.0" spacing="10.0">
-                        <children>
-                           <TextField fx:id="userIDField" />
-                           <TextField fx:id="fullNameField" />
-                           <TextField fx:id="emailField" />
-                           <TextField fx:id="phoneField" />
-                        </children>
-                        <padding>
-                           <Insets bottom="20.0" right="100.0" top="20.0" />
-                        </padding>
-                     </VBox>
-                  </children>
-               </HBox>
-					<TableView fx:id="usersTable" prefHeight="253.0" prefWidth="702.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
-						<columns>
-							<TableColumn fx:id="userIDColumn" minWidth="100.0" resizable="true" style="-fx-alignment: CENTER;" text="Mã người dùng">
-								<cellValueFactory>
-									<PropertyValueFactory property="userID" />
-								</cellValueFactory>
-							</TableColumn>
-							<TableColumn fx:id="fullNameColumn" minWidth="150.0" resizable="true" style="-fx-alignment: CENTER;" text="Họ và tên">
-								<cellValueFactory>
-									<PropertyValueFactory property="fullName" />
-								</cellValueFactory>
-							</TableColumn>
-							<TableColumn fx:id="emailColumn" minWidth="150.0" resizable="true" style="-fx-alignment: CENTER;" text="Email">
-								<cellValueFactory>
-									<PropertyValueFactory property="email" />
-								</cellValueFactory>
-							</TableColumn>
-							<TableColumn fx:id="phoneNumberColumn" minWidth="150.0" resizable="true" style="-fx-alignment: CENTER;" text="Số điện thoại">
-								<cellValueFactory>
-									<PropertyValueFactory property="phoneNumber" />
-								</cellValueFactory>
-							</TableColumn>
-							<TableColumn fx:id="createdAtColumn" minWidth="150.0" resizable="true" style="-fx-alignment: CENTER;" text="Ngày tạo">
-								<cellValueFactory>
-									<PropertyValueFactory property="createdAt" />
-								</cellValueFactory>
-							</TableColumn>
-						</columns>
-					</TableView>
-
-					<HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
-						<Button style="-fx-font-size: 14px; -fx-background-color: #FFC107; -fx-text-fill: black; -fx-background-radius: 5;" text="Thêm người dùng" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 5;" text="Sửa người dùng" />
-						<Button style="-fx-font-size: 14px; -fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Xóa người dùng" />
-					</HBox>
-				</VBox>
-			</Tab>
-
-
-		</TabPane>
-	</center>
-
-	<!-- Footer (Có thể để thông tin bản quyền hoặc các liên kết) -->
-	<bottom>
-		<Label style="-fx-text-fill: #999999; -fx-font-size: 12px;" text="© 2024 Nguyễn Xuân Đạt_64130299" />
-	</bottom>
-</BorderPane>
+                 <!-- Pane for adding booking -->
+        <Pane fx:id="bookingPane" layoutX="203.0" layoutY="173.0" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-border-color: #CCC; -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+            <VBox alignment="CENTER" spacing="10">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Thêm Đặt Sân" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Mã người dùng: " />
+                      <TextField fx:id="userIDField" promptText="User   ID" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <TextField fx:id="txtFieldName" promptText="Nhập tên sân" />
+                      <DatePicker fx:id="bookingDatePicker" promptText="Chọn Ngày" />
+               </children>
+            </HBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Label text="Giờ Bắt Đầu:" />
+                    <Spinner fx:id="startHourSpinner" max="23" min="0" promptText="Giờ" />
+                    <Spinner fx:id="startMinuteSpinner" max="59" min="0" promptText="Phút" />
+                </HBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Label text="Giờ Kết Thúc:" />
+                    <Spinner fx:id="endHourSpinner" max="23" min="0" promptText="Giờ" />
+                    <Spinner fx:id="endMinuteSpinner" max="59" min="0" promptText="Phút" />
+                </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button fx:id="submitBookingButton" onAction="#addBooking" style="-fx-padding: 10; -fx-background-color: #28a745; -fx-text-fill: white;" text="Lưu" />
+                  <Button mnemonicParsing="false" onAction="#handleCloseBookingPane" style="-fx-padding: 10; -fx-background-color: #17a2b8; -fx-text-fill: white;" text="Đóng" />
+               </children>
+            </HBox>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            </VBox>
+        </Pane>
+    </children>
+</AnchorPane>

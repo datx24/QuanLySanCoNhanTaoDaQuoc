@@ -5,6 +5,7 @@ import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.repositories.*;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -95,6 +96,16 @@ public class InvoiceBLL {
         // Trả về số lượng hóa đơn
         return invoices.size();
     }
+    
+    public BigDecimal getTotalRevenueToday() {
+        try {
+            return invoiceDAL.getTotalRevenueToday(); // Gọi phương thức từ DAL
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy tổng doanh thu ngày hôm nay: " + e.getMessage());
+            return BigDecimal.ZERO; // Trả về 0 nếu có lỗi
+        }
+    }
+
 	
 	//Lấy danh sách các hóa đơn chưa thanh toán
 	public List<InvoiceDTO> getUnpaidInvoices() {

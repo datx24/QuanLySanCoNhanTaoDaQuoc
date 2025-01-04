@@ -1,5 +1,6 @@
 package dat.nx.sanbongdaquoc.controllers;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -47,11 +48,9 @@ public class UserPageController {
         
         sttColumn.setCellValueFactory(cellData -> {
             int index = userTable.getItems().indexOf(cellData.getValue()) + 1;
-            return new javafx.beans.property.SimpleIntegerProperty(index).asObject();
+            return new SimpleIntegerProperty(index).asObject();
         });
-
         loadUserData();
-
         userTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 txtUserID.setText(newValue.getUserID());

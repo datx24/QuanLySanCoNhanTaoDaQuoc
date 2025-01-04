@@ -34,7 +34,7 @@
                 <TableColumn fx:id="colFieldName" prefWidth="156.00006866455078" text="Tên sân" />
                 <TableColumn fx:id="colFieldStatus" prefWidth="114.39996337890625" text="Trạng thái" />
                 <TableColumn fx:id="colPricePerHour" prefWidth="120" text="Giá/giờ (VND)" />
-                <TableColumn fx:id="colDescription" prefWidth="306.3999328613281" text="Mô tả" />
+                <TableColumn fx:id="colDescription" prefWidth="408.00006103515625" text="Mô tả" />
             </columns>
             <VBox.margin>
                 <Insets left="10.0" right="10.0" />
@@ -44,10 +44,12 @@
 		<!-- Filter Section -->
 		<HBox alignment="CENTER" spacing="15.0" style="-fx-spacing: 15;">
 		    <Label style="-fx-font-size: 16px; -fx-text-fill: #333;" text="Lọc theo trạng thái:" />
-		    <RadioButton fx:id="allStatusRadio" selected="true" style="-fx-text-fill: #333;" text="Tất cả" toggleGroup="$statusGroup"/>
-		    <RadioButton fx:id="availableRadio" style="-fx-text-fill: #333;" text="Có sẵn" toggleGroup="$statusGroup"/>
-		    <RadioButton fx:id="maintenanceRadio" style="-fx-text-fill: #333;" text="Bảo trì" toggleGroup="$statusGroup"/>
-		    <RadioButton fx:id="bookedRadio" style="-fx-text-fill: #333;" text="Đã đặt" toggleGroup="$statusGroup"/>
+		    <RadioButton fx:id="allStatusRadio" selected="true" style="-fx-text-fill: #333;" text="Tất cả">
+            <toggleGroup>
+               <ToggleGroup fx:id="statusGroup" />
+            </toggleGroup></RadioButton>
+		    <RadioButton fx:id="availableRadio" style="-fx-text-fill: #333;" text="Có sẵn" toggleGroup="$statusGroup" />
+		    <RadioButton fx:id="maintenanceRadio" style="-fx-text-fill: #333;" text="Bảo trì" toggleGroup="$statusGroup" />
 		    <Button fx:id="applyButton" onAction="#handleApplyButton" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10px 20px;" text="Áp dụng" />
 		</HBox>
 

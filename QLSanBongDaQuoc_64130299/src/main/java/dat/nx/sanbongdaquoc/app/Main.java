@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 	@Override
@@ -21,6 +22,7 @@ public class Main extends Application {
 		
         Parent root = FXMLLoader.load(getClass().getResource("/dat/nx/sanbongdaquoc/fxml/LoginRegisterView.fxml")); 
         primaryStage.setTitle("Quản Lý Sân Bóng");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
 //        primaryStage.setWidth(1100);
 //        primaryStage.setHeight(600);
         primaryStage.setScene(new Scene(root));

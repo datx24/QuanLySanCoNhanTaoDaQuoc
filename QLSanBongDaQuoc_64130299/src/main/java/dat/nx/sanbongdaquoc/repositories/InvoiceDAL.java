@@ -238,4 +238,20 @@ public class InvoiceDAL {
         invoice.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
         return invoice;
     }
+    
+    //Phương thức tính tổng doanh thu ngày hôm nay
+    public BigDecimal getTotalRevenueToday() throws SQLException {
+        String query = "SELECT SUM(Amount) AS TotalRevenue FROM invoices_64130299 WHERE DATE(CreatedAt) = CURDATE()";
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet resultSet = stmt.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getBigDecimal("TotalRevenue") != null ? resultSet.getBigDecimal("TotalRevenue") : BigDecimal.ZERO;
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi tính tổng doanh thu ngày hôm nay: " + e.getMessage());
+            throw e;
+        }
+        return BigDecimal.ZERO;
+    }
+
 } 

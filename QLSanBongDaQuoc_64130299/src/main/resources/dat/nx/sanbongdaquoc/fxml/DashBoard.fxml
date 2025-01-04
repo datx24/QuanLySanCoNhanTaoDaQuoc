@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,119 +9,147 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<StackPane fx:id="myStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.DashBoardController">
-   <children>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1100.0">
-               <top>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="5000.0" style="-fx-background-color: linear-gradient(to bottom, #66cc66, #33aa33);;" BorderPane.alignment="CENTER">
-                     <children>
-                        <Text fill="WHITE" layoutX="245.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống quản lý sân bóng đá Đa Quốc">
-                           <font>
-                              <Font name="Verdana Bold" size="28.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </AnchorPane>
-               </top>
-               <left>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #66cc66, #33aa33);;" BorderPane.alignment="CENTER">
-                     <children>
-                        <VBox alignment="TOP_CENTER" maxHeight="5000.0" maxWidth="5000.0" prefHeight="10000.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <ImageView fitHeight="137.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                                 <image>
-                                    <Image url="@../anhDaiDienLapTop.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="150.0" text="Chào mừng" textFill="WHITE">
-                                 <font>
-                                    <Font name="Arial" size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="150.0" text="Nguyễn Xuân Đạt" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font name="Arial" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="57.692901611328125" endY="-2.0708236694335938" startX="-100.0" stroke="WHITE" strokeWidth="1.5">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" top="10.0" />
-                                 </VBox.margin>
-                              </Line>
-                              <Button fx:id="btnUserPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadUserPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí người dùng" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnFieldPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFieldPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lý sân" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnBookingPage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadBookingPage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí đặt sân" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnInvoicePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadInvoicePage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí hóa đơn" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnMaintenancePage" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadMaintenancePage" prefHeight="50.0" prefWidth="168.0" style="-fx-background-color: none;" text="Quản lí bảo trì sân" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
-                                 <children>
-                                    <Button fx:id="btnLogout" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" prefHeight="300.0" text="Đăng xuất">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Label contentDisplay="CENTER" text="Đăng xuất" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </left>
-               <center>
-                  <AnchorPane fx:id="contentArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-         </children>
+<BorderPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dat.nx.sanbongdaquoc.controllers.DashBoardController">
+   <top>
+    <AnchorPane prefHeight="50.0" style="-fx-background-color: linear-gradient(to bottom, #66cc66, #33aa33);">
+        <children>
+            <HBox layoutX="330.0" layoutY="8.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/football%20(2).png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Hệ thống quản lý sân bóng đá Đa Quốc" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/football%20(2).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="1034.0" layoutY="7.0">
+               <children>
+                  <Button fx:id="minimizeButton" onAction="#minimizeWindow" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="closeButton" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+        </children>
+    </AnchorPane>
+	</top>
+   <left>
+      <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #33aa33; -fx-padding: 10;">
+         <ImageView fitHeight="134.0" fitWidth="140.0" preserveRatio="true">
+            <image>
+               <Image url="@../image/manager.png" />
+            </image>
+         </ImageView>
+         <Label fx:id="lblName" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Chào mừng, Nguyễn Xuân Đạt" />
+         <Line endX="100.0" startX="-100.0" stroke="WHITE" />
+         <VBox>
+            <children>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadDashBoardPage" prefHeight="34.0" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Tổng quan">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/inspection.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadUserPage" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Quản lí khách hàng">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/youth.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadFieldPage" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Quản lý sân">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/stadium.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadBookingPage" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Quản lí đặt sân">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/appointment%20(1).png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadInvoicePage" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Quản lí hóa đơn">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/invoice.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Button graphicTextGap="10.0" maxWidth="500.0" onAction="#loadMaintenancePage" style="-fx-background-color: none; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: BASELINE_LEFT;" text="Quản lí bảo trì sân">
+                  <graphic>
+                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/schedule.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </VBox>
+         <Button fx:id="logoutButton" graphicTextGap="10.0" onAction="#handleLogout" style="-fx-background-color: #FF4444; -fx-text-fill: white; -fx-font-size: 16px;" text="Đăng xuất">
+            <graphic>
+               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../image/user-logout.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
+      </VBox>
+   </left>
+   <center>
+   <AnchorPane fx:id="contentArea" prefHeight="548.0" prefWidth="907.0">
       </AnchorPane>
-   </children>
-</StackPane>
+   </center>
+</BorderPane>

@@ -4,6 +4,7 @@ import dat.nx.sanbongdaquoc.enums.*;
 import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.repositories.*;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -18,20 +19,39 @@ public class BookingBLL {
 		this.bookingDAL = bookingDAL;
 	}
 	
-	//Kiểm tra các thuộc tính trước khi thêm đơn
-	public boolean addBooking(BookingDTO bookingDTO) {
-		return bookingDAL.addBooking(bookingDTO);
-	}
-	
-	//Kiểm tra các thuộc tính trước khi cập nhật đơn
-	public boolean updateBooking(BookingDTO bookingDTO) {
-		return bookingDAL.updateBooking(bookingDTO);
+	// Kiểm tra các thuộc tính trước khi thêm đơn
+	public boolean addBooking(String bookingID, String userID, String fieldName, LocalDate bookingDate, LocalTime startTime, LocalTime endTime) {
+	    // Giới hạn khung giờ từ 6:00 sáng đến 22:00 tối
+	    LocalTime earliestTime = LocalTime.of(6, 0); // 6:00 sáng
+	    LocalTime latestTime = LocalTime.of(22, 0); // 22:00 tối
+
+	    if (startTime.isBefore(earliestTime) || endTime.isAfter(latestTime)) {
+	        System.err.println("Thời gian đặt chỗ phải nằm trong khung giờ từ 6:00 đến 22:00.");
+	        return false; // Trả về false nếu thời gian không hợp lệ
+	    }
+
+	    if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
+	        System.err.println("Thời gian bắt đầu phải trước thời gian kết thúc.");
+	        return false; // Trả về false nếu thời gian không hợp lệ
+	    }
+
+	    try {
+	        // Gọi phương thức từ DAL để thêm đặt chỗ
+	        return bookingDAL.addBooking(bookingID, userID, fieldName, bookingDate, startTime, endTime);
+	    } catch (SQLException e) {
+	        System.err.println("Lỗi khi thêm đơn đặt chỗ: " + e.getMessage());
+	        return false;
+	    }
 	}
 	
 	//Kiểm tra thông tin đơn trước khi xóa
-	public boolean deleteBooking(String bookingId) {
-		BookingDTO bookingDTO = bookingDAL.getBookingById(bookingId);
-		return bookingDAL.deleteBooking(bookingDTO);
+	public boolean deleteBookingById(String bookingID) {
+	    try {
+	        return bookingDAL.deleteBookingById(bookingID); // Gọi phương thức từ DAL
+	    } catch (SQLException e) {
+	        System.err.println("Lỗi khi xóa đặt chỗ: " + e.getMessage());
+	        return false; // Trả về false nếu có lỗi
+	    }
 	}
 	
 	//Lấy tất cả đơn đặt sân
@@ -110,4 +130,15 @@ public class BookingBLL {
             return false;
         }
     }
+    
+    //Lấy danh sách đặt sân trạng thái chờ duyệt
+    public List<BookingDTO> getPendingBookings() {
+        return bookingDAL.getPendingBookings();
+    }
+    
+    public int getTotalBookingsToday() {
+        return bookingDAL.getTotalBookingsToday();
+    }
+    
+    
 }	

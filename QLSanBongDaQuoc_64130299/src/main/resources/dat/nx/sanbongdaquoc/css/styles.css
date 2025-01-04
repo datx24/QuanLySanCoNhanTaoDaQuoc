@@ -1,0 +1,12 @@
+.button {
+    cursor: hand;              /* Hiển thị con trỏ dạng bàn tay */
+}
+
+.button:hover {
+    background-color: #2980b9; /* Màu nền khi hover */
+    -fx-text-fill: lightgray;      /* Màu chữ khi hover */
+    -fx-scale-x: 1.05;             /* Hiệu ứng phóng to nhẹ */
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, black, 5, 0.3, 0, 2); /* Đổ bóng */
+}
+

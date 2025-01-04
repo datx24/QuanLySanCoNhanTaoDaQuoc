@@ -4,6 +4,7 @@ import dat.nx.sanbongdaquoc.enums.*;
 import dat.nx.sanbongdaquoc.models.entities.*;
 import dat.nx.sanbongdaquoc.repositories.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class FieldBLL {
@@ -72,5 +73,19 @@ public class FieldBLL {
     // Lấy danh sách tên sân từ BLL
     public List<String> getAllFieldNames() {
         return fieldDAL.getAllFieldNames();
+    }
+    
+    // Kiểm tra lỗi trước tính tổng số sân
+    public int getTotalFields() {
+        try {
+            return fieldDAL.getTotalFields(); // Gọi phương thức từ DAL
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy tổng số sân bóng: " + e.getMessage());
+            return 0; // Trả về 0 nếu có lỗi
+        }
+    }
+    
+    public int getFieldIDByName(String fieldName) throws SQLException {
+        return fieldDAL.getFieldIDByName(fieldName);
     }
 }

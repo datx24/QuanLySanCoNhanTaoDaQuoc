@@ -188,4 +188,39 @@ public class FieldDAL {
 
         return fieldNames;
     }
+    
+    //Phương thức tính tổng số sân hiện tại
+    public int getTotalFields() throws SQLException {
+        String query = "SELECT COUNT(*) AS TotalFields FROM fields_64130299";
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet resultSet = stmt.executeQuery()) {
+            if (resultSet.next()) {
+                return resultSet.getInt("TotalFields");
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi tính tổng số sân bóng: " + e.getMessage());
+            throw e; // Ném lỗi để xử lý ở BLL
+        }
+        return 0;
+    }
+    
+    //Lấy ID dựa vào tên
+    public int getFieldIDByName(String fieldName) throws SQLException {
+        String query = "SELECT FieldID FROM fields_64130299 WHERE FieldName = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, fieldName);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("FieldID");
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy FieldID từ tên sân: " + e.getMessage());
+            e.printStackTrace();
+            throw e; // Ném lại lỗi để xử lý ở tầng cao hơn
+        }
+        return -1; // Trả về -1 nếu không tìm thấy tên sân
+    }
+
+    
 }

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,6 +21,7 @@ public class BookingDAL {
 	private BookingDTO bookingDTO = new BookingDTO();
 	private List<BookingDTO> bookingDTOs = new ArrayList<>();
 	private Connection connection;
+	private FieldDAL fieldDAL = new FieldDAL();
 	
 	
 	public BookingDAL() {
@@ -31,20 +33,90 @@ public class BookingDAL {
 		}
 	}
 
-	// Thêm đơn đặt sân
-	public boolean addBooking(BookingDTO booking) {
-		return true;
-	}
+	// Phương thức thêm đơn đặt sân
+    public boolean addBooking(String bookingID, String userID, String fieldName, LocalDate bookingDate, LocalTime startTime, LocalTime endTime) throws SQLException {
+        // Lấy FieldID từ tên sân
+        int fieldID = fieldDAL.getFieldIDByName(fieldName);
+        if (fieldID == -1) {
+            System.out.println("Tên sân không tồn tại.");
+            return false; // Trả về false nếu không tìm thấy tên sân
+        }
 
-	// Cập nhật đơn đặt sân
-	public boolean updateBooking(BookingDTO booking) {
-		return true;
-	}
+        // Kiểm tra xem sân có đang bảo trì hay không
+        String checkFieldStatusQuery = "SELECT Status FROM fields_64130299 WHERE FieldID = ?";
+        try (PreparedStatement checkFieldStatusStmt = connection.prepareStatement(checkFieldStatusQuery)) {
+            checkFieldStatusStmt.setInt(1, fieldID);
+            try (ResultSet resultSet = checkFieldStatusStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    String status = resultSet.getString("Status");
+                    if ("Bảo trì".equalsIgnoreCase(status)) {
+                        System.out.println("Sân đang trong tình trạng bảo trì.");
+                        return false; // Trả về false nếu sân đang bảo trì
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi kiểm tra trạng thái sân: " + e.getMessage());
+            e.printStackTrace();
+            throw e; // Ném lại lỗi để xử lý ở tầng cao hơn
+        }
+
+        // Kiểm tra xem có đặt chỗ trùng thời gian hay không
+        String checkOverlapQuery = "SELECT 1 FROM bookings_64130299 WHERE FieldID = ? AND BookingDate = ? AND (StartTime < ? AND EndTime > ?)";
+        try (PreparedStatement checkOverlapStmt = connection.prepareStatement(checkOverlapQuery)) {
+            checkOverlapStmt.setInt(1, fieldID);
+            checkOverlapStmt.setDate(2, Date.valueOf(bookingDate));
+            checkOverlapStmt.setTime(3, Time.valueOf(endTime));
+            checkOverlapStmt.setTime(4, Time.valueOf(startTime));
+            try (ResultSet resultSet = checkOverlapStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    System.out.println("Thời gian đặt chỗ bị trùng với một đặt chỗ hiện có.");
+                    return false; // Trả về false nếu có đặt chỗ trùng
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi kiểm tra thời gian trùng lặp: " + e.getMessage());
+            e.printStackTrace();
+            throw e; // Ném lại lỗi để xử lý ở tầng cao hơn
+        }
+
+        // Chèn đặt chỗ mới vào cơ sở dữ liệu
+        String insertBookingQuery = "INSERT INTO bookings_64130299 (BookingID, UserID, FieldID, BookingDate, StartTime, EndTime, CreatedAt) " +
+                "VALUES (?, ?, ?, ?, ?, ?, current_timestamp())";
+        try (PreparedStatement insertBookingStmt = connection.prepareStatement(insertBookingQuery)) {
+            insertBookingStmt.setString(1, bookingID);
+            insertBookingStmt.setString(2, userID);
+            insertBookingStmt.setInt(3, fieldID);
+            insertBookingStmt.setDate(4, Date.valueOf(bookingDate));
+            insertBookingStmt.setTime(5, Time.valueOf(startTime));
+            insertBookingStmt.setTime(6, Time.valueOf(endTime));
+
+            int rowsAffected = insertBookingStmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Thêm đặt chỗ thành công!");
+                return true; // Trả về true nếu đã chèn thành công
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi thêm đặt chỗ: " + e.getMessage());
+            e.printStackTrace();
+            throw e; // Ném lại lỗi để xử lý ở tầng cao hơn
+        }
+        return false;
+    }
 
 	// Xóa đơn đặt sân
-	public boolean deleteBooking(BookingDTO booking) {
-		return true;
+	public boolean deleteBookingById(String bookingID) throws SQLException {
+	    String query = "DELETE FROM bookings_64130299 WHERE BookingID = ?";
+	    try (PreparedStatement stmt = connection.prepareStatement(query)) {
+	        stmt.setString(1, bookingID);
+	        int rowsAffected = stmt.executeUpdate();
+	        return rowsAffected > 0; // Trả về true nếu xóa thành công
+	    } catch (SQLException e) {
+	        System.err.println("Lỗi khi xóa đặt chỗ: " + e.getMessage());
+	        throw e;
+	    }
 	}
+
 
 	// Lấy tất cả đơn đặt sân từ cơ sở dữ liệu
 	public List<BookingDTO> getAllBookings() {
@@ -258,4 +330,48 @@ public class BookingDAL {
             return false;
         }
     }
+    
+    //Lấy danh sách sân theo trạng thái chờ duyêt
+    public List<BookingDTO> getPendingBookings(){
+        List<BookingDTO> bookings = new ArrayList<>();
+        String query = "SELECT b.BookingID, u.FullName AS FullName, u.Email, u.PhoneNumber, f.FieldName, " +
+                       "CONCAT(DATE(b.BookingDate), ' ', b.StartTime, ' - ', b.EndTime) AS TimeDetails " +
+                       "FROM bookings_64130299 b " +
+                       "JOIN users_64130299 u ON b.UserID = u.UserID " +
+                       "JOIN fields_64130299 f ON b.FieldID = f.FieldID " +
+                       "WHERE b.Status = 'Chờ duyệt'";
+
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            
+            while (rs.next()) {
+                BookingDTO booking = new BookingDTO();
+                booking.setBookingID(rs.getString("BookingID"));
+                booking.setUserName(rs.getString("FullName"));
+                booking.setEmail(rs.getString("Email"));
+                booking.setPhoneNumber(rs.getString("PhoneNumber"));
+                booking.setFieldName(rs.getString("FieldName"));
+                booking.setTimeDetails(rs.getString("TimeDetails"));
+                bookings.add(booking);
+            }
+        } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return bookings;
+    }
+    
+    public int getTotalBookingsToday() {
+        String query = "SELECT COUNT(*) AS TotalBookings FROM bookings_64130299 WHERE BookingDate = CURRENT_DATE";
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("TotalBookings");
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi tính tổng số lượng đặt sân hôm nay: " + e.getMessage());
+        }
+        return 0;
+    }
+
 }

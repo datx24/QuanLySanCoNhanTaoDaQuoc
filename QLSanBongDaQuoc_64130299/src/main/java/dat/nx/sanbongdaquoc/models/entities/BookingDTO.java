@@ -17,6 +17,8 @@ public class BookingDTO {
 	private Timestamp createdAt;
 	private String userName;
     private String fieldName;
+    private String phoneNumber;
+    private String email;
     private LocalDate bookingDate;
     private LocalTime startTime,endTime;
 	
@@ -36,6 +38,22 @@ public class BookingDTO {
         this.bookingDate = bookingDate;
     }
     
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public LocalTime getStartTime() {
 		return startTime;
 	}
