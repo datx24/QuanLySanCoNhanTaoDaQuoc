@@ -271,10 +271,7 @@ public class FieldPageController {
 	    } else if (status.equals("Bảo trì")) {
 	        filteredFields = FXCollections.observableArrayList(fieldBLL.getFieldsByStatus(FieldStatus.MAINTENANCE));
 	        fieldTable.setItems(filteredFields);  // Set lại ObservableList cho TableView
-	    } else if (status.equals("Đã đặt")) {
-	        filteredFields = FXCollections.observableArrayList(fieldBLL.getFieldsByStatus(FieldStatus.BOOKED));
-	        fieldTable.setItems(filteredFields);  // Set lại ObservableList cho TableView
-	    }
+	    } 
 	}
 
 }

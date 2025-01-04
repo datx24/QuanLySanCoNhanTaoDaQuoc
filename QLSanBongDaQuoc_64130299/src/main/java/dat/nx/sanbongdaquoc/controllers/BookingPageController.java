@@ -101,7 +101,8 @@ public class BookingPageController {
                 selectedBooking.setStatus(BookingStatus.CANCELLED);
                 bookingBLL.updateBookingStatus(selectedBooking);
                 showAlert(AlertType.INFORMATION, "Thông báo", "Đơn đặt sân đã bị hủy.");
-                loadAllBookings(); // Làm mới danh sách
+                // Làm mới danh sách
+	            setupTableColumn();
             }
         });
     }
@@ -119,7 +120,7 @@ public class BookingPageController {
                 showAlert(AlertType.INFORMATION, "Thành công", "Đơn đặt sân đã được xác nhận.");
                 
                 // Làm mới danh sách
-                loadAllBookings();
+	            setupTableColumn();
             } else {
                 // Hiển thị thông báo nếu không có đơn đặt sân nào được chọn
                 showAlert(AlertType.WARNING, "Cảnh báo", "Vui lòng chọn đơn đặt sân để xác nhận.");

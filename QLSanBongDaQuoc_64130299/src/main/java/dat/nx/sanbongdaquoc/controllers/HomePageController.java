@@ -2,9 +2,12 @@ package dat.nx.sanbongdaquoc.controllers;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.controlsfx.control.textfield.TextFields;
@@ -127,8 +130,17 @@ public class HomePageController {
     
     // Phương thức cập nhật doanh thu trong ngày
     public void updateTotalRevenueLabel() {
-        BigDecimal totalRevenue = invoiceBLL.getTotalRevenueToday(); // Lấy tổng doanh thu từ BLL
-        totalRevenueLabel.setText(totalRevenue + " VND");
+    	// Định dạng số tiền theo chuẩn Việt Nam
+        DecimalFormat decimalFormat = new DecimalFormat("#,###"); 
+        
+        // Lấy tổng doanh thu từ BLL
+        BigDecimal totalRevenue = invoiceBLL.getTotalRevenueToday();
+        
+        // Định dạng số tiền
+        String formattedRevenue = decimalFormat.format(totalRevenue) + " VNĐ";
+        
+        // Cập nhật nhãn hiển thị
+        totalRevenueLabel.setText(formattedRevenue);
     }
     
     @FXML

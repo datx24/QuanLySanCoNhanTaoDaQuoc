@@ -2,8 +2,7 @@ package dat.nx.sanbongdaquoc.enums;
 
 public enum FieldStatus {
     AVAILABLE("Có sẵn"),
-    MAINTENANCE("Bảo trì"),
-    BOOKED("Đã đặt");
+    MAINTENANCE("Bảo trì");
 
     private final String status;
 

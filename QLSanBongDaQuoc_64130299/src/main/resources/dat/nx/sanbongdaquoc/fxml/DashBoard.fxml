@@ -23,7 +23,7 @@
                         <Image url="@../image/football%20(2).png" />
                      </image>
                   </ImageView>
-                  <Label style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Hệ thống quản lý sân bóng đá Đa Quốc" />
+                  <Label alignment="CENTER" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="Hệ thống quản lý sân bóng đá Đa Quốc" />
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/football%20(2).png" />

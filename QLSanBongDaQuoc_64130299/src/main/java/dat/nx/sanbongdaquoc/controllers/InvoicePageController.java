@@ -200,7 +200,7 @@ public class InvoicePageController {
 
         // Hiển thị kết quả lên giao diện
         totalInvoicesLabel.setText("Tổng hóa đơn: " + totalInvoices);
-        totalAmountLabel.setText("Tổng số tiền: " + formattedTotalAmount + "VNĐ");
+        totalAmountLabel.setText("Tổng số tiền: " + formattedTotalAmount + " VNĐ");
         statisticsPopup.setVisible(true);  // Hiển thị popup thống kê
     }
 
@@ -227,5 +227,4 @@ public class InvoicePageController {
 	    alert.setContentText(message);
 	    alert.showAndWait();
 	}
-
 }
